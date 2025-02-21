@@ -64,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             spacing: 16.sp,
                             children: [
                               /// Header
-                              const H(h: 90),
+                              const H(h: 70),
                               SvgPicture.asset(
                                 'assets/svg/logo.svg',
                                 colorFilter: const ColorFilter.mode(
@@ -81,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   fontWeight: FontWeight.w800,
                                 ),
                               ),
-                              const H(h: 16),
+                              const H(h: 4),
 
                               /// Email
                               Row(
@@ -255,6 +255,39 @@ class _LoginScreenState extends State<LoginScreen> {
                                     //     }
                                   }
                                 },
+                              ),
+                              Row(
+                                spacing: 12.sp,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'أو قم بتسجيل الدخول عبر',
+                                    style: TextStyle(
+                                      color: const Color(0xFF3E5879),
+                                      fontSize: 14.sp,
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      cubit.googleSignIn(context);
+                                    },
+                                    child: CircleAvatar(
+                                      radius: 15.sp,
+                                      backgroundColor: kMainColor,
+                                      child: CircleAvatar(
+                                        radius: 14.sp,
+                                        backgroundColor:
+                                            kScaffoldBackgroundColor,
+                                        child: SizedBox(
+                                          height: 20.sp,
+                                          child: Image.asset(
+                                            'assets/icons/google-symbol.png',
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
 
                               /// Sign Up

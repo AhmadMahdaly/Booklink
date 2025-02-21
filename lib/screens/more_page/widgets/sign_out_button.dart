@@ -1,7 +1,6 @@
 import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/cubit/auth_cubit/auth_cubit.dart';
 import 'package:biblio/screens/onboard/onboard_screen.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
@@ -35,68 +34,65 @@ class SignOutButton extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return state is AppLoadingState
-            ? const AppIndicator()
-            : TextButton(
-                onPressed: () async {
-                  try {
-                    // ignore: inference_failure_on_function_invocation
-                    await showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        backgroundColor: kLightBlue,
-                        content: const Text(
-                          'هل تريد تسجيل الخروج؟',
-                          style: TextStyle(
-                            color: kMainColor,
-                            fontWeight: FontWeight.w800,
-                          ),
-                        ),
-                        actions: [
-                          ///
-                          TextButton(
-                            onPressed: () => Navigator.of(context).pop(
-                              false,
-                            ),
-                            child: const Text(
-                              'إلغاء',
-                              style: TextStyle(
-                                color: kMainColor,
-                              ),
-                            ),
-                          ),
-
-                          ///
-                          ElevatedButton(
-                            onPressed: () async {
-                              Navigator.of(
-                                context,
-                              ).pop(
-                                true,
-                              );
-                              await cubit.signOut(context);
-                            },
-                            child: const Text(
-                              'تسجيل الخروج',
-                              style: TextStyle(
-                                color: kMainColor,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  } catch (_) {}
-                },
-                child: Text(
-                  'تسجيل الخروج',
-                  style: TextStyle(
-                    color: const Color(0xFFEA1C25),
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w800,
+        return TextButton(
+          onPressed: () async {
+            try {
+              await showDialog<bool>(
+                context: context,
+                builder: (context) => AlertDialog(
+                  backgroundColor: kLightBlue,
+                  content: const Text(
+                    'هل تريد تسجيل الخروج؟',
+                    style: TextStyle(
+                      color: kMainColor,
+                      fontWeight: FontWeight.w800,
+                    ),
                   ),
+                  actions: [
+                    ///
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(
+                        false,
+                      ),
+                      child: const Text(
+                        'إلغاء',
+                        style: TextStyle(
+                          color: kMainColor,
+                        ),
+                      ),
+                    ),
+
+                    ///
+                    ElevatedButton(
+                      onPressed: () async {
+                        Navigator.of(
+                          context,
+                        ).pop(
+                          true,
+                        );
+                        await cubit.signOut(context);
+                      },
+                      child: const Text(
+                        'تسجيل الخروج',
+                        style: TextStyle(
+                          color: kMainColor,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               );
+            } catch (_) {}
+          },
+          child: Text(
+            'تسجيل الخروج',
+            style: TextStyle(
+              color: const Color(0xFFEA1C25),
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        );
       },
     );
   }

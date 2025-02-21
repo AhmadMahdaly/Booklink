@@ -38,14 +38,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final cubit = context.read<AuthCubit>();
     return BlocConsumer<AuthCubit, AppStates>(
       listener: (context, state) {
-        if (state is AppErrorState) {
-          if (state.message == 'Connection refused' ||
-              state.message == 'Connection reset by peer') {
-            showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-          } else {
-            showSnackBar(context, state.message);
-          }
-        }
         if (state is AppSuccessState) {
           showSnackBar(
             context,
@@ -83,14 +75,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           spacing: 12.sp,
                           children: [
                             /// Header
-                            const H(h: 90),
+                            const H(h: 50),
                             SvgPicture.asset(
                               'assets/svg/logo.svg',
                               colorFilter: const ColorFilter.mode(
                                 kMainColor,
                                 BlendMode.srcIn,
                               ),
-                              width: 115.sp,
+                              width: 105.sp,
                             ),
                             Text(
                               'إنشاء حساب جديد',
@@ -100,7 +92,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 fontWeight: FontWeight.w800,
                               ),
                             ),
-                            const H(h: 16),
+                            const H(h: 2),
 
                             /// Name
                             Row(
@@ -241,68 +233,106 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                               ],
                             ),
-                            const H(h: 10),
+
+                            Column(
+                              spacing: 8.sp,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                /// Sign up Button
+                                CustomButton(
+                                  isActive: enabled,
+                                  text: 'إنشاء الحساب',
+                                  padding: 16,
+                                  onTap: _isAgreed
+                                      ? () async {
+                                          if (formKey.currentState!
+                                              .validate()) {
+                                            await cubit.signUp(
+                                              name: _userNameController.text,
+                                              email: _emailController.text,
+                                              password:
+                                                  _passwordController.text,
+                                              context: context,
+                                            );
+                                          }
+                                        }
+                                      : () {},
+                                ),
+                                const H(h: 0),
+                                Row(
+                                  spacing: 16.sp,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'أو قم بالتسجيل عبر',
+                                      style: TextStyle(
+                                        color: kHeader1Color,
+                                        fontSize: 16.sp,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        cubit.googleSignUp(context);
+                                      },
+                                      child: CircleAvatar(
+                                        radius: 15.sp,
+                                        backgroundColor: kMainColor,
+                                        child: CircleAvatar(
+                                          radius: 14.sp,
+                                          backgroundColor:
+                                              kScaffoldBackgroundColor,
+                                          child: SizedBox(
+                                            height: 20.sp,
+                                            child: Image.asset(
+                                              'assets/icons/google-symbol.png',
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+
+                                /// Login
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.popAndPushNamed(
+                                      context,
+                                      LoginScreen.id,
+                                    );
+                                  },
+                                  child: Text.rich(
+                                    TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: 'لديك حساب بالفعل؟ ',
+                                          style: TextStyle(
+                                            color: kHeader1Color,
+                                            fontSize: 16.sp,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text: 'تسجيل الدخول',
+                                          style: TextStyle(
+                                            color: const Color(0xFF3E5879),
+                                            fontSize: 16.sp,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                const H(h: 16),
+                              ],
+                            ),
                           ],
                         ),
                       ),
                     ),
                   ),
-                ),
-          bottomNavigationBar: state is AppLoadingState
-              ? const SizedBox()
-              : Column(
-                  spacing: 12.sp,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    /// Sign up Button
-                    CustomButton(
-                      isActive: enabled,
-                      text: 'إنشاء الحساب',
-                      padding: 16,
-                      onTap: _isAgreed
-                          ? () async {
-                              if (formKey.currentState!.validate()) {
-                                await cubit.signUp(
-                                  name: _userNameController.text,
-                                  email: _emailController.text,
-                                  password: _passwordController.text,
-                                  context: context,
-                                );
-                              }
-                            }
-                          : () {},
-                    ),
-
-                    /// Login
-                    InkWell(
-                      onTap: () {
-                        Navigator.popAndPushNamed(context, LoginScreen.id);
-                      },
-                      child: Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                              text: 'لديك حساب بالفعل؟ ',
-                              style: TextStyle(
-                                color: kHeader1Color,
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            TextSpan(
-                              text: 'تسجيل الدخول',
-                              style: TextStyle(
-                                color: const Color(0xFF3E5879),
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const H(h: 16),
-                  ],
                 ),
         );
       },
