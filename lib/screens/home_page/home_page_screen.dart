@@ -27,7 +27,6 @@ class _HomePageState extends State<HomePage> {
   Future<void> fetchDate() async {
     await context.read<FetchLocatedBooksCubit>().fetchLocatedBooks(context);
     await context.read<FetchUnreadMessageCubit>().fetchUnreadMessages(
-          context,
           otherId:
               context.read<CreateConversationCubit>().otherUserId.toString(),
         );

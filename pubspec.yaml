@@ -32,7 +32,7 @@ dependencies:
   cached_network_image: ^3.4.1
   carousel_slider: ^5.0.0
   connectivity_plus: ^5.0.2
-  flutter_bloc: ^9.0.0
+  flutter_bloc: ^9.1.0
   http: ^1.3.0
   firebase_messaging: ^15.2.2
   flutter_local_notifications: ^18.0.1

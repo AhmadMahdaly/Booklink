@@ -9,6 +9,7 @@ import 'package:biblio/screens/book/add_book_page/widgets/add_book_image.dart';
 import 'package:biblio/screens/book/add_book_page/widgets/title_form_add_book.dart';
 import 'package:biblio/screens/navigation_bar/navigation_bar.dart';
 import 'package:biblio/screens/onboard/onboard_screen.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/custom_button.dart';
 import 'package:biblio/utils/components/custom_textformfield.dart';
@@ -128,7 +129,7 @@ class _AddBookState extends State<AddBook> {
       child: BlocConsumer<UploadBookCubit, AppStates>(
         listener: (context, state) {
           if (state is AppErrorState) {
-            showSnackBar(context, state.message);
+            errorMessage(state.message, context);
           }
           if (state is AppSuccessState) {
             FetchBookCategoryCubit().close();
@@ -431,7 +432,6 @@ class _AddBookState extends State<AddBook> {
                                   if (formKey.currentState!.validate()) {
                                     try {
                                       await uploadCubit.uploadBook(
-                                        context,
                                         title: _titleController.text,
                                         author: _authorController.text,
                                         desc: _descriptionController.text,

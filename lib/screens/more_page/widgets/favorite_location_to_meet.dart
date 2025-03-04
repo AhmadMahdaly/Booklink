@@ -1,6 +1,7 @@
 import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/cubit/user/update_user_favorite_location_cubit.dart';
 import 'package:biblio/cubit/user/user_favorite_location_cubit.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/custom_button.dart';
 import 'package:biblio/utils/components/custom_textformfield.dart';
@@ -50,12 +51,7 @@ class _FavoriteLocationToMeetState extends State<FavoriteLocationToMeet> {
     return BlocConsumer<UpdateUserFavoriteLocationCubit, AppStates>(
       listener: (context, state) {
         if (state is AppErrorState) {
-          if (state.message == 'Connection refused' ||
-              state.message == 'Connection reset by peer') {
-            showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-          } else {
-            showSnackBar(context, state.message);
-          }
+          errorMessage(state.message, context);
         }
         if (state is AppSuccessState) {
           showSnackBar(context, 'تم الحفظ');
@@ -67,12 +63,7 @@ class _FavoriteLocationToMeetState extends State<FavoriteLocationToMeet> {
         return BlocConsumer<UserFavoriteLocationCubit, AppStates>(
           listener: (context, state) {
             if (state is AppErrorState) {
-              if (state.message == 'Connection refused' ||
-                  state.message == 'Connection reset by peer') {
-                showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-              } else {
-                showSnackBar(context, state.message);
-              }
+              errorMessage(state.message, context);
             }
             if (state is AppSuccessState) {
               Navigator.pop(context);
@@ -161,7 +152,6 @@ class _FavoriteLocationToMeetState extends State<FavoriteLocationToMeet> {
                       userId: Supabase.instance.client.auth.currentUser!.id,
                       _controller.text,
                       _linkController.text,
-                      context,
                     );
                   },
                 ),

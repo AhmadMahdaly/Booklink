@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/screens/login/widgets/verification_code_screen.dart';
 import 'package:biblio/utils/components/show_snackbar.dart';
@@ -33,26 +31,7 @@ class RequestOtpCubit extends Cubit<AppStates> {
         ),
       );
       emit(AppSuccessState());
-    } on AuthException catch (e) {
-      log(e.toString());
-      if (e.message.contains(
-        'Connection reset by peer',
-      )) {
-        showSnackBar(context, 'قد تكون هناك مشكلة في اتصال الإنترنت');
-      }
-      if (e.message.contains(
-        'Connection closed before full header was received',
-      )) {
-        showSnackBar(context, 'قد تكون هناك مشكلة في اتصال الإنترنت');
-      }
-      if (e.message.contains(
-        'Connection terminated during handshake',
-      )) {
-        showSnackBar(context, 'قد تكون هناك مشكلة في اتصال الإنترنت');
-      }
-      emit(AppErrorState(e.message));
     } catch (generalError) {
-      showSnackBar(context, generalError.toString());
       emit(AppErrorState(generalError.toString()));
     }
   }

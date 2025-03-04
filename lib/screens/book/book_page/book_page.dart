@@ -13,6 +13,7 @@ import 'package:biblio/screens/book/book_page/widgets/offer_types_widget.dart';
 import 'package:biblio/screens/book/book_page/widgets/post_date_and_time.dart';
 import 'package:biblio/screens/chat/order_the_book_page.dart';
 import 'package:biblio/screens/my_lib_page/widgets/favorate_button.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/custom_button.dart';
 import 'package:biblio/utils/components/height.dart';
@@ -35,7 +36,11 @@ class ShowBookItem extends StatelessWidget {
       user = Supabase.instance.client.auth.currentUser!.id;
     }
     return BlocListener<DeleteBookCubit, AppStates>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is AppErrorState) {
+          errorMessage(state.message, context);
+        }
+      },
       child: Scaffold(
         appBar: AppBar(
           actions: [

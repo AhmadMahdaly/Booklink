@@ -1,9 +1,9 @@
 import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/cubit/messages/fetch_messages_cubit.dart';
 import 'package:biblio/cubit/messages/send_messages_cubit.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/custom_textformfield.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,12 +36,11 @@ class _HelpChatState extends State<HelpChat> {
   Future<void> fetchDate() async {
     await context.read<FetchMessagesCubit>().fetchMessages(
           conversationId: widget.conversationId,
-          context: context,
         );
     if (message['user_id'] != null) {
       await context
           .read<FetchMessagesCubit>()
-          .fetchUserName(context, userId: message['user_id'].toString());
+          .fetchUserName(userId: message['user_id'].toString());
     }
   }
 
@@ -73,29 +72,18 @@ class _HelpChatState extends State<HelpChat> {
     return BlocConsumer<FetchMessagesCubit, AppStates>(
       listener: (context, state) {
         if (state is AppErrorState) {
-          if (state.message == 'Connection refused' ||
-              state.message == 'Connection reset by peer') {
-            showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-          } else {
-            showSnackBar(context, state.message);
-          }
+          errorMessage(state.message, context);
         }
       },
       builder: (context, state) {
         context.read<FetchMessagesCubit>().fetchMessages(
               conversationId: widget.conversationId,
-              context: context,
             );
         final cubit = context.read<FetchMessagesCubit>();
         return BlocConsumer<SendMessagesCubit, AppStates>(
           listener: (context, state) {
             if (state is AppErrorState) {
-              if (state.message == 'Connection refused' ||
-                  state.message == 'Connection reset by peer') {
-                showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-              } else {
-                showSnackBar(context, state.message);
-              }
+              errorMessage(state.message, context);
             }
           },
           builder: (context, state) {
@@ -277,13 +265,11 @@ class _HelpChatState extends State<HelpChat> {
                         onPressed: () {
                           if (_messageController.text.isEmpty) return;
                           sendMessageCubit.sendOutgoingMessage(
-                            context,
                             content: _messageController.text,
                             conversationId: widget.conversationId,
                           );
                           cubit.fetchMessages(
                             conversationId: widget.conversationId,
-                            context: context,
                           );
                           _messageController.clear();
                         },

@@ -3,12 +3,12 @@ import 'package:biblio/cubit/auth_cubit/auth_cubit.dart';
 import 'package:biblio/screens/login/register_page.dart';
 import 'package:biblio/screens/login/widgets/forget_password_screen.dart';
 import 'package:biblio/screens/navigation_bar/navigation_bar.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/app_regex.dart';
 import 'package:biblio/utils/components/custom_button.dart';
 import 'package:biblio/utils/components/custom_textformfield.dart';
 import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,12 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocConsumer<AuthCubit, AppStates>(
       listener: (context, state) {
         if (state is AppErrorState) {
-          if (state.message == 'Connection refused' ||
-              state.message == 'Connection reset by peer') {
-            showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-          } else {
-            showSnackBar(context, state.message);
-          }
+          errorMessage(state.message, context);
         }
         if (state is AppSuccessState) {
           Navigator.pushReplacementNamed(
@@ -195,64 +190,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 onTap: () async {
                                   if (formKey.currentState!.validate()) {
                                     await cubit.login(
-                                      context: context,
                                       email: _emailController.text,
                                       password: _passwordController.text,
                                     );
-
-                                    //     try {
-                                    //       final response = await signIn();
-                                    //       setState(() {
-                                    //         isInAsyncCall = false;
-                                    //         userId = response.user!.id;
-                                    //         Navigator.pushReplacementNamed(
-                                    //           context,
-                                    //           NavigationBarApp.id,
-                                    //         );
-                                    //       });
-                                    //     } on AuthException catch (error) {
-                                    //       setState(() {
-                                    //         isInAsyncCall = false;
-                                    //       });
-                                    //       if (error.message ==
-                                    //           'Invalid login credentials') {
-                                    //         showSnackBar(
-                                    //           context,
-                                    //           'بيانات تسجيل الدخول غير صحيحة',
-                                    //         );
-                                    //       } else if (error.message ==
-                                    //           'Email is not valid') {
-                                    //         showSnackBar(
-                                    //           context,
-                                    //           'البريد الإلكتروني غير صالح',
-                                    //         );
-                                    //       } else if (error.message ==
-                                    //           'Password is not valid') {
-                                    //         showSnackBar(
-                                    //           context,
-                                    //           'كلمة المرور غير صالحة',
-                                    //         );
-                                    //       } else if (error.message == 'User not found') {
-                                    //         showSnackBar(
-                                    //           context,
-                                    //           'المستخدم غير موجود',
-                                    //         );
-                                    //       } else if (error.message ==
-                                    //           'Password should be at least 6 characters') {
-                                    //         showSnackBar(
-                                    //           context,
-                                    //           'كلمة المرور ضعيفة',
-                                    //         );
-                                    //       }
-                                    //     } catch (e) {
-                                    //       setState(() {
-                                    //         isInAsyncCall = false;
-                                    //       });
-                                    //       showSnackBar(
-                                    //         context,
-                                    //         'أوبس، هناك خطأ في تسجيل الدخول! ربما يكون هناك مشكلة في الإتصال.\n$e',
-                                    //       );
-                                    //     }
                                   }
                                 },
                               ),

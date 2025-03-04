@@ -39,7 +39,6 @@ class NavigationBarAppState extends State<NavigationBarApp> {
 
   Future<void> fetchDate() async {
     await context.read<FetchUnreadMessageCubit>().fetchUnreadMessages(
-          context,
           otherId:
               context.read<CreateConversationCubit>().otherUserId.toString(),
         );
@@ -110,7 +109,6 @@ class NavigationBarAppState extends State<NavigationBarApp> {
   @override
   Widget build(BuildContext context) {
     context.read<FetchUnreadMessageCubit>().fetchUnreadMessages(
-          context,
           otherId:
               context.read<CreateConversationCubit>().otherUserId.toString(),
         );

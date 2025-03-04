@@ -1,0 +1,2 @@
+D:/FLUTTER PROJECTS/Biblio_App/android/app/.cxx/Debug/3k221v4v/x86/CMakeFiles/edit_cache.dir
+D:/FLUTTER PROJECTS/Biblio_App/android/app/.cxx/Debug/3k221v4v/x86/CMakeFiles/rebuild_cache.dir

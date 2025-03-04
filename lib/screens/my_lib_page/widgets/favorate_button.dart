@@ -1,8 +1,8 @@
 import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/cubit/favorite_function/favorite_button_cubit.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/border_radius.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,7 +25,6 @@ class _FavoriteButtonState extends State<FavoriteButton> {
   void initState() {
     super.initState();
     context.read<FavoriteButtonCubit>().loadFavoriteState(
-          context,
           bookId: widget.bookId,
         );
   }
@@ -35,12 +34,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
     return BlocConsumer<FavoriteButtonCubit, AppStates>(
       listener: (context, state) {
         if (state is AppErrorState) {
-          if (state.message == 'Connection refused' ||
-              state.message == 'Connection reset by peer') {
-            showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-          } else {
-            showSnackBar(context, state.message);
-          }
+          errorMessage(state.message, context);
         }
       },
       builder: (context, state) {
@@ -56,7 +50,6 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                 borderRadius: circleBorder(),
                 onTap: () => cubit.toggleFavorite(
                   bookId: widget.bookId,
-                  context: context,
                 ),
                 child: AnimatedCrossFade(
                   duration: const Duration(milliseconds: 300), // مدة الانتقال

@@ -1,11 +1,8 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/screens/book/add_book_page/models/book_model.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -14,8 +11,7 @@ class UploadBookCubit extends Cubit<AppStates> {
   final SupabaseClient supabase = Supabase.instance.client;
 
   /// Upload book
-  Future<void> uploadBook(
-    BuildContext context, {
+  Future<void> uploadBook({
     required String title,
     required String author,
     required String desc,
@@ -116,26 +112,7 @@ class UploadBookCubit extends Cubit<AppStates> {
       // إضافة بيانات الكتاب إلى الجدول
       await supabase.from('books').insert([book.toJson()]);
       emit(AppSuccessState());
-    } on AuthException catch (e) {
-      log(e.toString());
-      if (e.message.contains(
-        'Connection reset by peer',
-      )) {
-        showSnackBar(context, 'قد تكون هناك مشكلة في اتصال الإنترنت');
-      }
-      if (e.message.contains(
-        'Connection closed before full header was received',
-      )) {
-        showSnackBar(context, 'قد تكون هناك مشكلة في اتصال الإنترنت');
-      }
-      if (e.message.contains(
-        'Connection terminated during handshake',
-      )) {
-        showSnackBar(context, 'قد تكون هناك مشكلة في اتصال الإنترنت');
-      }
-      emit(AppErrorState(e.message));
     } catch (e) {
-      log(e.toString());
       emit(AppErrorState(e.toString()));
     }
   }

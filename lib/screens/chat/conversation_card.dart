@@ -34,7 +34,6 @@ class _MessageCardState extends State<MessageCard> {
   void fetchData() {
     try {
       context.read<FetchUnreadMessageCubit>().fetchUnreadMessages(
-            context,
             otherId: widget.conversation['user_id'].toString(),
           );
     } catch (e) {
@@ -69,12 +68,8 @@ class _MessageCardState extends State<MessageCard> {
         ).then((_) {
           fetchData();
           context
-            ..read<FetchUserConversationsCubit>().fetchReceiverConversations(
-              context,
-            )
-            ..read<FetchUserConversationsCubit>().fetchSendConversations(
-              context,
-            );
+            ..read<FetchUserConversationsCubit>().fetchReceiverConversations()
+            ..read<FetchUserConversationsCubit>().fetchSendConversations();
         });
       },
       child: Container(

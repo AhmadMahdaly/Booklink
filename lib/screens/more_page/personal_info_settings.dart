@@ -8,6 +8,7 @@ import 'package:biblio/screens/book/add_book_page/widgets/title_form_add_book.da
 import 'package:biblio/screens/more_page/widgets/get_user_image.dart';
 import 'package:biblio/screens/navigation_bar/navigation_bar.dart';
 import 'package:biblio/services/delete_user.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/custom_button.dart';
 import 'package:biblio/utils/components/custom_textformfield.dart';
@@ -75,12 +76,7 @@ class _PersonalInfoSettingState extends State<PersonalInfoSetting> {
     return BlocConsumer<FetchUserDataCubit, AppStates>(
       listener: (context, state) {
         if (state is AppErrorState) {
-          if (state.message == 'Connection refused' ||
-              state.message == 'Connection reset by peer') {
-            showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-          } else {
-            showSnackBar(context, state.message);
-          }
+          errorMessage(state.message, context);
         }
       },
       builder: (context, state) {
@@ -88,12 +84,7 @@ class _PersonalInfoSettingState extends State<PersonalInfoSetting> {
         return BlocConsumer<UpdateUserImageCubit, AppStates>(
           listener: (context, state) {
             if (state is AppErrorState) {
-              if (state.message == 'Connection refused' ||
-                  state.message == 'Connection reset by peer') {
-                showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-              } else {
-                showSnackBar(context, state.message);
-              }
+              errorMessage(state.message, context);
             }
           },
           builder: (context, state) {
@@ -224,11 +215,9 @@ class _PersonalInfoSettingState extends State<PersonalInfoSetting> {
                           } else {
                             await updateUserImageCubit.uploadImage(
                               userImage!,
-                              context,
                             );
                           }
                           await fetchUserDateCubit.updateUserData(
-                            context: context,
                             inName: _nameController.text,
                             inEmail: _emailController.text,
                             inPassword: _passwordController.text,

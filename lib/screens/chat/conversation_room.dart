@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/cubit/messages/fetch_messages_cubit.dart';
 import 'package:biblio/cubit/messages/send_messages_cubit.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/custom_textformfield.dart';
 import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
@@ -45,7 +46,6 @@ class _ConversationRoomState extends State<ConversationRoom> {
     try {
       await context.read<FetchMessagesCubit>().fetchMessages(
             conversationId: widget.conversationId,
-            context: context,
           );
       await context.read<FetchMessagesCubit>().markMessagesAsRead(
             conversationId: widget.conversationId,
@@ -54,7 +54,7 @@ class _ConversationRoomState extends State<ConversationRoom> {
       if (message['user_id'] != null) {
         await context
             .read<FetchMessagesCubit>()
-            .fetchUserName(context, userId: message['user_id'].toString());
+            .fetchUserName(userId: message['user_id'].toString());
       }
     } catch (e) {
       // showSnackBar(context, e.toString());
@@ -99,19 +99,13 @@ class _ConversationRoomState extends State<ConversationRoom> {
       builder: (context, state) {
         context.read<FetchMessagesCubit>().fetchMessages(
               conversationId: widget.conversationId,
-              context: context,
             );
 
         final cubit = context.read<FetchMessagesCubit>();
         return BlocConsumer<SendMessagesCubit, AppStates>(
           listener: (context, state) {
             if (state is AppErrorState) {
-              if (state.message == 'Connection refused' ||
-                  state.message == 'Connection reset by peer') {
-                showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-              } else {
-                showSnackBar(context, state.message);
-              }
+              errorMessage(state.message, context);
             }
           },
           builder: (context, state) {
@@ -356,12 +350,10 @@ class _ConversationRoomState extends State<ConversationRoom> {
                           try {
                             widget.messageType == 'in'
                                 ? sendMessageCubit.sendIncomeMessage(
-                                    context,
                                     content: _messageController.text,
                                     conversationId: widget.conversationId,
                                   )
                                 : sendMessageCubit.sendOutgoingMessage(
-                                    context,
                                     content: _messageController.text,
                                     conversationId: widget.conversationId,
                                   );

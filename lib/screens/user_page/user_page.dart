@@ -1,9 +1,9 @@
 import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/cubit/user/get_user_qty_books_cubit.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/components/leading_icon.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -63,10 +63,7 @@ class _UserPageState extends State<UserPage> {
     return BlocConsumer<GetUserQtyBooksCubit, AppStates>(
       listener: (context, state) {
         if (state is AppErrorState) {
-          if (state.message == 'Connection refused' ||
-              state.message == 'Connection reset by peer') {
-            showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-          }
+          errorMessage(state.message, context);
         }
       },
       builder: (context, state) {
