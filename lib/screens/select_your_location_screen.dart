@@ -1,12 +1,12 @@
 import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/cubit/user/save_user_location_cubit.dart';
 import 'package:biblio/screens/navigation_bar/navigation_bar.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/custom_button.dart';
 import 'package:biblio/utils/components/custom_textformfield.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/components/leading_icon.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -77,12 +77,7 @@ class _SelectYourLocationScreenState extends State<SelectYourLocationScreen> {
     return BlocConsumer<SaveUserLocationCubit, AppStates>(
       listener: (context, state) {
         if (state is AppErrorState) {
-          if (state.message == 'Connection refused' ||
-              state.message == 'Connection reset by peer') {
-            showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-          } else {
-            showSnackBar(context, state.message);
-          }
+          errorMessage(state.message, context);
         }
         if (state is AppSuccessState) {
           Navigator.pushNamedAndRemoveUntil(
@@ -239,7 +234,7 @@ class _SelectYourLocationScreenState extends State<SelectYourLocationScreen> {
             child: isActive
                 ? CustomButton(
                     text: 'ابدأ التصفح',
-                    onTap: () => cubit.saveUserData(context),
+                    onTap: cubit.saveUserData,
                   )
                 : const CustomButton(
                     text: 'ابدأ التصفح',

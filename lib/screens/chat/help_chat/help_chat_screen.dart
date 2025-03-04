@@ -2,6 +2,7 @@ import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/cubit/messages/create_conversation_cubit.dart';
 import 'package:biblio/cubit/messages/send_messages_cubit.dart';
 import 'package:biblio/screens/chat/help_chat/widgets/help_chat.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/custom_button.dart';
 import 'package:biblio/utils/components/custom_textformfield.dart';
@@ -69,12 +70,7 @@ class _HelpChatScreenState extends State<HelpChatScreen> {
     return BlocConsumer<CreateConversationCubit, AppStates>(
       listener: (context, state) {
         if (state is AppErrorState) {
-          if (state.message == 'Connection refused' ||
-              state.message == 'Connection reset by peer') {
-            showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-          } else {
-            showSnackBar(context, state.message);
-          }
+          errorMessage(state.message, context);
         }
       },
       builder: (context, state) {
@@ -82,12 +78,7 @@ class _HelpChatScreenState extends State<HelpChatScreen> {
         return BlocConsumer<SendMessagesCubit, AppStates>(
           listener: (context, state) {
             if (state is AppErrorState) {
-              if (state.message == 'Connection refused' ||
-                  state.message == 'Connection reset by peer') {
-                showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-              } else {
-                showSnackBar(context, state.message);
-              }
+              errorMessage(state.message, context);
             }
           },
           builder: (context, state) {
@@ -141,7 +132,6 @@ class _HelpChatScreenState extends State<HelpChatScreen> {
                               try {
                                 if (_messageController.text.isEmpty) return;
                                 await createConCubit.createConversation(
-                                  context,
                                   sender: 'الدعم الفني',
                                   receiver: name,
                                   otherId: dotenv.env['ADMIN'] ?? '',
@@ -150,7 +140,6 @@ class _HelpChatScreenState extends State<HelpChatScreen> {
                                   bookId: 1.toString(),
                                 );
                                 await sendMsgCubit.sendIncomeMessage(
-                                  context,
                                   content: _messageController.text,
                                   conversationId:
                                       createConCubit.conversationId.toString(),

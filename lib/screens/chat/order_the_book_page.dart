@@ -4,6 +4,7 @@ import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/cubit/messages/create_conversation_cubit.dart';
 import 'package:biblio/cubit/messages/send_messages_cubit.dart';
 import 'package:biblio/screens/chat/conversation_room.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/services/fetch_user_name.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/custom_button.dart';
@@ -98,12 +99,7 @@ class _OrderTheBookPageState extends State<OrderTheBookPage> {
     return BlocConsumer<SendMessagesCubit, AppStates>(
       listener: (context, state) {
         if (state is AppErrorState) {
-          if (state.message == 'Connection refused' ||
-              state.message == 'Connection reset by peer') {
-            showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-          } else {
-            showSnackBar(context, state.message);
-          }
+          errorMessage(state.message, context);
         }
       },
       builder: (context, state) {
@@ -202,7 +198,6 @@ class _OrderTheBookPageState extends State<OrderTheBookPage> {
                             try {
                               if (_messageController.text.isEmpty) return;
                               await createConCubit.createConversation(
-                                context,
                                 sender: otherName,
                                 receiver: uuser,
                                 otherId: bookUser,
@@ -211,7 +206,6 @@ class _OrderTheBookPageState extends State<OrderTheBookPage> {
                                 bookId: bookId.toString(),
                               );
                               await sendMsgCubit.sendIncomeMessage(
-                                context,
                                 content: _messageController.text,
                                 conversationId:
                                     createConCubit.conversationId.toString(),

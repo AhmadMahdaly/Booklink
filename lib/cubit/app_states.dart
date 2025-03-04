@@ -8,6 +8,5 @@ class AppSuccessState extends AppStates {}
 
 class AppErrorState extends AppStates {
   AppErrorState(this.message);
-
   final String message;
 }

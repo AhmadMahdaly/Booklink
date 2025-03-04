@@ -2,6 +2,7 @@ import 'package:biblio/animations/animate_do.dart';
 import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/cubit/messages/fetch_user_conversations_cubit.dart';
 import 'package:biblio/screens/chat/conversation_card.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
@@ -16,13 +17,15 @@ class IncomingRequests extends StatelessWidget {
     Future<void> fetchDate() async {
       await context
           .read<FetchUserConversationsCubit>()
-          .fetchReceiverConversations(
-            context,
-          );
+          .fetchReceiverConversations();
     }
 
     return BlocConsumer<FetchUserConversationsCubit, AppStates>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is AppErrorState) {
+          errorMessage(state.message, context);
+        }
+      },
       builder: (context, state) {
         final fetchUserConCubit = context.read<FetchUserConversationsCubit>();
         return state is AppLoadingState

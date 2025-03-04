@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:biblio/cubit/app_states.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -12,8 +9,7 @@ class FetchMessagesCubit extends Cubit<AppStates> {
   List<Map<String, dynamic>> messages = [];
   String name = '';
   int notificationCount = 0;
-  Future<void> fetchUserName(
-    BuildContext context, {
+  Future<void> fetchUserName({
     required String userId,
   }) async {
     emit(AppLoadingState());
@@ -22,23 +18,7 @@ class FetchMessagesCubit extends Cubit<AppStates> {
           await supabase.from('users').select('username').eq('id', userId);
       name = response1.toString();
       emit(AppSuccessState());
-    } on PostgrestException catch (e) {
-      log(e.toString());
-      if (e.message ==
-          'JSON object requested, multiple (or no) rows returned') {}
-    } on AuthException catch (e) {
-      log(e.toString());
-      if (e.message ==
-          'ClientException: Connection closed before full header was received') {
-        showSnackBar(context, 'قد تكون هناك مشكلة في اتصال الإنترنت');
-      }
-      if (e.message ==
-          'HandshakeException: Connection terminated during handshake') {
-        showSnackBar(context, 'قد تكون هناك مشكلة في اتصال الإنترنت');
-      }
-      emit(AppErrorState(e.message));
     } catch (e) {
-      log(e.toString());
       emit(AppErrorState(e.toString()));
     }
   }
@@ -46,7 +26,6 @@ class FetchMessagesCubit extends Cubit<AppStates> {
   /// fetch Messages
   Future<void> fetchMessages({
     required String conversationId,
-    required BuildContext context,
   }) async {
     emit(AppLoadingState());
     try {
@@ -58,31 +37,7 @@ class FetchMessagesCubit extends Cubit<AppStates> {
       messages = List<Map<String, dynamic>>.from(response);
 
       emit(AppSuccessState());
-    } on PostgrestException catch (e) {
-      log(e.toString());
-      if (e.message ==
-          'JSON object requested, multiple (or no) rows returned') {}
-      emit(AppErrorState(e.message));
-    } on AuthException catch (e) {
-      log(e.toString());
-      if (e.message.contains(
-        'Connection reset by peer',
-      )) {
-        showSnackBar(context, 'قد تكون هناك مشكلة في اتصال الإنترنت');
-      }
-      if (e.message.contains(
-        'Connection closed before full header was received',
-      )) {
-        showSnackBar(context, 'قد تكون هناك مشكلة في اتصال الإنترنت');
-      }
-      if (e.message.contains(
-        'Connection terminated during handshake',
-      )) {
-        showSnackBar(context, 'قد تكون هناك مشكلة في اتصال الإنترنت');
-      }
-      emit(AppErrorState(e.message));
     } catch (e) {
-      log(e.toString());
       emit(AppErrorState(e.toString()));
     }
   }
@@ -113,7 +68,6 @@ class FetchMessagesCubit extends Cubit<AppStates> {
           .eq('receiver_id', Supabase.instance.client.auth.currentUser!.id);
       emit(AppSuccessState());
     } catch (e) {
-      log(e.toString());
       emit(AppErrorState(e.toString()));
     }
   }

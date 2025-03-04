@@ -1,0 +1,2 @@
+D:/FLUTTER PROJECTS/Biblio_App/android/app/.cxx/RelWithDebInfo/01s2h6u2/x86/CMakeFiles/edit_cache.dir
+D:/FLUTTER PROJECTS/Biblio_App/android/app/.cxx/RelWithDebInfo/01s2h6u2/x86/CMakeFiles/rebuild_cache.dir

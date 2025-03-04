@@ -35,7 +35,7 @@ class BookItem extends StatelessWidget {
                     ),
                   ),
                 ).then((_) {
-                  context.read<MyListCubit>().showMyFavoriteBooks(context);
+                  context.read<MyListCubit>().showMyFavoriteBooks();
                 });
               },
               child: Container(

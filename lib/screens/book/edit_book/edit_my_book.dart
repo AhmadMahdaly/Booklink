@@ -12,6 +12,7 @@ import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -319,6 +320,15 @@ class _EditBookState extends State<EditBook> {
     // }
   }
 
+  Future getImageTotext(String imagePath) async {
+    final textRecognizer = TextRecognizer();
+    final recognizedText =
+        await textRecognizer.processImage(InputImage.fromFilePath(imagePath));
+    final text = recognizedText.text;
+    return text;
+  }
+
+  late String s = '';
   @override
   void dispose() {
     _titleController.dispose();
@@ -331,6 +341,8 @@ class _EditBookState extends State<EditBook> {
 
   @override
   Widget build(BuildContext context) {
+    final picker = ImagePicker();
+
     return ModalProgressHUD(
       inAsyncCall: isLoading,
       progressIndicator: const AppIndicator(),
@@ -514,6 +526,22 @@ class _EditBookState extends State<EditBook> {
                 /// Desc
                 const TitleFormAddBook(title: 'نبذة عن الكتاب'),
                 CustomTextformfield(
+                  icon: GestureDetector(
+                    onTap: () async {
+                      final image = await picker.pickImage(
+                        source: ImageSource.gallery,
+                      );
+                      if (image != null) {
+                        final a = await getImageTotext(image.path);
+                        setState(() {
+                          s = a.toString();
+                        });
+                      }
+                    },
+                    child: const Icon(
+                      Icons.copy_all_outlined,
+                    ),
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'ادخل البيانات المطلوبة';

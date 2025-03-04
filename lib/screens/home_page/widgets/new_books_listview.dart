@@ -3,10 +3,10 @@ import 'package:biblio/cubit/books/fetch_located_books_cubit.dart';
 import 'package:biblio/screens/book/book_page/book_page.dart';
 import 'package:biblio/screens/home_page/widgets/no_located_books.dart';
 import 'package:biblio/screens/home_page/widgets/show_book.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/components/login_user_not_found.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,12 +55,7 @@ class _NewBooksListviewState extends State<NewBooksListview> {
         : BlocConsumer<FetchLocatedBooksCubit, AppStates>(
             listener: (context, state) {
               if (state is AppErrorState) {
-                if (state.message == 'Connection refused' ||
-                    state.message == 'Connection reset by peer') {
-                  showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-                } else {
-                  showSnackBar(context, state.message);
-                }
+                errorMessage(state.message, context);
               }
             },
             builder: (context, state) {

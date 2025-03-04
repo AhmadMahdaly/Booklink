@@ -1,9 +1,5 @@
-import 'dart:developer';
-
 import 'package:biblio/cubit/app_states.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class FavoriteButtonCubit extends Cubit<AppStates> {
@@ -12,8 +8,7 @@ class FavoriteButtonCubit extends Cubit<AppStates> {
   SupabaseClient supabase = Supabase.instance.client;
   final user = Supabase.instance.client.auth.currentUser;
 
-  Future<void> loadFavoriteState(
-    BuildContext context, {
+  Future<void> loadFavoriteState({
     required String bookId,
   }) async {
     isFavorite = false;
@@ -36,26 +31,13 @@ class FavoriteButtonCubit extends Cubit<AppStates> {
       if (e.message ==
           'JSON object requested, multiple (or no) rows returned') {}
       emit(AppErrorState(e.message));
-    } on AuthException catch (e) {
-      log(e.toString());
-      if (e.message ==
-          'ClientException: Connection closed before full header was received') {
-        showSnackBar(context, 'قد تكون هناك مشكلة في اتصال الإنترنت');
-      }
-      if (e.message ==
-          'HandshakeException: Connection terminated during handshake') {
-        showSnackBar(context, 'قد تكون هناك مشكلة في اتصال الإنترنت');
-      }
-      emit(AppErrorState(e.message));
     } catch (e) {
-      log(e.toString());
       emit(AppErrorState(e.toString()));
     }
   }
 
   Future<void> toggleFavorite({
     required String bookId,
-    required BuildContext context,
   }) async {
     emit(AppLoadingState());
     try {
@@ -77,26 +59,7 @@ class FavoriteButtonCubit extends Cubit<AppStates> {
 
       isFavorite = !isFavorite;
       emit(AppSuccessState());
-    } on AuthException catch (e) {
-      log(e.toString());
-      if (e.message.contains(
-        'Connection reset by peer',
-      )) {
-        showSnackBar(context, 'قد تكون هناك مشكلة في اتصال الإنترنت');
-      }
-      if (e.message.contains(
-        'Connection closed before full header was received',
-      )) {
-        showSnackBar(context, 'قد تكون هناك مشكلة في اتصال الإنترنت');
-      }
-      if (e.message.contains(
-        'Connection terminated during handshake',
-      )) {
-        showSnackBar(context, 'قد تكون هناك مشكلة في اتصال الإنترنت');
-      }
-      emit(AppErrorState(e.message));
     } catch (e) {
-      log(e.toString());
       emit(AppErrorState(e.toString()));
     }
   }

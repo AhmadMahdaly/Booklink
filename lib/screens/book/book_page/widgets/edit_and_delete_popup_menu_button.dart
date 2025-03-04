@@ -27,7 +27,9 @@ PopupMenuButton<String> editAndDeletePopupMenuButton(
         );
 
         if (shouldExit!) {
-          await context.read<DeleteBookCubit>().deleteBook(book, context);
+          await context.read<DeleteBookCubit>().deleteBook(
+                book,
+              );
           await Navigator.pushReplacementNamed(
             context,
             NavigationBarApp.id,

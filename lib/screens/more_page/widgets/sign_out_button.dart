@@ -1,7 +1,7 @@
 import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/cubit/auth_cubit/auth_cubit.dart';
 import 'package:biblio/screens/onboard/onboard_screen.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,12 +18,7 @@ class SignOutButton extends StatelessWidget {
     return BlocConsumer<AuthCubit, AppStates>(
       listener: (context, state) {
         if (state is AppErrorState) {
-          if (state.message == 'Connection refused' ||
-              state.message == 'Connection reset by peer') {
-            showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-          } else {
-            showSnackBar(context, state.message);
-          }
+          errorMessage(state.message, context);
         }
         if (state is AppSuccessState) {
           Navigator.pushNamedAndRemoveUntil(
@@ -70,7 +65,7 @@ class SignOutButton extends StatelessWidget {
                         ).pop(
                           true,
                         );
-                        await cubit.signOut(context);
+                        await cubit.signOut();
                       },
                       child: const Text(
                         'تسجيل الخروج',

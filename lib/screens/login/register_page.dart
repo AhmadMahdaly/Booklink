@@ -4,6 +4,7 @@ import 'package:biblio/screens/login/login_screen.dart';
 import 'package:biblio/screens/more_page/widgets/terms_and_conditions_page.dart';
 import 'package:biblio/screens/select_your_location_screen.dart';
 import 'package:biblio/services/emailjs.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/app_regex.dart';
 import 'package:biblio/utils/components/custom_button.dart';
@@ -38,6 +39,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final cubit = context.read<AuthCubit>();
     return BlocConsumer<AuthCubit, AppStates>(
       listener: (context, state) {
+        if (state is AppErrorState) {
+          errorMessage(state.message, context);
+        }
         if (state is AppSuccessState) {
           showSnackBar(
             context,
