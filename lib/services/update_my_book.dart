@@ -25,5 +25,10 @@ Future<void> updateBook({
     }).eq('id', bookId);
 
     showSnackBar(context, 'تم تعديل الكتاب.');
-  } catch (e) {}
+  } catch (e) {
+    showSnackBar(
+      context,
+      'حدث خطأ أثناء تعديل الكتاب، يمكنك التواصل مع الدعم الفني.',
+    );
+  }
 }

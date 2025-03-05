@@ -1,3 +1,4 @@
+import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -39,6 +40,11 @@ Future<String?> getBooksPhotoI(
     /// استخراج رابط الصورة
     final photoUrl = response['cover_book_url2'] as String;
     return photoUrl;
-  } catch (e) {}
+  } catch (e) {
+    showSnackBar(
+      context,
+      'هناك صعوبة في الوصول لصورة الكتاب، يمكنك التواصل مع الدعم الفني.',
+    );
+  }
   return null;
 }

@@ -60,5 +60,7 @@ void errorMessage(String message, BuildContext context) {
         'كلمة المرور ضعيفة',
       );
     }
-  } catch (e) {}
+  } catch (e) {
+    showSnackBar(context, 'حدث خطأ، يمكنك التواصل مع الدعم الفني');
+  }
 }

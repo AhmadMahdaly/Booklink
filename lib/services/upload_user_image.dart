@@ -57,9 +57,10 @@ Future<void> uploadUserPhoto(BuildContext context) async {
         supabase.storage.from('user-photos').getPublicUrl(fileName);
 
     /// حفظ رابط الصورة في جدول users
-    final insertResponse = await supabase.from('users').update({
+    await supabase.from('users').update({
       'image': photoUrl,
     }).eq('id', user.id);
-    if (insertResponse == null) {}
-  } catch (e) {}
+  } catch (e) {
+    showSnackBar(context, 'حدث خطأ، يمكنك التواصل مع الدعم الفني.');
+  }
 }

@@ -32,8 +32,11 @@ Future<void> fetchUserName(BuildContext context) async {
 
     /// استرجاع صف واحد فقط
 
-    if (response['username'] == null) {}
-
     return response['username'];
-  } catch (e) {}
+  } catch (e) {
+    showSnackBar(
+      context,
+      'هناك صعوبة في الوصول لاسم المستخدم المسجل. يمكنك التواصل مع الدعم الفني',
+    );
+  }
 }

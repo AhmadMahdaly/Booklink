@@ -15,6 +15,7 @@ import 'package:biblio/utils/components/custom_button.dart';
 import 'package:biblio/utils/components/custom_textformfield.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/components/leading_icon.dart';
+import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -441,7 +442,12 @@ class _AddBookState extends State<AddBook> {
                                         coverFirstImage: coverFirstImage!,
                                         coverSecondImage: coverSecondImage!,
                                       );
-                                    } catch (e) {}
+                                    } catch (e) {
+                                      showSnackBar(
+                                        context,
+                                        'حدث خطأ أثناء رفع الكتاب، يمكنك التواصل مع الدهم الفني.',
+                                      );
+                                    }
                                   }
                                 },
                               )

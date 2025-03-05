@@ -6,33 +6,36 @@ final SupabaseClient supabase = Supabase.instance.client;
 String? userId;
 
 /// ID المستخدم لتحديده بعد تسجيل الدخول
+
 Future<void> fetchEmail(BuildContext context) async {
   try {
     /// الحصول على المستخدم الحالي
     final user = supabase.auth.currentUser;
     if (user == null) {
       showSnackBar(context, 'يوجد صعوبة في الوصول للمستخدم المُسجل.');
-
       throw Exception('المستخدم غير مسجل الدخول.');
     }
 
     /// استعلام لإحضار اسم المستخدم
     final response = await supabase
-        .from('users')
 
         /// اسم الجدول
-        .select('email')
+        .from('users')
 
         /// العمود المطلوب
-        .eq('id', user.id)
+        .select('email')
 
         /// البحث باستخدام معرف المستخدم
+        .eq('id', user.id)
+
+        /// استرجاع صف واحد فقط
         .single();
 
-    /// استرجاع صف واحد فقط
-
-    if (response['email'] == null) {}
-
     return response['email'];
-  } catch (e) {}
+  } catch (e) {
+    showSnackBar(
+      context,
+      'حدث صعوبة في الحصول على البريد الإلكتروني المُسجل.. يمكنك التواصل مع الدعم الفني',
+    );
+  }
 }

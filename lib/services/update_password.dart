@@ -1,3 +1,4 @@
+import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -10,5 +11,10 @@ Future<void> updatePassword(String newPassword, BuildContext context) async {
         password: newPassword,
       ),
     );
-  } catch (e) {}
+  } catch (e) {
+    showSnackBar(
+      context,
+      'حدث خطأ أثناء تغيير كلمة المرور، يمكنك التواصل مع الدعم الفني.',
+    );
+  }
 }
