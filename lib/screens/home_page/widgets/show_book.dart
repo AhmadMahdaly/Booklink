@@ -27,6 +27,7 @@ class ShowBook extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,
+              onError: (exception, stackTrace) => const Icon(Icons.error),
 
               /// Book Cover
               image: NetworkImage(
@@ -75,6 +76,8 @@ class ShowBook extends StatelessWidget {
                           ),
                           imageUrl: book['user_image'].toString(),
                           fit: BoxFit.cover,
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
                         ),
                       ),
                     const W(w: 3),

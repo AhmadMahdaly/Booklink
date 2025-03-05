@@ -1,11 +1,8 @@
-import 'dart:developer';
-
 import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/cubit/messages/fetch_messages_cubit.dart';
 import 'package:biblio/cubit/messages/send_messages_cubit.dart';
 import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/custom_textformfield.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -88,12 +85,7 @@ class _ConversationRoomState extends State<ConversationRoom> {
     return BlocConsumer<FetchMessagesCubit, AppStates>(
       listener: (context, state) {
         if (state is AppErrorState) {
-          if (state.message == 'Connection refused' ||
-              state.message == 'Connection reset by peer') {
-            showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-          } else {
-            showSnackBar(context, state.message);
-          }
+          errorMessage(state.message, context);
         }
       },
       builder: (context, state) {
@@ -359,7 +351,7 @@ class _ConversationRoomState extends State<ConversationRoom> {
                                   );
                             _messageController.clear();
                           } catch (e) {
-                            log(e.toString());
+                            // log(e.toString());
                           }
                         },
                       ),

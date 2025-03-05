@@ -1,3 +1,4 @@
+import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -38,6 +39,11 @@ class CategoryItem extends StatelessWidget {
                 height: 32.sp,
                 width: 32.sp,
                 color: kMainColor,
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+                progressIndicatorBuilder: (context, url, progress) =>
+                    AppIndicator(
+                  size: 10.sp,
+                ),
               ),
             ),
             SizedBox(

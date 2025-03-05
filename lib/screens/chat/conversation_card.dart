@@ -2,7 +2,6 @@ import 'package:biblio/cubit/messages/create_conversation_cubit.dart';
 import 'package:biblio/cubit/messages/fetch_unread_message_cubit.dart';
 import 'package:biblio/cubit/messages/fetch_user_conversations_cubit.dart';
 import 'package:biblio/screens/chat/conversation_room.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +36,7 @@ class _MessageCardState extends State<MessageCard> {
             otherId: widget.conversation['user_id'].toString(),
           );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      // showSnackBar(context, e.toString());
     }
   }
 

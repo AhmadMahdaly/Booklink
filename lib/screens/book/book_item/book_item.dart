@@ -1,8 +1,10 @@
 import 'package:biblio/cubit/favorite_function/my_list_cubit.dart';
 import 'package:biblio/screens/book/book_page/book_page.dart';
+import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/border_radius.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,8 +28,8 @@ class BookItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             InkWell(
-              onTap: () async {
-                await Navigator.push(
+              onTap: () {
+                Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => ShowBookItem(
@@ -49,9 +51,14 @@ class BookItem extends StatelessWidget {
                     topRight: Radius.circular(15.sp),
                   ),
                 ),
-                child: Image.network(
-                  book['cover_image_url'].toString(),
+                child: CachedNetworkImage(
                   fit: BoxFit.cover,
+                  progressIndicatorBuilder: (context, url, progress) =>
+                      AppIndicator(
+                    size: 10.sp,
+                  ),
+                  imageUrl: book['cover_image_url'].toString(),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
             ),

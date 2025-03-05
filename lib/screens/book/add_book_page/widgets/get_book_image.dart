@@ -46,7 +46,7 @@ class GetBookImage extends StatelessWidget {
               );
             }
             if (snapshot.hasError) {
-              // return Center(child: Text('حدث خطأ: ${snapshot.error}'));
+              return const Center(child: Text('حدث خطأ'));
             }
             final photoUrl = snapshot.data;
 

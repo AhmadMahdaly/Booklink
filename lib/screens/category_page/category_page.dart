@@ -1,7 +1,6 @@
 import 'package:biblio/screens/book/book_item/book_item.dart';
 import 'package:biblio/services/update_password.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,7 +42,7 @@ class _CategoryPageState extends State<CategoryPage> {
         });
       }
     } catch (e) {
-      showSnackBar(context, 'هناك خطأ! $e.');
+      // showSnackBar(context, 'هناك خطأ! $e.');
     }
   }
 

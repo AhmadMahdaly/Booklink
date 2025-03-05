@@ -7,6 +7,7 @@ import 'package:biblio/screens/chat/order_page.dart';
 import 'package:biblio/screens/favorites_page/favorites_page.dart';
 import 'package:biblio/screens/home_page/home_page_screen.dart';
 import 'package:biblio/screens/more_page/more_page.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -126,7 +127,11 @@ class NavigationBarAppState extends State<NavigationBarApp> {
       child: Scaffold(
         body: pages.elementAt(_currentIndex),
         bottomNavigationBar: BlocConsumer<FetchUnreadMessageCubit, AppStates>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            if (state is AppErrorState) {
+              errorMessage(state.message, context);
+            }
+          },
           builder: (context, state) {
             return CustomFadeInUp(
               duration: 500,

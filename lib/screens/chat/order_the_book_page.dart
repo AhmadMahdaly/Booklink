@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/cubit/messages/create_conversation_cubit.dart';
 import 'package:biblio/cubit/messages/send_messages_cubit.dart';
@@ -11,7 +9,6 @@ import 'package:biblio/utils/components/custom_button.dart';
 import 'package:biblio/utils/components/custom_textformfield.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/components/leading_icon.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -89,7 +86,7 @@ class _OrderTheBookPageState extends State<OrderTheBookPage> {
       });
     } catch (e) {
       if (mounted) {
-        showSnackBar(context, e.toString());
+        // showSnackBar(context, e.toString());
       }
     }
   }
@@ -107,12 +104,7 @@ class _OrderTheBookPageState extends State<OrderTheBookPage> {
         return BlocConsumer<CreateConversationCubit, AppStates>(
           listener: (context, state) {
             if (state is AppErrorState) {
-              if (state.message == 'Connection refused' ||
-                  state.message == 'Connection reset by peer') {
-                showSnackBar(context, 'لا يوجد اتصال بالانترنت');
-              } else {
-                showSnackBar(context, state.message);
-              }
+              errorMessage(state.message, context);
             }
             if (state is AppSuccessState) {
               // showSnackBar(context, 'تم ارسال الرسالة بنجاح');
@@ -211,7 +203,7 @@ class _OrderTheBookPageState extends State<OrderTheBookPage> {
                                     createConCubit.conversationId.toString(),
                               );
                             } catch (e) {
-                              log(e.toString());
+                              // log(e.toString());
                             }
                           },
                           text: 'إرسال',

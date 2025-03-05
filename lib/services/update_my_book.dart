@@ -25,7 +25,5 @@ Future<void> updateBook({
     }).eq('id', bookId);
 
     showSnackBar(context, 'تم تعديل الكتاب.');
-  } catch (e) {
-    showSnackBar(context, 'خطأ $e');
-  }
+  } catch (e) {}
 }

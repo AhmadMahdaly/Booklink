@@ -1,7 +1,6 @@
 import 'package:biblio/screens/my_lib_page/added_library.dart';
 import 'package:biblio/screens/my_lib_page/empty_library.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,7 +42,7 @@ class _MyLibraryPageState extends State<MyLibraryPage> {
         books = List<Map<String, dynamic>>.from(response);
       });
     } catch (e) {
-      showSnackBar(context, e.toString());
+      // showSnackBar(context, e.toString());
     } finally {
       setState(() {
         isLoading = false;

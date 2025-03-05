@@ -32,12 +32,8 @@ Future<void> fetchUserName(BuildContext context) async {
 
     /// استرجاع صف واحد فقط
 
-    if (response['username'] == null) {
-      // showSnackBar(context, 'اسم المستخدم غير موجود.');
-    }
+    if (response['username'] == null) {}
 
     return response['username'];
-  } catch (e) {
-    // showSnackBar(context, 'خطأ $e');
-  }
+  } catch (e) {}
 }

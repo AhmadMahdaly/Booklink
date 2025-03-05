@@ -1,6 +1,5 @@
 import 'package:biblio/screens/onboard/onboard_screen.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +23,7 @@ class _DeleteUserState extends State<DeleteUser> {
       final user = Supabase.instance.client.auth.currentUser;
 
       if (user == null) {
-        throw Exception('لم يتم تسجيل الدخول.');
+        // throw Exception('لم يتم تسجيل الدخول.');
       }
       // حذف الحساب من Supabase Auth
       final supabase = SupabaseClient(
@@ -32,7 +31,7 @@ class _DeleteUserState extends State<DeleteUser> {
         dotenv.env['SUPABASE_ADMIN'] ?? '', // مفتاح الخدمة
       );
 
-      await supabase.auth.admin.deleteUser(user.id);
+      await supabase.auth.admin.deleteUser(user!.id);
 
       // حذف البيانات المرتبطة بالمستخدم من قاعدة البيانات
 
@@ -42,9 +41,9 @@ class _DeleteUserState extends State<DeleteUser> {
       // ignore: avoid_dynamic_calls
       if (deleteResponse.error != null) {
         throw Exception(
-          // ignore: avoid_dynamic_calls
-          'حدث خطأ أثناء حذف بيانات المستخدم: ${deleteResponse.error!.message}',
-        );
+            // ignore: avoid_dynamic_calls
+            // 'حدث خطأ أثناء حذف بيانات المستخدم: ${deleteResponse.error!.message}',
+            );
       }
 
       await Future.delayed(
@@ -66,7 +65,7 @@ class _DeleteUserState extends State<DeleteUser> {
         );
       }
     } catch (e) {
-      showSnackBar(context, 'خطأ $e');
+      // showSnackBar(context, 'خطأ $e');
       if (mounted) {
         setState(() {
           _isDeleting = false;

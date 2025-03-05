@@ -60,14 +60,6 @@ Future<void> uploadUserPhoto(BuildContext context) async {
     final insertResponse = await supabase.from('users').update({
       'image': photoUrl,
     }).eq('id', user.id);
-    if (insertResponse == null) {
-      showSnackBar(
-        context,
-        'خطأ $insertResponse',
-      );
-    }
-    // showSnackBar(context, 'تم الحفظ.');
-  } catch (e) {
-    showSnackBar(context, 'خطأ $e');
-  }
+    if (insertResponse == null) {}
+  } catch (e) {}
 }

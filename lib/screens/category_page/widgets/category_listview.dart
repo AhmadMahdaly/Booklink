@@ -1,7 +1,6 @@
 import 'package:biblio/screens/category_page/category_page.dart';
 import 'package:biblio/screens/category_page/widgets/category_item.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -42,7 +41,7 @@ class _CategoryListviewState extends State<CategoryListview> {
       });
     } catch (e) {
       if (mounted) {
-        showSnackBar(context, e.toString());
+        // showSnackBar(context, e.toString());
         setState(() {
           isLoading = false;
         });

@@ -19,8 +19,6 @@ Future<String?> getBooksPhoto(
     final photoUrl = response['cover_image_url'] as String;
     return photoUrl;
   } catch (e) {
-    // showSnackBar(context, 'جاري العمل على حفظ الصورة!');
-// 'حدث خطأ: $e'
     return null;
   }
 }
@@ -41,9 +39,6 @@ Future<String?> getBooksPhotoI(
     /// استخراج رابط الصورة
     final photoUrl = response['cover_book_url2'] as String;
     return photoUrl;
-  } catch (e) {
-    // showSnackBar(context, 'خطأ $e');
-
-    return null;
-  }
+  } catch (e) {}
+  return null;
 }

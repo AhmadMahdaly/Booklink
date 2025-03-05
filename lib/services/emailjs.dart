@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 
@@ -25,8 +24,5 @@ Future<void> sendEmail(String email, String subject, String message) async {
   );
 
   if (response.statusCode == 200) {
-    log('Email sent successfully');
-  } else {
-    log('Failed to send email');
-  }
+  } else {}
 }
