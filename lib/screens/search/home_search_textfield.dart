@@ -17,7 +17,7 @@ class HomeSearchTextfield extends StatelessWidget {
       readOnly: true,
       cursorColor: kMainColor,
       decoration: InputDecoration(
-        hintText: 'ابحث هنا “مائة عام من العزلة”',
+        hintText: 'ابحث هنا “مئة عام من العزلة”',
         hintStyle: TextStyle(
           color: const Color(0xFF969697),
           fontSize: 12.sp,
