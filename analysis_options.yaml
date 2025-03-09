@@ -1,6 +1,7 @@
 analyzer:
   errors:
     avoid_catches_without_on_clauses: ignore
+    avoid_redundant_argument_values: ignore
     depend_on_referenced_packages: ignore
     document_ignores: ignore
     inference_failure_on_instance_creation: ignore
