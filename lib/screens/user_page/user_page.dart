@@ -107,6 +107,12 @@ class _UserPageState extends State<UserPage> {
                                     (context, url, progress) => AppIndicator(
                                   size: 10.sp,
                                 ),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(
+                                  Icons.error,
+                                  size: 20,
+                                  color: kMainColor,
+                                ),
                                 imageUrl: widget.book['user_image'].toString(),
                               ),
                             ),
