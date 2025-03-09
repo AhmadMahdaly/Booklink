@@ -11,7 +11,7 @@ import 'package:biblio/screens/book/book_page/widgets/book_user_label.dart';
 import 'package:biblio/screens/book/book_page/widgets/edit_and_delete_popup_menu_button.dart';
 import 'package:biblio/screens/book/book_page/widgets/offer_types_widget.dart';
 import 'package:biblio/screens/book/book_page/widgets/post_date_and_time.dart';
-import 'package:biblio/screens/chat/order_the_book_page.dart';
+import 'package:biblio/screens/chat/order_book/order_book_page.dart';
 import 'package:biblio/screens/my_lib_page/widgets/favorate_button.dart';
 import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
