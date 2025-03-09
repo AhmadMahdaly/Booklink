@@ -54,7 +54,7 @@ class _ConversationRoomState extends State<ConversationRoom> {
             .fetchUserName(userId: message['user_id'].toString());
       }
     } catch (e) {
-      // showSnackBar(context, e.toString());
+      errorMessage(e.toString(), context);
     }
   }
 
@@ -92,7 +92,6 @@ class _ConversationRoomState extends State<ConversationRoom> {
         context.read<FetchMessagesCubit>().fetchMessages(
               conversationId: widget.conversationId,
             );
-
         final cubit = context.read<FetchMessagesCubit>();
         return BlocConsumer<SendMessagesCubit, AppStates>(
           listener: (context, state) {
@@ -351,7 +350,7 @@ class _ConversationRoomState extends State<ConversationRoom> {
                                   );
                             _messageController.clear();
                           } catch (e) {
-                            // log(e.toString());
+                            errorMessage(e.toString(), context);
                           }
                         },
                       ),
