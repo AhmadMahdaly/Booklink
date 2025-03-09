@@ -4,6 +4,7 @@ import 'package:biblio/cubit/messages/fetch_unread_message_cubit.dart';
 import 'package:biblio/screens/category_page/widgets/category_listview.dart';
 import 'package:biblio/screens/category_page/widgets/see_all.dart';
 import 'package:biblio/screens/home_page/widgets/home_banner.dart';
+import 'package:biblio/screens/home_page/widgets/new_books_gridview.dart';
 import 'package:biblio/screens/home_page/widgets/new_books_listview.dart';
 import 'package:biblio/screens/home_page/widgets/title_header_home.dart';
 import 'package:biblio/screens/search/home_search_textfield.dart';
@@ -25,7 +26,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Future<void> fetchDate() async {
-    await context.read<FetchLocatedBooksCubit>().fetchLocatedBooks(context);
+    await context.read<FetchLocatedBooksCubit>().fetchLocatedBooks();
     await context.read<FetchUnreadMessageCubit>().fetchUnreadMessages(
           otherId:
               context.read<CreateConversationCubit>().otherUserId.toString(),
@@ -129,6 +130,29 @@ class _HomePageState extends State<HomePage> {
                     SvgPicture.asset(
                       'assets/svg/logo.svg',
                       height: 16.sp,
+                    ),
+                    const Spacer(),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const NewBooksGridView();
+                            },
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'عرض الكل',
+                        style: TextStyle(
+                          color: const Color(0xFFA4CFC3),
+                          fontSize: 13.sp,
+                          fontWeight: FontWeight.w800,
+                          decoration: TextDecoration.underline,
+                          decorationColor: const Color(0xFFA4CFC3),
+                        ),
+                      ),
                     ),
                   ],
                 ),
