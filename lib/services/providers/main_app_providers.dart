@@ -1,5 +1,6 @@
 import 'package:biblio/cubit/auth_cubit/auth_cubit.dart';
 import 'package:biblio/cubit/books/delete_book_cubit.dart';
+import 'package:biblio/cubit/books/fetch_book_page_cubit.dart';
 import 'package:biblio/cubit/books/fetch_located_books_cubit.dart';
 import 'package:biblio/cubit/books/upload_book_cubit.dart';
 import 'package:biblio/cubit/favorite_function/favorite_button_cubit.dart';
@@ -9,6 +10,7 @@ import 'package:biblio/cubit/messages/fetch_messages_cubit.dart';
 import 'package:biblio/cubit/messages/fetch_unread_message_cubit.dart';
 import 'package:biblio/cubit/messages/fetch_user_conversations_cubit.dart';
 import 'package:biblio/cubit/messages/send_messages_cubit.dart';
+import 'package:biblio/cubit/search/search_cubit.dart';
 import 'package:biblio/cubit/user/fetch_user_data_cubit.dart';
 import 'package:biblio/cubit/user/get_user_qty_books_cubit.dart';
 import 'package:biblio/cubit/user/request_otp_cubit.dart';
@@ -74,6 +76,12 @@ List<BlocProvider> mainAppProviders() {
     ),
     BlocProvider<DeleteBookCubit>(
       create: (context) => DeleteBookCubit(),
+    ),
+    BlocProvider<FetchBookPageCubit>(
+      create: (context) => FetchBookPageCubit(),
+    ),
+    BlocProvider<SearchCubit>(
+      create: (context) => SearchCubit(),
     ),
   ];
 }
