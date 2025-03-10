@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ToUserMessage extends StatelessWidget {
-  const ToUserMessage(
-      {required this.content, required this.timestamp, super.key});
+  const ToUserMessage({
+    required this.content,
+    required this.timestamp,
+    super.key,
+  });
   final String content;
   final String timestamp;
 

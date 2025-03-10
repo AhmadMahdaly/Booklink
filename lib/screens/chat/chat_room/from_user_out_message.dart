@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FromUserOutMessage extends StatelessWidget {
-  const FromUserOutMessage(
-      {required this.content, required this.timestamp, super.key});
+  const FromUserOutMessage({
+    required this.content,
+    required this.timestamp,
+    super.key,
+  });
   final String content;
   final String timestamp;
   @override
