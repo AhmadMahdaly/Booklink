@@ -1,10 +1,11 @@
 import 'package:biblio/cubit/messages/create_conversation_cubit.dart';
 import 'package:biblio/cubit/messages/fetch_unread_message_cubit.dart';
 import 'package:biblio/cubit/messages/fetch_user_conversations_cubit.dart';
+import 'package:biblio/screens/chat/chat_card/book_image.dart';
+import 'package:biblio/screens/chat/chat_card/support_image.dart';
 import 'package:biblio/screens/chat/chat_room/conversation_room.dart';
 import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,37 +42,36 @@ class _MessageCardState extends State<MessageCard> {
     }
   }
 
+  void navigateToConversation() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ConversationRoom(
+          messageType: widget.sender.isEmpty ? 'in' : 'out',
+          conversationId: widget.conversation['conversation_id'].toString(),
+          titleBook: widget.conversation['title_book'].toString(),
+          userName: widget.sender.isEmpty ? widget.receiver : widget.sender,
+          otherId:
+              context.read<CreateConversationCubit>().otherUserId.toString(),
+        ),
+      ),
+    ).then((_) {
+      fetchData();
+      context
+        ..read<FetchUserConversationsCubit>().fetchReceiverConversations()
+        ..read<FetchUserConversationsCubit>().fetchSendConversations();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = Supabase.instance.client.auth.currentUser!.id;
-
     return InkWell(
       focusColor: Colors.transparent,
       hoverColor: Colors.transparent,
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ConversationRoom(
-              messageType: widget.sender.isEmpty ? 'in' : 'out',
-              conversationId: widget.conversation['conversation_id'].toString(),
-              titleBook: widget.conversation['title_book'].toString(),
-              userName: widget.sender.isEmpty ? widget.receiver : widget.sender,
-              otherId: context
-                  .read<CreateConversationCubit>()
-                  .otherUserId
-                  .toString(),
-            ),
-          ),
-        ).then((_) {
-          fetchData();
-          context
-            ..read<FetchUserConversationsCubit>().fetchReceiverConversations()
-            ..read<FetchUserConversationsCubit>().fetchSendConversations();
-        });
-      },
+      onTap: navigateToConversation,
       child: Container(
         margin: EdgeInsets.only(
           right: 16.sp,
@@ -83,63 +83,16 @@ class _MessageCardState extends State<MessageCard> {
           borderRadius: BorderRadius.circular(15.sp),
         ),
         height: 90.sp,
+
+        /// Card Image
         child: Row(
           spacing: 20.sp,
           children: [
             if (widget.conversation['sender'] == 'الدعم الفني')
-              Container(
-                margin: EdgeInsets.all(8.sp),
-                height: 60.sp,
-                width: 60.sp,
-                clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(320),
-                ),
-                child: Image.asset('assets/icons/icon app.png'),
-              )
+              const SupportImage()
             else
-              Container(
-                margin: EdgeInsets.all(8.sp),
-                height: 60.sp,
-                width: 60.sp,
-                clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(320),
-                ),
-                child: CachedNetworkImage(
-                  imageUrl: widget.conversation['book_image'].toString(),
-                  fit: BoxFit.cover,
-                  height: 60.sp,
-                  width: 60.sp,
-                  errorListener: (_) => Container(
-                    height: 60.sp,
-                    width: 60.sp,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: kLightBlue,
-                      borderRadius: BorderRadius.circular(320),
-                    ),
-                    child: Icon(
-                      Icons.archive_outlined,
-                      size: 24.sp,
-                      color: kMainColor,
-                    ),
-                  ),
-                  errorWidget: (context, url, error) => Container(
-                    height: 60.sp,
-                    width: 60.sp,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: kLightBlue,
-                      borderRadius: BorderRadius.circular(320),
-                    ),
-                    child: Icon(
-                      Icons.archive_outlined,
-                      size: 24.sp,
-                      color: kMainColor,
-                    ),
-                  ),
-                ),
+              BookImage(
+                bookImage: widget.conversation['book_image'].toString(),
               ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -148,11 +101,14 @@ class _MessageCardState extends State<MessageCard> {
               children: [
                 SizedBox(
                   child: Text(
+                    /// User Name
                     widget.sender.isEmpty ? widget.receiver : widget.sender,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: kMainColor,
                       fontSize: 16.sp,
+
+                      /// Bold if the message is unread
                       fontWeight: widget.conversation['receiver_id'] == user &&
                                   widget.conversation['is_read_out'] == false ||
                               widget.conversation['user_id'] == user &&
@@ -163,6 +119,8 @@ class _MessageCardState extends State<MessageCard> {
                   ),
                 ),
                 if (widget.conversation['sender'] == 'الدعم الفني')
+
+                  /// Support Message
                   SizedBox(
                     child: Text(
                       'متابعة شكوى أو مقترح',
@@ -182,6 +140,8 @@ class _MessageCardState extends State<MessageCard> {
                     ),
                   )
                 else
+
+                  /// Book Title
                   SizedBox(
                     child: Text(
                       'طلب كتاب: ${widget.conversation['title_book']}',

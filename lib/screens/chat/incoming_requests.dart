@@ -1,6 +1,6 @@
 import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/cubit/messages/fetch_user_conversations_cubit.dart';
-import 'package:biblio/screens/chat/conversation_card.dart';
+import 'package:biblio/screens/chat/chat_card/conversation_card.dart';
 import 'package:biblio/screens/chat/no_new_messages.dart';
 import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
