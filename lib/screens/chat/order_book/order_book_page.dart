@@ -2,7 +2,7 @@ import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/cubit/books/fetch_book_page_cubit.dart';
 import 'package:biblio/cubit/messages/create_conversation_cubit.dart';
 import 'package:biblio/cubit/messages/send_messages_cubit.dart';
-import 'package:biblio/screens/chat/conversation_room.dart';
+import 'package:biblio/screens/chat/chat_room/conversation_room.dart';
 import 'package:biblio/screens/chat/order_book/order_book_body.dart';
 import 'package:biblio/screens/chat/order_book/order_button.dart';
 import 'package:biblio/services/error_message.dart';
