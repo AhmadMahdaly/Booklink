@@ -41,7 +41,9 @@ class SendMessagesCubit extends Cubit<AppStates> {
           .eq('receiver_id', userId);
       emit(AppSuccessState());
     } catch (e) {
-      emit(AppErrorState(e.toString()));
+      if (!isClosed) {
+        emit(AppErrorState(e.toString()));
+      }
     }
   }
 
@@ -78,7 +80,9 @@ class SendMessagesCubit extends Cubit<AppStates> {
           .eq('receiver_id', userId);
       emit(AppSuccessState());
     } catch (e) {
-      emit(AppErrorState(e.toString()));
+      if (!isClosed) {
+        emit(AppErrorState(e.toString()));
+      }
     }
   }
 }

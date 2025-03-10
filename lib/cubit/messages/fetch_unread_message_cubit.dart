@@ -29,7 +29,9 @@ class FetchUnreadMessageCubit extends Cubit<AppStates> {
       }
       emit(AppSuccessState());
     } catch (e) {
-      emit(AppErrorState(e.toString()));
+      if (!isClosed) {
+        emit(AppErrorState(e.toString()));
+      }
     }
   }
 }

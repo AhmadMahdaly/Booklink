@@ -19,7 +19,9 @@ class FetchMessagesCubit extends Cubit<AppStates> {
       name = response1.toString();
       emit(AppSuccessState());
     } catch (e) {
-      emit(AppErrorState(e.toString()));
+      if (!isClosed) {
+        emit(AppErrorState(e.toString()));
+      }
     }
   }
 
@@ -38,7 +40,9 @@ class FetchMessagesCubit extends Cubit<AppStates> {
 
       emit(AppSuccessState());
     } catch (e) {
-      emit(AppErrorState(e.toString()));
+      if (!isClosed) {
+        emit(AppErrorState(e.toString()));
+      }
     }
   }
 
@@ -68,7 +72,9 @@ class FetchMessagesCubit extends Cubit<AppStates> {
           .eq('receiver_id', Supabase.instance.client.auth.currentUser!.id);
       emit(AppSuccessState());
     } catch (e) {
-      emit(AppErrorState(e.toString()));
+      if (!isClosed) {
+        emit(AppErrorState(e.toString()));
+      }
     }
   }
 }
