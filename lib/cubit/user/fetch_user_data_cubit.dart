@@ -106,4 +106,33 @@ class FetchUserDataCubit extends Cubit<AppStates> {
       );
     }
   }
+
+  Future<void> fetchUserName() async {
+    emit(AppLoadingState());
+    try {
+      final user = supabase.auth.currentUser;
+      if (user == null) {
+        return;
+      }
+
+      /// استعلام لإحضار اسم المستخدم
+      final response = await supabase
+          .from('users')
+
+          /// اسم الجدول
+          .select('username')
+
+          /// العمود المطلوب
+          .eq('id', user.id)
+
+          /// البحث باستخدام معرف المستخدم
+          .single();
+
+      /// استرجاع صف واحد فقط
+      emit(AppSuccessState());
+      return response['username'];
+    } catch (e) {
+      emit(AppErrorState(e.toString()));
+    }
+  }
 }

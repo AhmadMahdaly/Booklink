@@ -1,7 +1,9 @@
-import 'package:biblio/services/fetch_user_name.dart';
+import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/cubit/user/fetch_user_data_cubit.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ShowUserName extends StatelessWidget {
@@ -11,32 +13,39 @@ class ShowUserName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 25.sp,
-      child: FutureBuilder<dynamic>(
-        future: fetchUserName(context),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const AppIndicator(
-              size: 10,
-            );
-          } else if (snapshot.hasError) {
-            return const Text('');
-            // خطأ: ${snapshot.error}
-          } else {
-            final userName = snapshot.data;
-            return Text(
-              userName.toString(),
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                color: kMainColor,
-                fontSize: 17.sp,
-                fontWeight: FontWeight.w600,
-              ),
-            );
-          }
-        },
-      ),
+    return BlocBuilder<FetchUserDataCubit, AppStates>(
+      builder: (context, state) {
+        final cubit = FetchUserDataCubit();
+        return SizedBox(
+          height: 25.sp,
+          child: FutureBuilder<dynamic>(
+            future: cubit.fetchUserName(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const AppIndicator(
+                  size: 10,
+                );
+              } else if (snapshot.hasError) {
+                return const Icon(
+                  Icons.error,
+                  color: Colors.red,
+                );
+              } else {
+                final userName = snapshot.data;
+                return Text(
+                  userName.toString(),
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: kMainColor,
+                    fontSize: 17.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
+                );
+              }
+            },
+          ),
+        );
+      },
     );
   }
 }
