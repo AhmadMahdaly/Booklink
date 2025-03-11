@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:biblio/cubit/app_states.dart';
-import 'package:biblio/cubit/books/fetch_book_category_cubit.dart';
+import 'package:biblio/cubit/books/fetch_category_cubit.dart';
 import 'package:biblio/cubit/books/fetch_order_type_book_cubit.dart';
 import 'package:biblio/cubit/books/upload_book_cubit.dart';
 import 'package:biblio/screens/book/add_book_page/widgets/add_book_image.dart';
@@ -139,7 +139,7 @@ class _AddBookState extends State<AddBook> {
         },
         builder: (context, state) {
           context
-            ..read<FetchBookCategoryCubit>().fetchCategories(context)
+            ..read<FetchBookCategoryCubit>().fetchCategories()
             ..read<FetchOrderTypeBookCubit>().fetchOrderType(context);
           final uploadCubit = context.read<UploadBookCubit>();
           return Scaffold(

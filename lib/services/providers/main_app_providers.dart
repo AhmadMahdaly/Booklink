@@ -1,7 +1,9 @@
 import 'package:biblio/cubit/auth_cubit/auth_cubit.dart';
 import 'package:biblio/cubit/books/delete_book_cubit.dart';
 import 'package:biblio/cubit/books/fetch_book_page_cubit.dart';
+import 'package:biblio/cubit/books/fetch_category_cubit.dart';
 import 'package:biblio/cubit/books/fetch_located_books_cubit.dart';
+import 'package:biblio/cubit/books/update_book_cubit.dart';
 import 'package:biblio/cubit/books/upload_book_cubit.dart';
 import 'package:biblio/cubit/favorite_function/favorite_button_cubit.dart';
 import 'package:biblio/cubit/favorite_function/my_list_cubit.dart';
@@ -26,35 +28,39 @@ List<BlocProvider> mainAppProviders() {
     BlocProvider<AuthCubit>(
       create: (context) => AuthCubit(),
     ),
+
+    /// Books Cubits
+    BlocProvider<FetchBookCategoryCubit>(
+      create: (context) => FetchBookCategoryCubit(),
+    ),
     BlocProvider<MyListCubit>(
       create: (context) => MyListCubit(),
     ),
+    BlocProvider<UploadBookCubit>(
+      create: (context) => UploadBookCubit(),
+    ),
+    BlocProvider<FetchLocatedBooksCubit>(
+      create: (context) => FetchLocatedBooksCubit(),
+    ),
+    BlocProvider<DeleteBookCubit>(
+      create: (context) => DeleteBookCubit(),
+    ),
+    BlocProvider<FetchBookPageCubit>(
+      create: (context) => FetchBookPageCubit(),
+    ),
+    BlocProvider<UpdateBookCubit>(
+      create: (context) => UpdateBookCubit(),
+    ),
+
+    /// User Cubits
     BlocProvider<FavoriteButtonCubit>(
       create: (context) => FavoriteButtonCubit(),
     ),
     BlocProvider<SaveUserLocationCubit>(
       create: (context) => SaveUserLocationCubit(),
     ),
-    BlocProvider<UploadBookCubit>(
-      create: (context) => UploadBookCubit(),
-    ),
     BlocProvider<GetUserQtyBooksCubit>(
       create: (context) => GetUserQtyBooksCubit(),
-    ),
-    BlocProvider<CreateConversationCubit>(
-      create: (context) => CreateConversationCubit(),
-    ),
-    BlocProvider<FetchMessagesCubit>(
-      create: (context) => FetchMessagesCubit(),
-    ),
-    BlocProvider<FetchUserConversationsCubit>(
-      create: (context) => FetchUserConversationsCubit(),
-    ),
-    BlocProvider<FetchLocatedBooksCubit>(
-      create: (context) => FetchLocatedBooksCubit(),
-    ),
-    BlocProvider<SendMessagesCubit>(
-      create: (context) => SendMessagesCubit(),
     ),
     BlocProvider<FetchUserDataCubit>(
       create: (context) => FetchUserDataCubit(),
@@ -68,18 +74,28 @@ List<BlocProvider> mainAppProviders() {
     BlocProvider<UpdateUserFavoriteLocationCubit>(
       create: (context) => UpdateUserFavoriteLocationCubit(),
     ),
-    BlocProvider<RequestOtpCubit>(
-      create: (context) => RequestOtpCubit(),
+
+    /// Messages Cubits
+    BlocProvider<CreateConversationCubit>(
+      create: (context) => CreateConversationCubit(),
+    ),
+    BlocProvider<FetchMessagesCubit>(
+      create: (context) => FetchMessagesCubit(),
+    ),
+    BlocProvider<FetchUserConversationsCubit>(
+      create: (context) => FetchUserConversationsCubit(),
+    ),
+    BlocProvider<SendMessagesCubit>(
+      create: (context) => SendMessagesCubit(),
     ),
     BlocProvider<FetchUnreadMessageCubit>(
       create: (context) => FetchUnreadMessageCubit(),
     ),
-    BlocProvider<DeleteBookCubit>(
-      create: (context) => DeleteBookCubit(),
+    BlocProvider<RequestOtpCubit>(
+      create: (context) => RequestOtpCubit(),
     ),
-    BlocProvider<FetchBookPageCubit>(
-      create: (context) => FetchBookPageCubit(),
-    ),
+
+    /// Search Cubit
     BlocProvider<SearchCubit>(
       create: (context) => SearchCubit(),
     ),

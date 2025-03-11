@@ -1,5 +1,4 @@
 import 'package:biblio/cubit/app_states.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -10,23 +9,40 @@ class FetchBookCategoryCubit extends Cubit<AppStates> {
   String? selectedCategory;
 
   /// Fetch Category
-  Future<void> fetchCategories(BuildContext context) async {
+  Future<void> fetchCategories() async {
     emit(AppLoadingState());
-    final cubit = context.read<FetchBookCategoryCubit>();
-
     try {
       final response = await supabase
           .from('categories')
           .select('name')
           .order('id', ascending: true);
       categories = response.map((e) => e['name'] as String).toList();
-      if (!cubit.isClosed) {
+      if (!isClosed) {
         emit(AppSuccessState());
       }
     } catch (e) {
-      if (!cubit.isClosed) {
+      if (!isClosed) {
         emit(AppErrorState(e.toString()));
       }
+    }
+  }
+
+  /// Fetch Books
+  List<Map<String, dynamic>> books = [];
+  Future<void> fetchBooks(String category) async {
+    emit(AppLoadingState());
+    try {
+      final response = await supabase
+          .from('books')
+          .select('*')
+          .eq('category', category)
+          .order('title', ascending: true);
+      if (response != null) {
+        books = List<Map<String, dynamic>>.from(response);
+        emit(AppSuccessState());
+      }
+    } catch (e) {
+      emit(AppErrorState(e.toString()));
     }
   }
 }
