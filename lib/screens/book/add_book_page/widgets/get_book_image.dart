@@ -30,8 +30,9 @@ class GetBookImage extends StatelessWidget {
       /// استخراج رابط الصورة
       final photoUrl = response['cover_image_url'] as String;
       return photoUrl;
-    } catch (e) {}
-    return null;
+    } catch (e) {
+      return null;
+    }
   }
 
   @override
@@ -109,8 +110,9 @@ class GetBookImageI extends StatelessWidget {
       /// استخراج رابط الصورة
       final photoUrl = response['cover_book_url2'] as String;
       return photoUrl;
-    } catch (e) {}
-    return null;
+    } catch (e) {
+      return null;
+    }
   }
 
   @override

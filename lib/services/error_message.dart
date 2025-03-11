@@ -4,20 +4,29 @@ import 'package:flutter/material.dart';
 
 void errorMessage(String message, BuildContext context) {
   try {
-    if (message.contains('Connection terminated during handshake') ||
-        message.contains('Connection reset by peer') ||
-        message.contains('Connection closed before full header was received') ||
-        message.contains(
-          'ClientException with SocketException: Failed host lookup',
-        ) ||
-        message.contains(
-          'No address associated with hostname',
-        ) ||
-        message.contains('Connection terminated during handshake') ||
-        message.contains(
-          'Access token is expired and refreshing failed, aborting api request',
-        ) ||
-        message.contains('Access token is expired and refreshing failed')) {
+    if (message.contains('Connection terminated during handshake')) {
+      showSnackBar(context, 'قد تكون هناك مشكلة في الإتصال');
+    } else if (message.contains('Connection reset by peer')) {
+      showSnackBar(context, 'قد تكون هناك مشكلة في الإتصال');
+    } else if (message
+        .contains('Connection closed before full header was received')) {
+      showSnackBar(context, 'قد تكون هناك مشكلة في الإتصال');
+    } else if (message.contains(
+      'ClientException with SocketException: Failed host lookup',
+    )) {
+      showSnackBar(context, 'قد تكون هناك مشكلة في الإتصال');
+    } else if (message.contains(
+      'No address associated with hostname',
+    )) {
+      showSnackBar(context, 'قد تكون هناك مشكلة في الإتصال');
+    } else if (message.contains('Connection terminated during handshake')) {
+      showSnackBar(context, 'قد تكون هناك مشكلة في الإتصال');
+    } else if (message.contains(
+      'Access token is expired and refreshing failed, aborting api request',
+    )) {
+      showSnackBar(context, 'قد تكون هناك مشكلة في الإتصال');
+    } else if (message
+        .contains('Access token is expired and refreshing failed')) {
       showSnackBar(context, 'قد تكون هناك مشكلة في الإتصال');
       Navigator.push(
         context,
