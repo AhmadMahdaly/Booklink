@@ -16,16 +16,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
   static String id = 'HomePage';
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  Future<void> fetchDate() async {
+  Future<void> fetchDate(BuildContext context) async {
     await context.read<FetchLocatedBooksCubit>().fetchLocatedBooks();
     await context.read<FetchUnreadMessageCubit>().fetchUnreadMessages(
           otherId:
@@ -38,7 +33,7 @@ class _HomePageState extends State<HomePage> {
     return RefreshIndicator(
       strokeWidth: 0.9,
       color: kMainColor,
-      onRefresh: fetchDate,
+      onRefresh: () => fetchDate(context),
       child: Scaffold(
         body: CustomScrollView(
           slivers: [
