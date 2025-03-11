@@ -1,5 +1,5 @@
 import 'package:biblio/animations/animate_do.dart';
-import 'package:biblio/services/auth_check.dart';
+import 'package:biblio/screens/login/auth_check.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
