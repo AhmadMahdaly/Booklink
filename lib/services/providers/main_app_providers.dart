@@ -13,6 +13,7 @@ import 'package:biblio/cubit/messages/fetch_unread_message_cubit.dart';
 import 'package:biblio/cubit/messages/fetch_user_conversations_cubit.dart';
 import 'package:biblio/cubit/messages/send_messages_cubit.dart';
 import 'package:biblio/cubit/search/search_cubit.dart';
+import 'package:biblio/cubit/user/delete_user_cubit.dart';
 import 'package:biblio/cubit/user/fetch_user_data_cubit.dart';
 import 'package:biblio/cubit/user/get_user_qty_books_cubit.dart';
 import 'package:biblio/cubit/user/request_otp_cubit.dart';
@@ -73,6 +74,9 @@ List<BlocProvider> mainAppProviders() {
     ),
     BlocProvider<UpdateUserFavoriteLocationCubit>(
       create: (context) => UpdateUserFavoriteLocationCubit(),
+    ),
+    BlocProvider<DeleteUserCubit>(
+      create: (context) => DeleteUserCubit(),
     ),
 
     /// Messages Cubits
