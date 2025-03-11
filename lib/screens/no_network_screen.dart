@@ -10,38 +10,36 @@ class NoNetworkScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: RefreshIndicator(
+    return Scaffold(
+      body: RefreshIndicator(
         strokeWidth: 0.9,
         color: kMainColor,
         onRefresh: () => fetchDate(context),
-        child: Scaffold(
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/icons/no-signal.png',
-                  height: 100.sp,
-                  color: kMainColor,
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                SizedBox(
-                  width: 347,
-                  child: Text(
-                    'يبدو أن هناك خطأ ما في الاتصال بالشبكة، برجاء المحاولة مرة أخرى',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: kTextColor,
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.w500,
-                    ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/icons/no-signal.png',
+                height: 100.sp,
+                color: kMainColor,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              SizedBox(
+                width: 347,
+                child: Text(
+                  'يبدو أن هناك خطأ ما في الاتصال بالشبكة، برجاء المحاولة مرة أخرى',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: kTextColor,
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

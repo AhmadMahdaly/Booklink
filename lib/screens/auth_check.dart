@@ -52,7 +52,6 @@ this page sets up a listener on the user's auth state using onAuthStateChange. *
           /// في حالة عدم وجود انترنت متصل
           return const MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'No NetWork',
             home: NoNetworkScreen(),
           );
         }

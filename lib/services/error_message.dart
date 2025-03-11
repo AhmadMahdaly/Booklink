@@ -27,7 +27,7 @@ void errorMessage(String message, BuildContext context) {
       showSnackBar(context, 'قد تكون هناك مشكلة في الإتصال');
     } else if (message
         .contains('Access token is expired and refreshing failed')) {
-      showSnackBar(context, 'قد تكون هناك مشكلة في الإتصال');
+      // showSnackBar(context, 'قد تكون هناك مشكلة في الإتصال');
       Navigator.push(
         context,
         MaterialPageRoute(
