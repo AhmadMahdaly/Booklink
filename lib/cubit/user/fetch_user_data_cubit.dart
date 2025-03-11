@@ -135,4 +135,34 @@ class FetchUserDataCubit extends Cubit<AppStates> {
       emit(AppErrorState(e.toString()));
     }
   }
+
+  Future<String?> getUserPhoto() async {
+    final user = supabase.auth.currentUser;
+    if (user == null) {
+      return null;
+    }
+    try {
+      emit(AppLoadingState());
+
+      /// استرجاع رابط الصورة من قاعدة البيانات
+      final response = await supabase
+          .from('users')
+
+          /// تحديد الحقل المطلوب
+          .select('image')
+          .eq('id', user.id)
+
+          /// جلب سجل واحد فقط
+          .single();
+
+      final photoUrl = response['image'] as String;
+      emit(AppSuccessState());
+
+      /// استخراج رابط الصورة
+      return photoUrl;
+    } catch (e) {
+      emit(AppErrorState(e.toString()));
+    }
+    return null;
+  }
 }
