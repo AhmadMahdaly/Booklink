@@ -98,6 +98,9 @@ List<BlocProvider> mainAppProviders() {
     BlocProvider<RequestOtpCubit>(
       create: (context) => RequestOtpCubit(),
     ),
+    // BlocProvider<NotificationCubit>(
+    //   create: (context) => NotificationCubit(),
+    // ),
 
     /// Search Cubit
     BlocProvider<SearchCubit>(
