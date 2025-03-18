@@ -9,6 +9,7 @@ import 'package:biblio/screens/splash_screen.dart';
 import 'package:biblio/services/providers/main_app_providers.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,6 +44,9 @@ class Booklink extends StatelessWidget {
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Booklink',
+            navigatorObservers: [
+              FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
+            ],
 
             /// Localizations
             localizationsDelegates: context.localizationDelegates,

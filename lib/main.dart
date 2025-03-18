@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:biblio/booklink.dart';
 import 'package:biblio/services/setup_fcm.dart';
@@ -7,6 +8,7 @@ import 'package:biblio/services/setup_fcm.dart';
 import 'package:biblio/utils/controller/connectivity_controller.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -37,6 +39,14 @@ void main() async {
           ),
         )
       : await Firebase.initializeApp();
+  FlutterError.onError = (errorDetails) {
+    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  };
+  // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
   await setupFCM(); // تهيئة Firebase Cloud Messaging
   // final fcmToken = await FirebaseMessaging.instance.getToken();
   // print(fcmToken);

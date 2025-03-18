@@ -1,6 +1,6 @@
 name: biblio
 description: "Platform for exchanging and selling books."
-version: 1.0.7+8
+version: 1.0.8+9
 
 environment:
   sdk: ^3.6.0
@@ -37,6 +37,8 @@ dependencies:
   google_sign_in: ^6.2.2
   google_mlkit_text_recognition: ^0.14.0
   firebase_core: ^3.12.1
+  firebase_analytics: ^11.4.4
+  firebase_crashlytics: ^4.3.4
 
 
   
