@@ -3,7 +3,7 @@ import 'package:biblio/cubit/auth_cubit/auth_cubit.dart';
 import 'package:biblio/screens/login/login_screen.dart';
 import 'package:biblio/screens/more_page/widgets/terms_and_conditions_page.dart';
 import 'package:biblio/screens/select_your_location_screen.dart';
-import 'package:biblio/services/emailjs.dart';
+import 'package:biblio/services/send_email.dart';
 import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/app_regex.dart';

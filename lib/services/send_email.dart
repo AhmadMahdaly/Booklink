@@ -1,10 +1,11 @@
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 // دالة لإرسال البريد الإلكتروني عبر EmailJS
 Future<void> sendEmail(String email, String subject, String message) async {
-  final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
+  final url = Uri.parse(dotenv.env['EMAIL_API'] ?? '');
 
   final response = await http.post(
     url,
@@ -12,9 +13,9 @@ Future<void> sendEmail(String email, String subject, String message) async {
       'Content-Type': 'application/json',
     },
     body: json.encode({
-      'service_id': 'service_l34ibgn',
-      'template_id': 'template_clyw3or',
-      'user_id': 't9cuPuWkit9--lEt-',
+      'service_id': dotenv.env['EMAIL_SERVICE_ID'] ?? '',
+      'template_id': dotenv.env['EMAIL_TEMPLATE_ID'] ?? '',
+      'user_id': dotenv.env['EMAIL_PUBLIC_KEY_USERID'] ?? '',
       'template_params': {
         'to_email': email,
         'subject': subject,
