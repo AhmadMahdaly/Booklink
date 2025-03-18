@@ -21,7 +21,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
+// import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -81,19 +81,19 @@ class _AddBookState extends State<AddBook> {
     }
   }
 
-  Future getImageTotext(String imagePath) async {
-    final textRecognizer = TextRecognizer();
-    final recognizedText =
-        await textRecognizer.processImage(InputImage.fromFilePath(imagePath));
-    final text = recognizedText.text;
-    return text;
-  }
+  // Future getImageTotext(String imagePath) async {
+  //   final textRecognizer = TextRecognizer();
+  //   final recognizedText =
+  //       await textRecognizer.processImage(InputImage.fromFilePath(imagePath));
+  //   final text = recognizedText.text;
+  //   return text;
+  // }
 
-  late String s = '';
+  // late String s = '';
 
   @override
   Widget build(BuildContext context) {
-    final picker = ImagePicker();
+    // final picker = ImagePicker();
     String? user;
     if (Supabase.instance.client.auth.currentUser?.id == null) {
       user = null;
@@ -275,22 +275,22 @@ class _AddBookState extends State<AddBook> {
                           ),
                           const TitleFormAddBook(title: 'نبذة عن الكتاب'),
                           CustomTextformfield(
-                            icon: GestureDetector(
-                              onTap: () async {
-                                final image = await picker.pickImage(
-                                  source: ImageSource.gallery,
-                                );
-                                if (image != null) {
-                                  final a = await getImageTotext(image.path);
-                                  setState(() {
-                                    s = a.toString();
-                                  });
-                                }
-                              },
-                              child: const Icon(
-                                Icons.copy_all_outlined,
-                              ),
-                            ),
+                            // icon: GestureDetector(
+                            //   onTap: () async {
+                            //     final image = await picker.pickImage(
+                            //       source: ImageSource.gallery,
+                            //     );
+                            //     if (image != null) {
+                            //       final a = await getImageTotext(image.path);
+                            //       setState(() {
+                            //         s = a.toString();
+                            //       });
+                            //     }
+                            //   },
+                            //   child: const Icon(
+                            //     Icons.copy_all_outlined,
+                            //   ),
+                            // ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'ادخل البيانات المطلوبة';
