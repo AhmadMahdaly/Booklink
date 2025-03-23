@@ -2,6 +2,7 @@ import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/screens/navigation_bar/navigation_bar.dart';
 import 'package:biblio/screens/select_your_location_screen.dart';
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -76,7 +77,7 @@ class AuthCubit extends Cubit<AppStates> {
       final idToken = googleAuth.idToken;
 
       if (accessToken == null || idToken == null) {
-        emit(AppErrorState('حدث خطأ ما'));
+        emit(AppErrorState('WrongError'.tr()));
         return AuthResponse();
       }
 
@@ -121,7 +122,7 @@ class AuthCubit extends Cubit<AppStates> {
       final idToken = googleAuth.idToken;
 
       if (accessToken == null || idToken == null) {
-        emit(AppErrorState('حدث خطأ ما'));
+        emit(AppErrorState('WrongError'.tr()));
         return AuthResponse();
       }
 

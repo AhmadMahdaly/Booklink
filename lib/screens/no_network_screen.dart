@@ -1,4 +1,5 @@
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,7 +31,7 @@ class NoNetworkScreen extends StatelessWidget {
               SizedBox(
                 width: 347,
                 child: Text(
-                  'يبدو أن هناك خطأ ما في الاتصال بالشبكة، برجاء المحاولة مرة أخرى',
+                  'NetworkError'.tr(),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: kTextColor,

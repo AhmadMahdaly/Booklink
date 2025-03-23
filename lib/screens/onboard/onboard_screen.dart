@@ -5,6 +5,7 @@ import 'package:biblio/utils/components/custom_button.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/components/width.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -36,7 +37,7 @@ class OnboardScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'اقرأ وبدِّل',
+                'ReadAndChange'.tr(),
                 style: TextStyle(
                   color: kMainColor,
                   fontSize: 24.sp,
@@ -56,7 +57,7 @@ class OnboardScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.sp),
             child: Text(
-              'هل تحب القراءة وترغب في مشاركة مكتبتك مع الآخرين؟ تطبيق Biblio يمنحك فرصة لعرض الكتب التي ترغب في تبادلها أو بيعها، واكتشاف كنوزًا جديدة في مكتبات القراء من حولك.',
+              'IntBooklink'.tr(),
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: kTextColor,
@@ -70,7 +71,7 @@ class OnboardScreen extends StatelessWidget {
           /// Login
           CustomButton(
             padding: 16,
-            text: 'تسجيل الدخول',
+            text: 'Login'.tr(),
             onTap: () {
               Navigator.pushReplacementNamed(context, LoginScreen.id);
             },
@@ -80,7 +81,7 @@ class OnboardScreen extends StatelessWidget {
           /// Sign up
           CustomBorderBotton(
             padding: 16,
-            text: 'حساب جديد',
+            text: 'NewAccount'.tr(),
             onTap: () {
               Navigator.pushReplacementNamed(context, RegisterScreen.id);
             },

@@ -42,7 +42,8 @@ void main() async {
   FlutterError.onError = (errorDetails) {
     FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
   };
-  // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+
+  /// Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
   PlatformDispatcher.instance.onError = (error, stack) {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
@@ -51,7 +52,8 @@ void main() async {
   // final fcmToken = await FirebaseMessaging.instance.getToken();
   // print(fcmToken);
   FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
-// initialize supabase
+
+  /// initialize supabase
   final supabaseUrl = dotenv.env['SUPABASE_URL'] ?? '';
   final supabaseKey = dotenv.env['SUPABASE_KEY'] ?? '';
   await Supabase.initialize(url: supabaseUrl, anonKey: supabaseKey);

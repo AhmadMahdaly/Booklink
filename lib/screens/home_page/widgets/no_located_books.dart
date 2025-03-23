@@ -1,5 +1,6 @@
 import 'package:biblio/screens/category_page/widgets/see_all.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,7 +18,7 @@ class NoLocatedBooks extends StatelessWidget {
           spacing: 4.sp,
           children: [
             Text(
-              'لا توجد كتب في منطقتك حاليًا.',
+              'There is  no books'.tr(),
               style: TextStyle(
                 color: kTextColor,
                 fontSize: 12.sp,
@@ -43,8 +44,7 @@ class TryToDiscoverCategory extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'يمكنك أن تجرب استكشاف ',
-          //  'مرحبًا! 🧡\nيبدو أنه لم يتم عرض أي كتب في منطقتك بعد.\nلكن لا تقلق، لديك فرصة لتكون الأول الذي يساهم في إثراء منطقتك بالكتب! 📚✨\nأو يمكنك استكشاف الفئات المختلفة لدينا؛ قد تجد ما تبحث عنه أو حتى ما لم يخطر ببالك! 🌟\nابدأ رحلتك الآن واجعل تجربتك مليئة بالاكتشافات.',
+          '${'You can try exploring'.tr()} ',
           style: TextStyle(
             color: kTextColor,
             fontSize: 12.sp,
@@ -63,8 +63,7 @@ class TryToDiscoverCategory extends StatelessWidget {
             );
           },
           child: Text(
-            'الفئات المختلفة',
-            //  'مرحبًا! 🧡\nيبدو أنه لم يتم عرض أي كتب في منطقتك بعد.\nلكن لا تقلق، لديك فرصة لتكون الأول الذي يساهم في إثراء منطقتك بالكتب! 📚✨\nأو يمكنك استكشاف الفئات المختلفة لدينا؛ قد تجد ما تبحث عنه أو حتى ما لم يخطر ببالك! 🌟\nابدأ رحلتك الآن واجعل تجربتك مليئة بالاكتشافات.',
+            'the different categories'.tr(),
             style: TextStyle(
               color: kTextColor,
               fontSize: 12.sp,
@@ -75,8 +74,7 @@ class TryToDiscoverCategory extends StatelessWidget {
           ),
         ),
         Text(
-          ' لتجد ما يناسبك!',
-          //  'مرحبًا! 🧡\nيبدو أنه لم يتم عرض أي كتب في منطقتك بعد.\nلكن لا تقلق، لديك فرصة لتكون الأول الذي يساهم في إثراء منطقتك بالكتب! 📚✨\nأو يمكنك استكشاف الفئات المختلفة لدينا؛ قد تجد ما تبحث عنه أو حتى ما لم يخطر ببالك! 🌟\nابدأ رحلتك الآن واجعل تجربتك مليئة بالاكتشافات.',
+          ' ${'to find what suits you'.tr()}',
           style: TextStyle(
             color: kTextColor,
             fontSize: 12.sp,

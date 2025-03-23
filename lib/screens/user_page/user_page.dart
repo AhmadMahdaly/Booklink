@@ -50,11 +50,11 @@ class _UserPageState extends State<UserPage> {
       final createdAt = DateTime.parse(specificDate.toString());
       final difference = now.difference(createdAt);
       if (difference.inMinutes < 60) {
-        return '${difference.inMinutes} دقيقة';
+        return '${difference.inMinutes} ${'Minute'.tr()}';
       } else if (difference.inHours < 24) {
-        return '${difference.inHours} ساعة';
+        return '${difference.inHours} ${'Hour'.tr()}';
       } else if (difference.inDays < 30) {
-        return '${difference.inDays} يوم';
+        return '${difference.inDays} ${'Day'.tr()}';
       } else {
         return DateFormat('yyyy-MM').format(createdAt); // تاريخ واضح
       }
@@ -120,7 +120,7 @@ class _UserPageState extends State<UserPage> {
                             padding: EdgeInsets.symmetric(horizontal: 8.sp),
                             child: Text(
                               textAlign: TextAlign.center,
-                              'الصورة\nالشخصية',
+                              'ProfileNNPicture'.tr(),
                               style: TextStyle(
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.w600,
@@ -166,7 +166,7 @@ class _UserPageState extends State<UserPage> {
                       ),
                       SizedBox(
                         child: Text(
-                          'انضم للمكتبة منذ ${getTimeDifference()}',
+                          '${'JoinedSince'.tr()} ${getTimeDifference()}',
                           style: TextStyle(
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w600,
@@ -176,7 +176,7 @@ class _UserPageState extends State<UserPage> {
                       ),
                       SizedBox(
                         child: Text(
-                          'عدد الكتب: ${cubit.qtyBooks.length}',
+                          '${'NumberOfBooks'.tr()}: ${cubit.qtyBooks.length}',
                           style: TextStyle(
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w600,
@@ -194,7 +194,7 @@ class _UserPageState extends State<UserPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'أماكن اللقاء المفضلة: ',
+                                    '${'FavMeetingPlaces'.tr()}: ',
                                     style: TextStyle(
                                       color: kTextColor,
                                       fontSize: 15.sp,
@@ -219,7 +219,7 @@ class _UserPageState extends State<UserPage> {
                                 child: Column(
                                   children: [
                                     Text(
-                                      'أماكن اللقاء المفضلة: ',
+                                      '${'FavMeetingPlaces'.tr()}: ',
                                       style: TextStyle(
                                         color: kTextColor,
                                         fontSize: 15.sp,

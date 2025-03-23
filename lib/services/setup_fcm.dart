@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
@@ -42,7 +43,7 @@ Future<void> showNotification(RemoteMessage message) async {
 
   await flutterLocalNotificationsPlugin.show(
     0,
-    message.notification?.title ?? 'إشعار جديد',
+    message.notification?.title ?? 'NowNotification'.tr(),
     message.notification?.body ?? '',
     notificationDetails,
   );

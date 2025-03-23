@@ -8,6 +8,7 @@ import 'package:biblio/utils/components/custom_textformfield.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/components/leading_icon.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -108,7 +109,7 @@ class _SelectYourLocationScreenState extends State<SelectYourLocationScreen> {
                         /// Header
                         children: [
                           Text(
-                            'أين تود مشاركة كتبك؟',
+                            'WhereYouShareBook'.tr(),
                             style: TextStyle(
                               color: kMainColor,
                               fontSize: 20.sp,
@@ -124,7 +125,7 @@ class _SelectYourLocationScreenState extends State<SelectYourLocationScreen> {
                       SizedBox(
                         width: 351.sp,
                         child: Text(
-                          'من فضلك اختار الدولة والمدينة التي تود مشاركة الكتب بها',
+                          'ChooseCountryAndCity'.tr(),
                           style: TextStyle(
                             color: kTextColor,
                             fontSize: 14.sp,
@@ -136,7 +137,7 @@ class _SelectYourLocationScreenState extends State<SelectYourLocationScreen> {
 
                       /// Country
                       Text(
-                        'الدولة',
+                        'Country'.tr(),
                         style: TextStyle(
                           color: kMainColor,
                           fontSize: 14.sp,
@@ -155,7 +156,7 @@ class _SelectYourLocationScreenState extends State<SelectYourLocationScreen> {
                               color: Colors.red,
                             ),
                           ),
-                          hintText: 'اختار الدولة',
+                          hintText: 'ChooseCountry'.tr(),
                           hintStyle: TextStyle(
                             fontSize: 14.sp,
                             color: kHeader1Color,
@@ -180,7 +181,7 @@ class _SelectYourLocationScreenState extends State<SelectYourLocationScreen> {
 
                       /// City
                       Text(
-                        'المدينة',
+                        'City'.tr(),
                         style: TextStyle(
                           color: kMainColor,
                           fontSize: 14.sp,
@@ -199,7 +200,7 @@ class _SelectYourLocationScreenState extends State<SelectYourLocationScreen> {
                               color: Colors.red,
                             ),
                           ),
-                          hintText: 'اختار المدينة',
+                          hintText: 'ChooseCity'.tr(),
                           hintStyle: TextStyle(
                             fontSize: 14.sp,
                             color: kHeader1Color,
@@ -233,11 +234,11 @@ class _SelectYourLocationScreenState extends State<SelectYourLocationScreen> {
             ),
             child: isActive
                 ? CustomButton(
-                    text: 'ابدأ التصفح',
+                    text: 'Start'.tr(),
                     onTap: cubit.saveUserData,
                   )
-                : const CustomButton(
-                    text: 'ابدأ التصفح',
+                : CustomButton(
+                    text: 'Start'.tr(),
                     isActive: false,
                   ),
           ),
@@ -246,3 +247,92 @@ class _SelectYourLocationScreenState extends State<SelectYourLocationScreen> {
     );
   }
 }
+  //  "Egypt": "مصر",
+  //   "Cairo": "القاهرة",
+  //   "Alexandria": "الأسكندرية",
+  //   "Giza": "الجيزة",
+  //   "Port Said": "بورسعيد",
+  //   "Suez": "السويس",
+  //   "Mansoura": "المنصورة",
+  //   "Zagazig": "الزقازيق",
+  //   "Tanta": "طنطا",
+  //   "Damanhur": "دمنهور",
+  //   "Fayoum": "الفيوم",
+  //   "Asyut": "أسيوط",
+  //   "Sohag": "سوهاج",
+  //   "Minya": "المنيا",
+  //   "Luxor": "الأقصر",
+  //   "Aswan": "أسوان",
+  //   "Qena": "قنا",
+  //   "Ismailia": "الإسماعيلية",
+  //   "Damietta": "دمياط",
+  //   "Beni Suef": "بني سويف",
+  //   "Matrouh": "مطروح",
+  //   "Hurghada": "الغردقة",
+  //   "Sharm El-Sheikh": "شرم الشيخ",
+  //   "Saudi Arabia": "السعودية",
+  //   "Riyadh": "الرياض",
+  //   "Jeddah": "جدة",
+  //   "Mecca": "مكة المكرمة",
+  //   "Medina": "المدينة المنورة",
+  //   "Dammam": "الدمام",
+  //   "Khobar": "الخبر",
+  //   "Taif": "الطائف",
+  //   "Buraidah": "بريدة",
+  //   "Abha": "أبها",
+  //   "Khamis Mushait": "خميس مشيط",
+  //   "Najran": "نجران",
+  //   "Hail": "حائل",
+  //   "Tabuk": "تبوك",
+  //   "Jizan": "جيزان",
+  //   "Qatif": "القطيف",
+  //   "Yanbu": "ينبع",
+  //   "AlUla": "العلا",
+  //   "Arar": "عرعر",
+  //   "Sakaka": "سكاكا",
+  //   "Al-Ahsa": "الأحساء",
+    //   "Egypt": "Egypt",
+    // "Cairo": "Cairo",
+    // "Alexandria": "Alexandria",
+    // "Giza": "Giza",
+    // "Port Said": "Port Said",
+    // "Suez": "Suez",
+    // "Mansoura": "Mansoura",
+    // "Zagazig": "Zagazig",
+    // "Tanta": "Tanta",
+    // "Damanhur": "Damanhur",
+    // "Fayoum": "Fayoum",
+    // "Asyut": "Asyut",
+    // "Sohag": "Sohag",
+    // "Minya": "Minya",
+    // "Luxor": "Luxor",
+    // "Aswan": "Aswan",
+    // "Qena": "Qena",
+    // "Ismailia": "Ismailia",
+    // "Damietta": "Damietta",
+    // "Beni Suef": "Beni Suef",
+    // "Matrouh": "Matrouh",
+    // "Hurghada": "Hurghada",
+    // "Sharm El-Sheikh": "Sharm El-Sheikh",
+    // "Saudi Arabia": "Saudi Arabia",
+    // "Riyadh": "Riyadh",
+    // "Jeddah": "Jeddah",
+    // "Mecca": "Mecca",
+    // "Medina": "Medina",
+    // "Dammam": "Dammam",
+    // "Khobar": "Khobar",
+    // "Taif": "Taif",
+    // "Buraidah": "Buraidah",
+    // "Abha": "Abha",
+    // "Khamis Mushait": "Khamis Mushait",
+    // "Najran": "Najran",
+    // "Hail": "Hail",
+    // "Tabuk": "Tabuk",
+    // "Jizan": "Jizan",
+    // "Qatif": "Qatif",
+    // "Yanbu": "Yanbu",
+    // "AlUla": "AlUla",
+    // "Arar": "Arar",
+    // "Sakaka": "Sakaka",
+    // "Al-Ahsa": "Al-Ahsa"
+    

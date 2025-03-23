@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:biblio/screens/book/add_book_page/add_book.dart';
 import 'package:biblio/utils/components/width.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -32,14 +33,14 @@ class HomeBanner extends StatelessWidget {
         Container(
           margin: EdgeInsets.all(10.sp),
           child: Column(
-            spacing: 12.sp,
+            spacing: 6.sp,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'اقرأ وبدِّل',
+                    'ReadAndChange'.tr(),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -65,7 +66,7 @@ class HomeBanner extends StatelessWidget {
                   displayFullTextOnTap: true,
                   animatedTexts: [
                     TypewriterAnimatedText(
-                      'تمتلك الكثير من الكتب وترغب في عرضها للتبادل أو للبيع؟',
+                      'BannerMsg'.tr(),
                       textAlign: TextAlign.center,
                       textStyle: TextStyle(
                         color: Colors.white,
@@ -100,7 +101,7 @@ class HomeBanner extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15.sp),
                     ),
                     child: Text(
-                      'ابدأ الآن',
+                      'Start now'.tr(),
                       style: TextStyle(
                         color: kMainColor,
                         fontSize: 14.sp,

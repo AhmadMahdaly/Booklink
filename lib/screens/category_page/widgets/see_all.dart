@@ -2,6 +2,7 @@ import 'package:biblio/screens/category_page/category_page.dart';
 import 'package:biblio/screens/category_page/widgets/category_item.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -56,7 +57,7 @@ class _CategorySeeAllState extends State<CategorySeeAll> {
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: Text(
-          'فئات الكتب',
+          'Book categories'.tr(),
           style: TextStyle(
             color: kTextColor,
             fontSize: 16.sp,

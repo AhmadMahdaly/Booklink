@@ -1,6 +1,6 @@
 name: biblio
 description: "Platform for exchanging and selling books."
-version: 1.0.9+10
+version: 1.0.11+12
 
 environment:
   sdk: ^3.6.0
@@ -63,7 +63,7 @@ flutter:
     - shorebird.yaml
 
   fonts:
-    - family: Avenir Arabic
+    - family: Avenir
       fonts:
         - asset: assets/fonts/Avenir-Regular.otf
         - asset: assets/fonts/Avenir-Medium.otf
@@ -74,7 +74,11 @@ flutter:
         - asset: assets/fonts/Nunito-Regular.ttf
         - asset: assets/fonts/Nunito-Light.ttf
           weight: 200
-  
+
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo-Regular.ttf
+
 icons_launcher:
   image_path: "assets/icons/icon app.png"
   platforms:

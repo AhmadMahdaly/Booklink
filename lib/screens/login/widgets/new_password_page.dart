@@ -1,9 +1,10 @@
 import 'package:biblio/screens/login/login_screen.dart';
+import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/custom_button.dart';
 import 'package:biblio/utils/components/custom_textformfield.dart';
 import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -50,7 +51,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     width: 115.sp,
                   ),
                   Text(
-                    'تغيير كلمة المرور',
+                    'Change password'.tr(),
                     style: TextStyle(
                       color: kMainColor,
                       fontSize: 20.sp,
@@ -58,7 +59,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     ),
                   ),
                   Text(
-                    'من فضلك أدخل كلمة المرور الجديدة',
+                    'Change password Msg'.tr(),
                     style: TextStyle(
                       color: kTextShadowColor,
                       fontSize: 14.sp,
@@ -71,7 +72,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                   Row(
                     children: [
                       Text(
-                        'كلمة المرور',
+                        'Password'.tr(),
                         style: TextStyle(
                           color: kHeader1Color,
                           fontSize: 14.sp,
@@ -84,12 +85,12 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     controller: _controller,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'هذا الحقل مطلوب';
+                        return 'Required data'.tr();
                       }
                       return null;
                     },
                     obscureText: isShowPassword,
-                    text: 'كلمة المرور',
+                    text: 'Password'.tr(),
                     icon: IconButton(
                       onPressed: () => setState(() {
                         isShowPassword = !isShowPassword;
@@ -112,7 +113,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                   Row(
                     children: [
                       Text(
-                        'تأكيد كلمة المرور',
+                        'Confirm password'.tr(),
                         style: TextStyle(
                           color: kHeader1Color,
                           fontSize: 14.sp,
@@ -124,15 +125,15 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                   CustomTextformfield(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'هذا الحقل مطلوب';
+                        return 'Required data';
                       }
                       if (value != _controller.text) {
-                        return 'كلمة المرور غير مطابقة';
+                        return 'Password does not match'.tr();
                       }
                       return null;
                     },
                     obscureText: isShowPassword,
-                    text: 'كلمة المرور',
+                    text: 'Password'.tr(),
                     icon: IconButton(
                       onPressed: () => setState(() {
                         isShowPassword = !isShowPassword;
@@ -155,7 +156,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
 
                   /// Login Button
                   CustomButton(
-                    text: 'حفظ كلمة المرور',
+                    text: 'Save'.tr(),
                     onTap: () async {
                       if (formKey.currentState!.validate()) {
                         try {
@@ -170,10 +171,8 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                             LoginScreen.id,
                             (route) => false,
                           );
-                        } on AuthException catch (authError) {
-                          showSnackBar(context, authError.message);
                         } catch (e) {
-                          showSnackBar(context, e.toString());
+                          errorMessage(e.toString(), context);
                         }
                       }
                     },

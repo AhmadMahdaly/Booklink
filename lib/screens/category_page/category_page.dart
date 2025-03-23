@@ -4,6 +4,7 @@ import 'package:biblio/screens/book/book_item/book_item.dart';
 import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -80,7 +81,7 @@ class _CategoryPageState extends State<CategoryPage> {
                             height: 80.sp,
                           ),
                           Text(
-                            'هذه الفئة فارغة! لم تتم إضافة كتب بعد',
+                            'EmptyCategory'.tr(),
                             style: TextStyle(
                               color: kTextColor,
                               fontSize: 16.sp,

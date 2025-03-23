@@ -12,6 +12,7 @@ import 'package:biblio/utils/components/custom_textformfield.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,7 +46,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         if (state is AppSuccessState) {
           showSnackBar(
             context,
-            'تم التسجيل',
+            'Registered'.tr(),
           );
 
           Navigator.pushReplacement(
@@ -89,7 +90,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               width: 105.sp,
                             ),
                             Text(
-                              'إنشاء حساب جديد',
+                              'CreateNewAccount'.tr(),
                               style: TextStyle(
                                 color: kMainColor,
                                 fontSize: 20.sp,
@@ -102,7 +103,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             Row(
                               children: [
                                 Text(
-                                  'الاسم',
+                                  'Name'.tr(),
                                   style: TextStyle(
                                     color: kHeader1Color,
                                     fontSize: 14.sp,
@@ -115,11 +116,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               keyboardType: TextInputType.name,
                               textInputAction: TextInputAction.next,
                               autofillHints: const [AutofillHints.name],
-                              text: 'الاسم',
+                              text: 'Name'.tr(),
                               controller: _userNameController,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return 'هذا الحقل مطلوب';
+                                  return 'Required data'.tr();
                                 }
                                 return null;
                               },
@@ -129,7 +130,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             Row(
                               children: [
                                 Text(
-                                  'البريد الإلكتروني',
+                                  'Email'.tr(),
                                   style: TextStyle(
                                     color: kHeader1Color,
                                     fontSize: 14.sp,
@@ -143,12 +144,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               textInputAction: TextInputAction.next,
                               autofillHints: const [AutofillHints.email],
                               controller: _emailController,
-                              text: 'البريد الإلكتروني',
+                              text: 'Email'.tr(),
                               validator: (value) {
                                 if (!AppRegex.isEmailValid(
                                   _emailController.text,
                                 )) {
-                                  return 'هذا البريد الإلكتروني غير صالح';
+                                  return 'WrongEmail'.tr();
                                 }
                                 return null;
                               },
@@ -158,7 +159,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             Row(
                               children: [
                                 Text(
-                                  'كلمة المرور',
+                                  'Password'.tr(),
                                   style: TextStyle(
                                     color: kHeader1Color,
                                     fontSize: 14.sp,
@@ -176,11 +177,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 if (value == null ||
                                     value.isEmpty ||
                                     value.length < 6) {
-                                  return 'كلمة المرور غير صالحة';
+                                  return 'WrongPassword'.tr();
                                 }
                                 return null;
                               },
-                              text: 'كلمة المرور',
+                              text: 'Password'.tr(),
                               icon: IconButton(
                                 onPressed: () => setState(
                                   () {
@@ -225,9 +226,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         ),
                                       );
                                     },
-                                    child: const Text(
-                                      'أوافق على الشروط والأحكام',
-                                      style: TextStyle(
+                                    child: Text(
+                                      'AgreeTerms'.tr(),
+                                      style: const TextStyle(
                                         decoration: TextDecoration.underline,
                                         decorationColor: kMainColor,
                                         color: kMainColor,
@@ -245,7 +246,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 /// Sign up Button
                                 CustomButton(
                                   isActive: enabled,
-                                  text: 'إنشاء الحساب',
+                                  text: 'CreateAccount'.tr(),
                                   padding: 16,
                                   onTap: _isAgreed
                                       ? () async {
@@ -268,7 +269,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'أو قم بالتسجيل عبر',
+                                      'Or register via'.tr(),
                                       style: TextStyle(
                                         color: kHeader1Color,
                                         fontSize: 16.sp,
@@ -310,7 +311,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     TextSpan(
                                       children: [
                                         TextSpan(
-                                          text: 'لديك حساب بالفعل؟ ',
+                                          text: '${'HaveAccount?'.tr()} ',
                                           style: TextStyle(
                                             color: kHeader1Color,
                                             fontSize: 16.sp,
@@ -318,7 +319,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                           ),
                                         ),
                                         TextSpan(
-                                          text: 'تسجيل الدخول',
+                                          text: 'Login'.tr(),
                                           style: TextStyle(
                                             color: const Color(0xFF3E5879),
                                             fontSize: 16.sp,

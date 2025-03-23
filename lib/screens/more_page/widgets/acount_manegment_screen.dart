@@ -5,6 +5,7 @@ import 'package:biblio/screens/more_page/widgets/favorite_location_to_meet.dart'
 import 'package:biblio/screens/select_your_location_screen.dart';
 import 'package:biblio/utils/components/leading_icon.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +35,7 @@ class _AcountManegmentScreenState extends State<AcountManegmentScreen> {
         leading: const LeadingIcon(),
         centerTitle: true,
         title: Text(
-          'إدارة الحساب',
+          'Account Management'.tr(),
           style: TextStyle(
             color: kTextColor,
             fontSize: 16.sp,
@@ -48,7 +49,7 @@ class _AcountManegmentScreenState extends State<AcountManegmentScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CategoryForMore(
-            text: 'تعديل البيانات الشخصية',
+            text: 'Edit personal data'.tr(),
             icon: Icons.mode_edit_outline_outlined,
             onTap: () {
               Navigator.push(
@@ -62,7 +63,7 @@ class _AcountManegmentScreenState extends State<AcountManegmentScreen> {
             },
           ),
           CategoryForMore(
-            text: 'تغيير الموقع الجغرافي للمشاركة',
+            text: 'Change the geographic location to share'.tr(),
             icon: Icons.location_searching_rounded,
             onTap: () {
               Navigator.push(
@@ -76,7 +77,7 @@ class _AcountManegmentScreenState extends State<AcountManegmentScreen> {
             },
           ),
           CategoryForMore(
-            text: 'أماكن اللقاء المفضلة',
+            text: 'PreferredMeetingPlaces'.tr(),
             icon: Icons.location_on_outlined,
             onTap: () {
               Navigator.push(

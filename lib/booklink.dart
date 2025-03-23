@@ -65,7 +65,7 @@ class Booklink extends StatelessWidget {
               textTheme: Theme.of(
                 context,
               ).textTheme.apply(
-                    fontFamily: 'Avenir Arabic',
+                    fontFamily: 'Avenir',
                   ),
             ),
 

@@ -6,6 +6,7 @@ import 'package:biblio/utils/components/custom_button.dart';
 import 'package:biblio/utils/components/custom_textformfield.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,7 +55,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                             width: 115.sp,
                           ),
                           Text(
-                            'هل نسيت كلمة المرور؟',
+                            'ForgotPassword?'.tr(),
                             style: TextStyle(
                               color: kMainColor,
                               fontSize: 20.sp,
@@ -62,7 +63,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                             ),
                           ),
                           Text(
-                            'من فضلك أدخل البريد الإلكتروني الخاص بحسابك',
+                            'EnterYourEmail'.tr(),
                             style: TextStyle(
                               color: kTextShadowColor,
                               fontSize: 14.sp,
@@ -75,7 +76,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                           Row(
                             children: [
                               Text(
-                                'البريد الإلكتروني',
+                                'Email'.tr(),
                                 style: TextStyle(
                                   color: kHeader1Color,
                                   fontSize: 14.sp,
@@ -88,7 +89,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                             keyboardType: TextInputType.emailAddress,
                             autofillHints: const [AutofillHints.email],
                             controller: _emailController,
-                            text: 'البريد الإلكتروني',
+                            text: 'Email'.tr(),
                           ),
                           const H(h: 10),
 
@@ -99,7 +100,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                               final email = _emailController.text;
                               cubit.requestOtp(email, context);
                             },
-                            text: 'إرسال الرمز',
+                            text: 'Send code'.tr(),
                           ),
                         ],
                       ),

@@ -2,6 +2,7 @@ import 'package:biblio/cubit/messages/fetch_user_conversations_cubit.dart';
 import 'package:biblio/screens/chat/incoming_requests.dart';
 import 'package:biblio/screens/chat/submitted_requests.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -59,12 +60,12 @@ class _OrderPageState extends State<OrderPage>
               unselectedLabelColor: kTextColor,
               labelStyle: TextStyle(
                 fontSize: 16.sp,
-                fontFamily: 'Avenir Arabic',
+                fontFamily: 'Avenir',
                 fontWeight: FontWeight.w700,
               ),
               unselectedLabelStyle: TextStyle(
                 fontSize: 16.sp,
-                fontFamily: 'Avenir Arabic',
+                fontFamily: 'Avenir',
                 fontWeight: FontWeight.w500,
               ),
               indicatorAnimation: TabIndicatorAnimation.elastic,
@@ -78,15 +79,15 @@ class _OrderPageState extends State<OrderPage>
               indicatorSize: TabBarIndicatorSize.tab,
               tabAlignment: TabAlignment.fill,
               controller: _tabController,
-              tabs: const [
+              tabs: [
                 Tab(
                   child: Text(
-                    'الطلبات الواردة',
+                    'Incoming requests'.tr(),
                   ),
                 ),
                 Tab(
                   child: Text(
-                    'الطلبات المرسلة',
+                    'Submitted requests'.tr(),
                   ),
                 ),
               ],

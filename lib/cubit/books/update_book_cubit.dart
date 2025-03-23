@@ -135,11 +135,12 @@ class UpdateBookCubit extends Cubit<AppStates> {
   Future<void> fetchCategories() async {
     final response = await supabase.from('categories').select('name');
     categories = response.map((e) => e['name'] as String).toList();
+    emit(AppSuccessState());
   }
 
   Future<void> fetchOrderType() async {
     final response = await supabase.from('offer_type').select('type');
-
+    emit(AppSuccessState());
     offerTypes = response.map((e) => e['type'] as String).toList();
   }
 }

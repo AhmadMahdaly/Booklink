@@ -5,6 +5,7 @@ import 'package:biblio/screens/onboard/onboard_screen.dart';
 import 'package:biblio/utils/components/border_radius.dart';
 import 'package:biblio/utils/components/custom_button.dart';
 import 'package:biblio/utils/components/height.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,7 +31,7 @@ class MoreWithoutLogin extends StatelessWidget {
               borderRadius: borderRadius(),
             ),
             child: CustomBorderBotton(
-              text: 'سجل الدخول',
+              text: 'Login'.tr(),
               onTap: () {
                 Navigator.pushReplacementNamed(context, OnboardScreen.id);
               },
@@ -38,7 +39,7 @@ class MoreWithoutLogin extends StatelessWidget {
           ),
 
           CategoryForMore(
-            text: 'الأسئلة الشائعة',
+            text: 'FAQ'.tr(),
             icon: Icons.live_help_outlined,
             onTap: () {
               Navigator.push(
@@ -55,7 +56,7 @@ class MoreWithoutLogin extends StatelessWidget {
           const H(h: 12),
 
           CategoryForMore(
-            text: 'الشروط والأحكام',
+            text: 'TermsAndConditions'.tr(),
             icon: Icons.text_snippet_outlined,
             onTap: () {
               Navigator.push(

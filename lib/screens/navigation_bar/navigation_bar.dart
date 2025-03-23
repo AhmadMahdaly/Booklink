@@ -9,6 +9,7 @@ import 'package:biblio/screens/home_page/home_page_screen.dart';
 import 'package:biblio/screens/more_page/more_page.dart';
 import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,7 +58,7 @@ class NavigationBarAppState extends State<NavigationBarApp> {
           builder: (context) => AlertDialog(
             backgroundColor: kLightBlue,
             title: Text(
-              'تأكيد',
+              'Confirm'.tr(),
               style: TextStyle(
                 color: kMainColor,
                 fontSize: 16.sp,
@@ -65,7 +66,7 @@ class NavigationBarAppState extends State<NavigationBarApp> {
               ),
             ),
             content: Text(
-              'هل تريد الخروج من التطبيق؟',
+              'ExitMsg'.tr(),
               style: TextStyle(
                 color: kMainColor,
                 fontSize: 15.sp,
@@ -78,7 +79,7 @@ class NavigationBarAppState extends State<NavigationBarApp> {
                   false,
                 ),
                 child: Text(
-                  'لا',
+                  'No'.tr(),
                   style: TextStyle(
                     color: kMainColor,
                     fontSize: 12.sp,
@@ -93,7 +94,7 @@ class NavigationBarAppState extends State<NavigationBarApp> {
                   true,
                 ),
                 child: Text(
-                  'نعم',
+                  'Yes'.tr(),
                   style: TextStyle(
                     color: kMainColor,
                     fontSize: 12.sp,
@@ -168,7 +169,7 @@ class NavigationBarAppState extends State<NavigationBarApp> {
                             BlendMode.srcIn,
                           ),
                         ),
-                        label: 'اكتشف',
+                        label: 'Explore'.tr(),
                       ),
 
                       /// Order button
@@ -212,7 +213,7 @@ class NavigationBarAppState extends State<NavigationBarApp> {
                               ),
                           ],
                         ),
-                        label: 'الطلبات',
+                        label: 'Requests'.tr(),
                       ),
 
                       BottomNavigationBarItem(
@@ -231,7 +232,7 @@ class NavigationBarAppState extends State<NavigationBarApp> {
                             BlendMode.srcIn,
                           ),
                         ),
-                        label: 'قائمتي',
+                        label: 'MyList'.tr(),
                       ),
                       BottomNavigationBarItem(
                         icon: SvgPicture.asset(
@@ -242,7 +243,7 @@ class NavigationBarAppState extends State<NavigationBarApp> {
                             BlendMode.srcIn,
                           ),
                         ),
-                        label: 'المزيد',
+                        label: 'More'.tr(),
                       ),
                     ],
                   ),

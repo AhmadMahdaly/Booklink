@@ -14,6 +14,7 @@ import 'package:biblio/utils/components/custom_textformfield.dart';
 import 'package:biblio/utils/components/leading_icon.dart';
 import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -92,7 +93,7 @@ class _PersonalInfoSettingState extends State<PersonalInfoSetting> {
               appBar: AppBar(
                 /// Title
                 title: Text(
-                  'تعديل البيانات الشخصية',
+                  'Edit personal data'.tr(),
                   style: TextStyle(
                     color: kMainColor,
                     fontSize: 14.sp,
@@ -118,7 +119,7 @@ class _PersonalInfoSettingState extends State<PersonalInfoSetting> {
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const TitleFormAddBook(title: 'الصورة الشخصية'),
+                              TitleFormAddBook(title: 'ProfilePicture'.tr()),
                               InkWell(
                                 onTap: pickImage,
                                 child: Container(
@@ -153,14 +154,14 @@ class _PersonalInfoSettingState extends State<PersonalInfoSetting> {
                           ),
 
                           /// Name
-                          const TitleFormAddBook(title: 'الاسم'),
+                          TitleFormAddBook(title: 'Name'.tr()),
                           CustomTextformfield(
                             controller: _nameController,
                             text: _nameController.text,
                           ),
 
                           /// Email
-                          const TitleFormAddBook(title: 'البريد الإلكتروني'),
+                          TitleFormAddBook(title: 'Email'.tr()),
                           CustomTextformfield(
                             enabled: false,
                             controller: _emailController,
@@ -168,7 +169,7 @@ class _PersonalInfoSettingState extends State<PersonalInfoSetting> {
                           ),
 
                           /// Password
-                          const TitleFormAddBook(title: 'كلمة المرور'),
+                          TitleFormAddBook(title: 'Password'.tr()),
                           CustomTextformfield(
                             controller: _passwordController,
                             icon: IconButton(
@@ -208,7 +209,7 @@ class _PersonalInfoSettingState extends State<PersonalInfoSetting> {
                       padding: EdgeInsets.symmetric(vertical: 24.sp),
                       child: CustomButton(
                         padding: 16,
-                        text: 'حفظ',
+                        text: 'Save'.tr(),
                         onTap: () async {
                           if (userImage == null) {
                           } else {
@@ -221,7 +222,7 @@ class _PersonalInfoSettingState extends State<PersonalInfoSetting> {
                             inEmail: _emailController.text,
                             inPassword: _passwordController.text,
                           );
-                          showSnackBar(context, 'تم الحفظ');
+                          showSnackBar(context, 'Saved'.tr());
 
                           await Navigator.pushNamedAndRemoveUntil(
                             context,

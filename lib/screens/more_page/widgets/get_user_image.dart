@@ -36,7 +36,7 @@ class GetUserImage extends StatelessWidget {
                     );
                   }
                   if (snapshot.hasError) {
-                    return Text('حدث خطأ: ${snapshot.error}');
+                    return Text(snapshot.error.toString());
                   }
                   final photoUrl = snapshot.data;
                   if (photoUrl == null || photoUrl.isEmpty) {

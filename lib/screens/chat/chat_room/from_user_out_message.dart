@@ -50,7 +50,7 @@ class FromUserOutMessage extends StatelessWidget {
           ),
           children: [
             Text(
-              getTimeDifference(timestamp),
+              getTimeDifference(timestamp, context),
               style: TextStyle(
                 color: kTextColor,
                 fontSize: 11.sp,

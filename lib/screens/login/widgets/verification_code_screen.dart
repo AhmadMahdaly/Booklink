@@ -4,6 +4,7 @@ import 'package:biblio/cubit/user/request_otp_cubit.dart';
 import 'package:biblio/screens/login/widgets/custom_verification_code.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -75,7 +76,7 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
                   width: 115.sp,
                 ),
                 Text(
-                  'رمز التحقق',
+                  'OTP code'.tr(),
                   style: TextStyle(
                     color: kMainColor,
                     fontSize: 20.sp,
@@ -83,7 +84,7 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
                   ),
                 ),
                 Text(
-                  'من فضلك أدخل رمز التحقق المكون من ستة أرقام',
+                  'OTP Msg'.tr(),
                   style: TextStyle(
                     color: kTextShadowColor,
                     fontSize: 14.sp,
@@ -100,7 +101,7 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
                 Row(
                   children: [
                     Text(
-                      'لم يصلك الرمز؟',
+                      "Didn't receive the code?".tr(),
                       style: TextStyle(
                         color: kHeader1Color,
                         fontSize: 14.sp,
@@ -118,7 +119,7 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
                             },
                       child: isButtonDisabled
                           ? Text(
-                              '⏳ انتظر $timeLeft ثانية',
+                              '⏳ ${'Wait'.tr()} $timeLeft ${'second'.tr()}',
                               style: TextStyle(
                                 color: kMainColor,
                                 fontSize: 14.sp,
@@ -126,7 +127,7 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
                               ),
                             )
                           : Text(
-                              ' إرسال مرة أخرى',
+                              ' ${'Send again'.tr()}',
                               style: TextStyle(
                                 color: kMainColor,
                                 fontSize: 14.sp,

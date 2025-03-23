@@ -5,6 +5,7 @@ import 'package:biblio/cubit/search/search_cubit.dart';
 import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/custom_textformfield.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,7 +44,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
           cursorWidth: 0.5.sp,
           cursorColor: kMainColor,
           decoration: InputDecoration(
-            hintText: 'ابحث باسم الكتاب أو المؤلف',
+            hintText: 'SearchBy'.tr(),
             hintStyle: TextStyle(
               color: const Color(0xFF969697),
               fontSize: 12.sp,

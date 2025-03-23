@@ -10,6 +10,7 @@ import 'package:biblio/utils/components/custom_button.dart';
 import 'package:biblio/utils/components/custom_textformfield.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -69,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 width: 115.sp,
                               ),
                               Text(
-                                'تسجيل الدخول',
+                                'Login'.tr(),
                                 style: TextStyle(
                                   color: kMainColor,
                                   fontSize: 20.sp,
@@ -82,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Row(
                                 children: [
                                   Text(
-                                    'البريد الإلكتروني',
+                                    'Email'.tr(),
                                     style: TextStyle(
                                       color: kHeader1Color,
                                       fontSize: 14.sp,
@@ -93,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               CustomTextformfield(
                                 controller: _emailController,
-                                text: 'البريد الإلكتروني',
+                                text: 'Email'.tr(),
                                 keyboardType: TextInputType.emailAddress,
                                 textInputAction: TextInputAction.next,
                                 autofillHints: const [AutofillHints.email],
@@ -101,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   if (!AppRegex.isEmailValid(
                                     _emailController.text,
                                   )) {
-                                    return 'هذا البريد الإلكتروني غير صالح';
+                                    return 'WrongEmail'.tr();
                                   }
                                   return null;
                                 },
@@ -111,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Row(
                                 children: [
                                   Text(
-                                    'كلمة المرور',
+                                    'Password'.tr(),
                                     style: TextStyle(
                                       color: kHeader1Color,
                                       fontSize: 14.sp,
@@ -129,11 +130,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                   if (value == null ||
                                       value.isEmpty ||
                                       value.length < 6) {
-                                    return 'كلمة المرور غير صالحة';
+                                    return 'WrongPassword'.tr();
                                   }
                                   return null;
                                 },
-                                text: 'كلمة المرور',
+                                text: 'Password',
 
                                 /// Check show password
                                 icon: IconButton(
@@ -170,7 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       );
                                     },
                                     child: Text(
-                                      'نسيت كلمة المرور؟',
+                                      'ForgotPassword'.tr(),
                                       style: TextStyle(
                                         color: const Color(0xFF3E5879),
                                         fontSize: 14.sp,
@@ -186,7 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                               /// Login Button
                               CustomButton(
-                                text: 'تسجيل الدخول',
+                                text: 'Login'.tr(),
                                 onTap: () async {
                                   if (formKey.currentState!.validate()) {
                                     await cubit.login(
@@ -201,7 +202,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'أو قم بتسجيل الدخول عبر',
+                                    'Or log in via'.tr(),
                                     style: TextStyle(
                                       color: const Color(0xFF3E5879),
                                       fontSize: 14.sp,
@@ -242,7 +243,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   TextSpan(
                                     children: [
                                       TextSpan(
-                                        text: 'ليس لديك حساب؟ ',
+                                        text: '${"Haven'tAccount?".tr()} ',
                                         style: TextStyle(
                                           color: kHeader1Color,
                                           fontSize: 16.sp,
@@ -250,7 +251,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ),
                                       ),
                                       TextSpan(
-                                        text: 'أنشىء حسابك الآن',
+                                        text: 'Create your account now'.tr(),
                                         style: TextStyle(
                                           color: const Color(0xFF3E5879),
                                           fontSize: 16.sp,

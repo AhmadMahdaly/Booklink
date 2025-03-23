@@ -30,7 +30,7 @@ class BookImage extends StatelessWidget {
             borderRadius: BorderRadius.circular(320),
           ),
           child: Icon(
-            Icons.archive_outlined,
+            Icons.blur_on_outlined,
             size: 24.sp,
             color: kMainColor,
           ),

@@ -27,10 +27,6 @@ class FavoriteButtonCubit extends Cubit<AppStates> {
         }
       }
       emit(AppSuccessState());
-    } on PostgrestException catch (e) {
-      if (e.message ==
-          'JSON object requested, multiple (or no) rows returned') {}
-      emit(AppErrorState(e.message));
     } catch (e) {
       emit(AppErrorState(e.toString()));
     }

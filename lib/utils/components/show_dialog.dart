@@ -1,4 +1,5 @@
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,7 +12,7 @@ Future<bool?> showCustomDialog(
         builder: (context) => AlertDialog(
           backgroundColor: kLightBlue,
           title: Text(
-            'تأكيد',
+            'Confirm'.tr(),
             style: TextStyle(
               color: kMainColor,
               fontSize: 16.sp,
@@ -32,7 +33,7 @@ Future<bool?> showCustomDialog(
                 false,
               ),
               child: Text(
-                'لا',
+                'No'.tr(),
                 style: TextStyle(
                   color: kMainColor,
                   fontSize: 12.sp,
@@ -47,7 +48,7 @@ Future<bool?> showCustomDialog(
                 true,
               ),
               child: Text(
-                'نعم',
+                'Yes'.tr(),
                 style: TextStyle(
                   color: kMainColor,
                   fontSize: 12.sp,

@@ -6,6 +6,7 @@ import 'package:biblio/screens/more_page/widgets/personal_card.dart';
 import 'package:biblio/screens/more_page/widgets/sign_out_button.dart';
 import 'package:biblio/screens/more_page/widgets/terms_and_conditions_page.dart';
 import 'package:biblio/utils/components/height.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MoreWithLogin extends StatelessWidget {
@@ -22,7 +23,7 @@ class MoreWithLogin extends StatelessWidget {
           const PersonalCard(),
           const H(h: 12),
           CategoryForMore(
-            text: 'إدارة الحساب',
+            text: 'Account Management'.tr(),
             icon: Icons.mode_edit_outline_outlined,
             onTap: () {
               Navigator.push(
@@ -37,7 +38,7 @@ class MoreWithLogin extends StatelessWidget {
           ),
           const H(h: 12),
           CategoryForMore(
-            text: 'الأسئلة الشائعة',
+            text: 'FAQ'.tr(),
             icon: Icons.help_outline_sharp,
             onTap: () {
               Navigator.push(
@@ -52,7 +53,7 @@ class MoreWithLogin extends StatelessWidget {
           ),
           const H(h: 12),
           CategoryForMore(
-            text: 'الشروط والأحكام',
+            text: 'TermsAndConditions'.tr(),
             icon: Icons.text_snippet_outlined,
             onTap: () {
               Navigator.push(
@@ -67,7 +68,7 @@ class MoreWithLogin extends StatelessWidget {
           ),
           const H(h: 12),
           CategoryForMore(
-            text: 'الدعم الفني',
+            text: 'Technical support'.tr(),
             icon: Icons.headset_mic_outlined,
             onTap: () {
               Navigator.push(

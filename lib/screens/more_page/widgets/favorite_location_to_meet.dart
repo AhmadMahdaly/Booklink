@@ -9,6 +9,7 @@ import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/components/leading_icon.dart';
 import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,7 +55,7 @@ class _FavoriteLocationToMeetState extends State<FavoriteLocationToMeet> {
           errorMessage(state.message, context);
         }
         if (state is AppSuccessState) {
-          showSnackBar(context, 'تم الحفظ');
+          showSnackBar(context, 'Saved'.tr());
           Navigator.pop(context);
         }
       },
@@ -94,7 +95,7 @@ class _FavoriteLocationToMeetState extends State<FavoriteLocationToMeet> {
                             /// Header
                             children: [
                               Text(
-                                'حدد أماكن اللقاء المفضلة إليك',
+                                'ChooseMeetingPlaces'.tr(),
                                 style: TextStyle(
                                   color: kMainColor,
                                   fontSize: 16.sp,
@@ -111,7 +112,7 @@ class _FavoriteLocationToMeetState extends State<FavoriteLocationToMeet> {
                           SizedBox(
                             width: 358.sp,
                             child: Text(
-                              'لا تشارك معلومات خاصة (اختياري)',
+                              'Do not share private information'.tr(),
                               style: TextStyle(
                                 color: kTextColor,
                                 fontSize: 14.sp,
@@ -122,13 +123,13 @@ class _FavoriteLocationToMeetState extends State<FavoriteLocationToMeet> {
                           CustomTextformfield(
                             maxLines: 3,
                             controller: _controller,
-                            text: 'أماكن عامة للقاء',
+                            text: 'Public meeting places'.tr(),
                           ),
                           const H(h: 5),
                           SizedBox(
                             width: 360.sp,
                             child: Text(
-                              'أضف لينك للموقع الجغرافي (اختياري)',
+                              'LocationLink'.tr(),
                               style: TextStyle(
                                 color: kTextColor,
                                 fontSize: 14.sp,
@@ -146,7 +147,7 @@ class _FavoriteLocationToMeetState extends State<FavoriteLocationToMeet> {
                 padding: EdgeInsets.symmetric(vertical: 24.sp),
                 child: CustomButton(
                   padding: 16,
-                  text: 'حفظ',
+                  text: 'Save'.tr(),
                   onTap: () async {
                     await updateCubit.updateUserFavoriteLocation(
                       userId: Supabase.instance.client.auth.currentUser!.id,

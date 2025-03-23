@@ -6,6 +6,7 @@ import 'package:biblio/screens/home_page/widgets/sign_to_see_new_books_widget.da
 import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -55,7 +56,7 @@ class _NewBooksGridViewState extends State<NewBooksGridView> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'أحدث الكتب',
+                  'Latest books'.tr(),
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16.sp,

@@ -17,6 +17,7 @@ import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/components/leading_icon.dart';
 import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -88,7 +89,6 @@ class _AddBookState extends State<AddBook> {
   //   final text = recognizedText.text;
   //   return text;
   // }
-
   // late String s = '';
 
   @override
@@ -148,7 +148,7 @@ class _AddBookState extends State<AddBook> {
               toolbarHeight: 80.sp,
               leading: const LeadingIcon(),
               title: Text(
-                'إضافة كتاب جديد',
+                'AddBook'.tr(),
                 style: TextStyle(
                   color: kMainColor,
                   fontSize: 16.sp,
@@ -165,7 +165,7 @@ class _AddBookState extends State<AddBook> {
                       child: ListView(
                         children: [
                           Text(
-                            'أضف صورتين: لوجه وظهر الكتاب',
+                            'AddTwoImg'.tr(),
                             style: TextStyle(
                               color: kTextColor,
                               fontSize: 14.sp,
@@ -188,31 +188,31 @@ class _AddBookState extends State<AddBook> {
                               ),
                             ],
                           ),
-                          const TitleFormAddBook(
-                            title: 'اسم الكتاب',
+                          TitleFormAddBook(
+                            title: 'Book name'.tr(),
                           ),
                           CustomTextformfield(
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'ادخل البيانات المطلوبة';
+                                return 'Required data'.tr();
                               }
                               return null;
                             },
-                            text: 'مثال: بين القصرين',
+                            text: '${'Example'.tr()}: ${'BookNameExmple'.tr()}',
                             controller: _titleController,
                           ),
-                          const TitleFormAddBook(title: 'اسم الكاتب'),
+                          TitleFormAddBook(title: "Author's name".tr()),
                           CustomTextformfield(
-                            text: 'مثال: نجيب محفوظ',
+                            text: '${'Example'.tr()}: ${'WritterExmple'.tr()}',
                             controller: _authorController,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'ادخل البيانات المطلوبة';
+                                return 'Required data'.tr();
                               }
                               return null;
                             },
                           ),
-                          const TitleFormAddBook(title: 'فئة الكتاب'),
+                          TitleFormAddBook(title: 'Book category'.tr()),
                           BlocConsumer<FetchBookCategoryCubit, AppStates>(
                             listener: (context, state) {
                               if (state is AppErrorState) {
@@ -225,7 +225,7 @@ class _AddBookState extends State<AddBook> {
                               return DropdownButtonFormField<String>(
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
-                                    return 'ادخل البيانات المطلوبة';
+                                    return 'Required data'.tr();
                                   }
                                   return null;
                                 },
@@ -254,7 +254,7 @@ class _AddBookState extends State<AddBook> {
                                   });
                                 },
                                 decoration: InputDecoration(
-                                  hintText: 'اختر فئة الكتاب',
+                                  hintText: 'ChooseCategory'.tr(),
                                   hintStyle: TextStyle(
                                     fontSize: 14.sp,
                                     color: kTextShadowColor,
@@ -273,7 +273,7 @@ class _AddBookState extends State<AddBook> {
                               );
                             },
                           ),
-                          const TitleFormAddBook(title: 'نبذة عن الكتاب'),
+                          TitleFormAddBook(title: 'About the book'.tr()),
                           CustomTextformfield(
                             // icon: GestureDetector(
                             //   onTap: () async {
@@ -293,7 +293,7 @@ class _AddBookState extends State<AddBook> {
                             // ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'ادخل البيانات المطلوبة';
+                                return 'Required data'.tr();
                               }
                               return null;
                             },
@@ -307,18 +307,18 @@ class _AddBookState extends State<AddBook> {
                             ),
                             controller: _descriptionController,
                           ),
-                          const TitleFormAddBook(title: 'حالة الكتاب'),
+                          TitleFormAddBook(title: 'Book condition'.tr()),
                           CustomTextformfield(
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'ادخل البيانات المطلوبة';
+                                return 'Required data'.tr();
                               }
                               return null;
                             },
-                            text: 'مستعمل، جديد، بحالة جيدة...إلخ',
+                            text: 'Used, new, in good condition...etc'.tr(),
                             controller: _conditionController,
                           ),
-                          const TitleFormAddBook(title: 'نوع العرض'),
+                          TitleFormAddBook(title: 'OfferType'.tr()),
                           BlocConsumer<FetchOrderTypeBookCubit, AppStates>(
                             listener: (context, state) {
                               if (state is AppErrorState) {
@@ -331,7 +331,7 @@ class _AddBookState extends State<AddBook> {
                               return DropdownButtonFormField<String>(
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
-                                    return 'ادخل البيانات المطلوبة';
+                                    return 'Required data'.tr();
                                   }
                                   return null;
                                 },
@@ -360,7 +360,7 @@ class _AddBookState extends State<AddBook> {
                                   });
                                 },
                                 decoration: InputDecoration(
-                                  hintText: 'اختر نوع العرض',
+                                  hintText: 'Choose the type of offer'.tr(),
                                   hintStyle: TextStyle(
                                     fontSize: 14.sp,
                                     color: kTextShadowColor,
@@ -382,16 +382,16 @@ class _AddBookState extends State<AddBook> {
                           if (context
                                   .read<FetchOrderTypeBookCubit>()
                                   .selectedOffer ==
-                              'للبيع')
+                              'For sale'.tr())
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                const TitleFormAddBook(title: 'السعر'),
+                                TitleFormAddBook(title: 'Price'.tr()),
                                 CustomTextformfield(
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'ادخل البيانات المطلوبة';
+                                      return 'Required data'.tr();
                                     }
                                     return null;
                                   },
@@ -399,7 +399,7 @@ class _AddBookState extends State<AddBook> {
                                     FilteringTextInputFormatter.digitsOnly,
                                   ],
                                   keyboardType: TextInputType.number,
-                                  text: 'مثال: 10',
+                                  text: '${'Example'.tr()}: 10',
                                   controller: _priceController,
                                 ),
                               ],
@@ -417,7 +417,7 @@ class _AddBookState extends State<AddBook> {
                     padding: EdgeInsets.all(16.sp),
                     child: user == null
                         ? CustomBorderBotton(
-                            text: 'تسجيل الدخول',
+                            text: 'Login'.tr(),
                             onTap: () {
                               Navigator.pushReplacementNamed(
                                 context,
@@ -427,7 +427,7 @@ class _AddBookState extends State<AddBook> {
                           )
                         : isActive
                             ? CustomButton(
-                                text: 'إضافة الكتاب',
+                                text: 'Add the book'.tr(),
                                 onTap: () async {
                                   if (formKey.currentState!.validate()) {
                                     try {
@@ -445,15 +445,15 @@ class _AddBookState extends State<AddBook> {
                                     } catch (e) {
                                       showSnackBar(
                                         context,
-                                        'حدث خطأ أثناء رفع الكتاب، يمكنك التواصل مع الدهم الفني.',
+                                        'AddBookError'.tr(),
                                       );
                                     }
                                   }
                                 },
                               )
-                            : const CustomButton(
+                            : CustomButton(
                                 isActive: false,
-                                text: 'إضافة الكتاب',
+                                text: 'Add the book'.tr(),
                               ),
                   ),
           );

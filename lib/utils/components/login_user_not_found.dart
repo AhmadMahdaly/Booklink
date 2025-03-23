@@ -1,5 +1,6 @@
 import 'package:biblio/screens/onboard/onboard_screen.dart';
 import 'package:biblio/utils/components/custom_button.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class LoginUserNotFound extends StatelessWidget {
@@ -12,7 +13,7 @@ class LoginUserNotFound extends StatelessWidget {
     return Center(
       child: CustomBorderBotton(
         padding: 24,
-        text: 'تسجيل الدخول',
+        text: 'Login'.tr(),
         onTap: () {
           Navigator.pushReplacementNamed(
             context,

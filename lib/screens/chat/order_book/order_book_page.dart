@@ -9,6 +9,7 @@ import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/leading_icon.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -90,7 +91,9 @@ class _OrderTheBookPageState extends State<OrderTheBookPage> {
                 return Scaffold(
                   appBar: AppBar(
                     title: Text(
-                      'رسالة لطلب كتاب $titleBook',
+                      context.locale == const Locale('ar')
+                          ? 'رسالة لطلب كتاب $titleBook'
+                          : '$titleBook Book request message',
                       style: TextStyle(
                         color: kMainColor,
                         fontSize: 14.sp,

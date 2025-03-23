@@ -3,6 +3,7 @@ import 'package:biblio/cubit/user/delete_user_cubit.dart';
 import 'package:biblio/screens/onboard/onboard_screen.dart';
 import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/show_snackbar.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,7 +18,7 @@ class DeleteUser extends StatelessWidget {
         if (state is AppSuccessState) {
           showSnackBar(
             context,
-            'تم حذف الحساب بنجاح!',
+            'AccountDeletedMsg'.tr(),
           );
 
           /// توجيه المستخدم إلى صفحة البداية
@@ -40,15 +41,13 @@ class DeleteUser extends StatelessWidget {
                 await showDialog<bool>(
                   context: context,
                   builder: (context) => AlertDialog(
-                    title: const Text('تأكيد حذف الحساب'),
-                    content: const Text(
-                      'هل أنت متأكد أنك تريد حذف حسابك؟\n ستختفي كل بياناتك ومعلوماتك بمجرد قبولك بحذف الحساب.',
-                    ),
+                    title: Text('Confirm account deletion'.tr()),
+                    content: Text('AccountDeletedMsg1'.tr()),
                     actions: [
                       ///
                       TextButton(
                         onPressed: () => Navigator.pop(context),
-                        child: const Text('إلغاء'),
+                        child: Text('Cancel'.tr()),
                       ),
 
                       ///
@@ -56,14 +55,14 @@ class DeleteUser extends StatelessWidget {
                         onPressed: () async {
                           await cubit.deleteAccount();
                         },
-                        child: const Text('حذف الحساب'),
+                        child: Text('DeleteAccount'.tr()),
                       ),
                     ],
                   ),
                 );
               },
               child: Text(
-                'حذف الحساب',
+                'DeleteAccount'.tr(),
                 style: TextStyle(
                   color: const Color(0xFFEA1C25),
                   fontSize: 16.sp,

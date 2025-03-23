@@ -2,6 +2,7 @@
 
 import 'package:biblio/utils/components/leading_icon.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,16 +12,16 @@ class TermsAndConditionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final terms = <String>[
-      '1. **قبول الشروط:** باستخدام تطبيق Booklink، فإنك توافق على الالتزام بجميع الشروط والأحكام المذكورة هنا.',
-      '2. **استخدام التطبيق:** يجب استخدام التطبيق فقط للأغراض القانونية المتعلقة بتبادل الكتب وإعارتها.',
-      '3. **حساب المستخدم:** المستخدم مسؤول عن الحفاظ على سرية بيانات تسجيل الدخول الخاصة به، ويجب الإبلاغ عن أي نشاط غير مصرح به.',
-      '4. **محتوى المستخدم:** جميع المعلومات والصور المرفوعة بواسطة المستخدمين هي مسؤوليتهم الشخصية، ويجب ألا تنتهك حقوق الملكية الفكرية أو القوانين.',
-      '5. **التبادل والإعارة:** التطبيق يسهل التفاعل بين المستخدمين ولكنه لا يتحمل أي مسؤولية قانونية عن التبادلات أو الإعارات.',
-      '6. **الرسوم والخدمات الإضافية:** لا يحتوي التطبيق على خدمات مدفوعة، وسيتم توضيح الرسوم بوضوح قبل فرضها.',
-      '7. **إنهاء الحساب:** يحتفظ التطبيق بالحق في تعليق أو إنهاء حساب أي مستخدم ينتهك هذه الشروط.',
-      '8. **التحديثات:** قد يتم تعديل هذه الشروط من وقت لآخر، ويعتبر استمرار استخدامك للتطبيق موافقة على التعديلات.',
-      '9. **الدعم الفني:** يتوفر فريق الدعم لمساعدتك في حال واجهت أي مشاكل في استخدام التطبيق.',
-      '10. **إخلاء المسؤولية:** التطبيق غير مسؤول عن أي خسائر أو أضرار تنشأ عن استخدامه.',
+      'Term1',
+      'Term2',
+      'Term3',
+      'Term4',
+      'Term5',
+      'Term6',
+      'Term7',
+      'Term8',
+      'Term9',
+      'Term10',
     ];
 
     return Scaffold(
@@ -28,7 +29,7 @@ class TermsAndConditionsPage extends StatelessWidget {
         centerTitle: true,
         leading: const LeadingIcon(),
         title: Text(
-          'الشروط والأحكام',
+          'TermsAndConditions'.tr(),
           style: TextStyle(
             color: kTextColor,
             fontSize: 16.sp,

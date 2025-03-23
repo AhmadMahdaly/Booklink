@@ -5,10 +5,10 @@ import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/custom_textformfield.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class HelpChat extends StatefulWidget {
@@ -54,16 +54,28 @@ class _HelpChatState extends State<HelpChat> {
 
     if (difference.inHours == 0) {
       // اليوم
-      return 'اليوم - ${DateFormat('hh:mm a', 'ar').format(dateTime)}';
+      if (context.locale == const Locale('ar')) {
+        return 'اليوم - ${DateFormat('hh:mm a', 'ar').format(dateTime)}';
+      } else {
+        return 'Today - ${DateFormat('hh:mm a', 'en').format(dateTime)}';
+      }
       // } else if (difference.inHours == 22) {
       //   // أمس
       //   return "أمس - ${DateFormat('hh:mm a', 'ar').format(dateTime)}";
     } else if (difference.inDays < 7) {
       // أيام الأسبوع
-      return "${DateFormat('EEEE', 'ar').format(dateTime)} - ${DateFormat('hh:mm a', 'ar').format(dateTime)}";
+      if (context.locale == const Locale('ar')) {
+        return "${DateFormat('EEEE', 'ar').format(dateTime)} - ${DateFormat('hh:mm a', 'ar').format(dateTime)}";
+      } else {
+        return "${DateFormat('EEEE', 'en').format(dateTime)} - ${DateFormat('hh:mm a', 'en').format(dateTime)}";
+      }
     } else {
       // التاريخ الكامل
-      return "${DateFormat('yyyy/MM/dd', 'ar').format(dateTime)} - ${DateFormat('hh:mm a', 'ar').format(dateTime)}";
+      if (context.locale == const Locale('ar')) {
+        return "${DateFormat('yyyy/MM/dd', 'ar').format(dateTime)} - ${DateFormat('hh:mm a', 'ar').format(dateTime)}";
+      } else {
+        return "${DateFormat('yyyy/MM/dd', 'en').format(dateTime)} - ${DateFormat('hh:mm a', 'en').format(dateTime)}";
+      }
     }
   }
 
@@ -93,7 +105,7 @@ class _HelpChatState extends State<HelpChat> {
                 backgroundColor: kMainColor,
                 toolbarHeight: 80.sp,
                 title: Text(
-                  'يتم الرد عادة خلال 24 ساعة',
+                  'RespondTime'.tr(),
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 15.sp,
@@ -255,7 +267,7 @@ class _HelpChatState extends State<HelpChat> {
                           color: Colors.red,
                         ),
                       ),
-                      hintText: 'ارسل رسالة ...',
+                      hintText: 'Send a message'.tr(),
                       suffixIcon: IconButton(
                         icon: Icon(
                           Icons.send,

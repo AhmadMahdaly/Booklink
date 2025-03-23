@@ -3,6 +3,7 @@ import 'package:biblio/cubit/auth_cubit/auth_cubit.dart';
 import 'package:biblio/screens/onboard/onboard_screen.dart';
 import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,9 +37,9 @@ class SignOutButton extends StatelessWidget {
                 context: context,
                 builder: (context) => AlertDialog(
                   backgroundColor: kLightBlue,
-                  content: const Text(
-                    'هل تريد تسجيل الخروج؟',
-                    style: TextStyle(
+                  content: Text(
+                    'LogOut?'.tr(),
+                    style: const TextStyle(
                       color: kMainColor,
                       fontWeight: FontWeight.w800,
                     ),
@@ -49,9 +50,9 @@ class SignOutButton extends StatelessWidget {
                       onPressed: () => Navigator.of(context).pop(
                         false,
                       ),
-                      child: const Text(
-                        'إلغاء',
-                        style: TextStyle(
+                      child: Text(
+                        'Cancel'.tr(),
+                        style: const TextStyle(
                           color: kMainColor,
                         ),
                       ),
@@ -67,9 +68,9 @@ class SignOutButton extends StatelessWidget {
                         );
                         await cubit.signOut();
                       },
-                      child: const Text(
-                        'تسجيل الخروج',
-                        style: TextStyle(
+                      child: Text(
+                        'Sign out'.tr(),
+                        style: const TextStyle(
                           color: kMainColor,
                         ),
                       ),
@@ -80,7 +81,7 @@ class SignOutButton extends StatelessWidget {
             } catch (_) {}
           },
           child: Text(
-            'تسجيل الخروج',
+            'Sign out'.tr(),
             style: TextStyle(
               color: const Color(0xFFEA1C25),
               fontSize: 16.sp,

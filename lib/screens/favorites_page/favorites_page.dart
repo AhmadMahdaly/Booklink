@@ -6,6 +6,7 @@ import 'package:biblio/services/error_message.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/login_user_not_found.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -49,7 +50,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
               backgroundColor: kMainColor,
               toolbarHeight: 80.sp,
               title: Text(
-                'قائمة الكتب المفضلة',
+                'Favorite Books List'.tr(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16.sp,

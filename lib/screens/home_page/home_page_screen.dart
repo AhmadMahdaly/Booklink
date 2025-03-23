@@ -11,6 +11,7 @@ import 'package:biblio/screens/search/home_search_textfield.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/components/width.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -61,8 +62,8 @@ class HomePage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 8.sp),
                 child: Row(
                   children: [
-                    const TitleHeaderHome(
-                      text: 'فئات الكتب',
+                    TitleHeaderHome(
+                      text: 'Book categories'.tr(),
                     ),
                     const Spacer(),
                     InkWell(
@@ -77,7 +78,7 @@ class HomePage extends StatelessWidget {
                         );
                       },
                       child: Text(
-                        'عرض الكل',
+                        'View all'.tr(),
                         style: TextStyle(
                           color: const Color(0xFFA4CFC3),
                           fontSize: 13.sp,
@@ -115,7 +116,7 @@ class HomePage extends StatelessWidget {
                   spacing: 10.sp,
                   children: [
                     Text(
-                      'أحدث الكتب',
+                      'Latest books'.tr(),
                       style: TextStyle(
                         color: kMainColor,
                         fontSize: 16.sp,
@@ -139,7 +140,7 @@ class HomePage extends StatelessWidget {
                         );
                       },
                       child: Text(
-                        'عرض الكل',
+                        'View all'.tr(),
                         style: TextStyle(
                           color: const Color(0xFFA4CFC3),
                           fontSize: 13.sp,

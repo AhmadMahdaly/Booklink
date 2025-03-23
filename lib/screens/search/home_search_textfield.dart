@@ -1,5 +1,6 @@
 import 'package:biblio/screens/search/search_screen.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,7 +18,7 @@ class HomeSearchTextfield extends StatelessWidget {
       readOnly: true,
       cursorColor: kMainColor,
       decoration: InputDecoration(
-        hintText: 'ابحث هنا “مئة عام من العزلة”',
+        hintText: 'SearchHere'.tr(),
         hintStyle: TextStyle(
           color: const Color(0xFF969697),
           fontSize: 12.sp,

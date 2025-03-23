@@ -1,6 +1,7 @@
 import 'package:biblio/utils/components/custom_textformfield.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,7 +20,7 @@ class OrderBookBody extends StatelessWidget {
       child: ListView(
         children: [
           Text(
-            'اكتب رسالة قصيرة توضح طلبك',
+            'WriteRequest'.tr(),
             style: TextStyle(
               color: kTextColor,
               fontSize: 16.sp,
@@ -31,7 +32,7 @@ class OrderBookBody extends StatelessWidget {
           CustomTextformfield(
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'ادخل البيانات المطلوبة';
+                return 'Required data'.tr();
               }
               return null;
             },
