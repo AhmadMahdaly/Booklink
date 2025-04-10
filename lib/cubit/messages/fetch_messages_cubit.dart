@@ -77,63 +77,38 @@ class FetchMessagesCubit extends Cubit<AppStates> {
       }
     }
   }
+
+  Future<void> deleteMessage({required String messageId}) async {
+    emit(AppLoadingState());
+    try {
+      await supabase.from('messages').delete().eq('id', messageId);
+      emit(AppSuccessState());
+    } on AuthException catch (e) {
+      emit(AppErrorState(e.message));
+    } catch (e) {
+      emit(AppErrorState(e.toString()));
+    }
+  }
+
+  Future<void> deleteConversation({
+    required String conversationId,
+  }) async {
+    emit(AppLoadingState());
+    try {
+      await supabase.from('conversations').delete().eq('id', conversationId);
+      await supabase
+          .from('conversation_participants')
+          .delete()
+          .eq('conversation_id', conversationId);
+      await supabase
+          .from('messages')
+          .delete()
+          .eq('conversation_id', conversationId);
+      emit(AppSuccessState());
+    } on AuthException catch (e) {
+      emit(AppErrorState(e.message));
+    } catch (e) {
+      emit(AppErrorState(e.toString()));
+    }
+  }
 }
-
-// Future<void> deleteMessage({required String messageId}) async {
-//   emit(DeleteMessageLoading());
-//   try {
-//     await supabase.from('messages').delete().eq('id', messageId);
-//     emit(DeleteMessageSuccess());
-//   } on AuthException catch (e) {
-//     log(e.toString());
-//     emit(DeleteMessageError(e.message));
-//   } catch (e) {
-//     log(e.toString());
-//     emit(DeleteMessageError(e.toString()));
-//   }
-// }
-
-// Future<void> deleteConversation({required String conversationId}) async {
-//   emit(DeleteConversationLoading());
-//   try {
-//     await supabase.from('conversations').delete().eq('id', conversationId);
-//     emit(DeleteConversationSuccess());
-//   } on AuthException catch (e) {
-//     log(e.toString());
-//     emit(DeleteConversationError(e.message));
-//   } catch (e) {
-//     log(e.toString());
-//     emit(DeleteConversationError(e.toString()));
-//   }
-// }
-
-// Future<void> deleteConversationParticipant({required String conversationId}) async {
-//   emit(DeleteConversationParticipantLoading());
-//   try {
-//     await supabase
-//         .from('conversation_participants')
-//         .delete()
-//         .eq('conversation_id', conversationId);
-//     emit(DeleteConversationParticipantSuccess());
-//   } on AuthException catch (e) {
-//     log(e.toString());
-//     emit(DeleteConversationParticipantError(e.message));
-//   } catch (e) {
-//     log(e.toString());
-//     emit(DeleteConversationParticipantError(e.toString()));
-//   }
-// }
-
-// Future<void> deleteConversationMessages({required String conversationId}) async {
-//   emit(DeleteConversationMessagesLoading());
-//   try {
-//     await supabase.from('messages').delete().eq('conversation_id', conversationId);
-//     emit(DeleteConversationMessagesSuccess());
-//   } on AuthException catch (e) {
-//     log(e.toString());
-//     emit(DeleteConversationMessagesError(e.message));
-//   } catch (e) {
-//     log(e.toString());
-//     emit(DeleteConversationMessagesError(e.toString()));
-//   }
-// }
