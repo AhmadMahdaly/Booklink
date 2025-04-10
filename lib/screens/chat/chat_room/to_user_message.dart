@@ -7,8 +7,10 @@ class ToUserMessage extends StatelessWidget {
   const ToUserMessage({
     required this.content,
     required this.timestamp,
+    required this.msgId,
     super.key,
   });
+  final String msgId;
   final String content;
   final String timestamp;
 

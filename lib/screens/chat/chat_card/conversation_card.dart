@@ -1,4 +1,5 @@
 import 'package:biblio/cubit/messages/create_conversation_cubit.dart';
+import 'package:biblio/cubit/messages/fetch_messages_cubit.dart';
 import 'package:biblio/cubit/messages/fetch_unread_message_cubit.dart';
 import 'package:biblio/cubit/messages/fetch_user_conversations_cubit.dart';
 import 'package:biblio/screens/chat/chat_card/book_image.dart';
@@ -73,6 +74,49 @@ class _MessageCardState extends State<MessageCard> {
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
       onTap: navigateToConversation,
+      onLongPress: () => showDialog<String>(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            backgroundColor: kScaffoldBackgroundColor,
+            title: Text(
+              'هل تريد حذف المحادثة؟',
+              style: TextStyle(
+                color: kMainColor,
+                fontSize: 15.sp,
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: Text(
+                  'إلغاء',
+                  style: TextStyle(fontSize: 13.sp, color: kTextColor),
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  BlocProvider.of<FetchMessagesCubit>(context)
+                      .deleteConversation(
+                    conversationId:
+                        widget.conversation['conversation_id'].toString(),
+                  );
+                  context
+                    ..read<FetchUserConversationsCubit>()
+                        .fetchReceiverConversations()
+                    ..read<FetchUserConversationsCubit>()
+                        .fetchSendConversations();
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'موافق',
+                  style: TextStyle(fontSize: 13.sp, color: kHeader1Color),
+                ),
+              ),
+            ],
+          );
+        },
+      ),
       child: Container(
         margin: EdgeInsets.only(
           right: 16.sp,

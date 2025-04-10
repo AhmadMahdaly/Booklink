@@ -144,6 +144,7 @@ class _ConversationRoomState extends State<ConversationRoom> {
                       ? FromUserInMessage(
                           content: message['content'].toString(),
                           timestamp: message['created_at'].toString(),
+                          msgId: message['id'].toString(),
                         )
                       : widget.messageType == 'out' &&
                               message['user_id'] ==
@@ -151,10 +152,12 @@ class _ConversationRoomState extends State<ConversationRoom> {
                           ? FromUserOutMessage(
                               content: message['content'].toString(),
                               timestamp: message['created_at'].toString(),
+                              msgId: message['id'].toString(),
                             )
                           : ToUserMessage(
                               content: message['content'].toString(),
                               timestamp: message['created_at'].toString(),
+                              msgId: message['id'].toString(),
                             );
                 },
               ),
