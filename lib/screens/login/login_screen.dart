@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   }
                                   return null;
                                 },
-                                text: 'Password',
+                                text: 'Password'.tr(),
 
                                 /// Check show password
                                 icon: IconButton(
