@@ -9,7 +9,6 @@ import 'package:biblio/utils/controller/connectivity_controller.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -48,15 +47,17 @@ void main() async {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
   };
-  await setupFCM(); // تهيئة Firebase Cloud Messaging
+  await setupFCM();
+
+  /// تهيئة Firebase Cloud Messaging
   // final fcmToken = await FirebaseMessaging.instance.getToken();
   // print(fcmToken);
-  FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
 
   /// initialize supabase
-  final supabaseUrl = dotenv.env['SUPABASE_URL'] ?? '';
-  final supabaseKey = dotenv.env['SUPABASE_KEY'] ?? '';
-  await Supabase.initialize(url: supabaseUrl, anonKey: supabaseKey);
+  await Supabase.initialize(
+    url: dotenv.env['SUPABASE_URL'] ?? '',
+    anonKey: dotenv.env['SUPABASE_KEY'] ?? '',
+  );
   await SystemChrome.setPreferredOrientations(
     [
       DeviceOrientation.portraitUp,
