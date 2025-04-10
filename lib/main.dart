@@ -81,4 +81,5 @@ void main() async {
   );
 }
 
-/// shorebird patch --platforms=android --release-version=1.0.6+7
+/// shorebird release android
+/// shorebird patch --platforms=android --release-version=1.0.12+13
