@@ -1,9 +1,9 @@
 import 'package:biblio/cubit/app_states.dart';
 import 'package:biblio/cubit/auth_cubit/auth_cubit.dart';
 import 'package:biblio/screens/login/login_screen.dart';
-import 'package:biblio/screens/more_page/widgets/terms_and_conditions_page.dart';
 import 'package:biblio/screens/select_your_location_screen.dart';
 import 'package:biblio/services/error_message.dart';
+import 'package:biblio/services/launch_url.dart';
 import 'package:biblio/services/send_email.dart';
 import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:biblio/utils/components/app_regex.dart';
@@ -217,15 +217,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                                 Expanded(
                                   child: GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              const TermsAndConditionsPage(),
-                                        ),
-                                      );
-                                    },
+                                    onTap: () => launchURL(
+                                      'https://booklink-app.blogspot.com/2025/02/blog-post.html',
+                                    ),
                                     child: Text(
                                       'AgreeTerms'.tr(),
                                       style: const TextStyle(

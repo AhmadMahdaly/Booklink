@@ -1,7 +1,7 @@
 import 'package:biblio/screens/more_page/widgets/category_for_more.dart';
 import 'package:biblio/screens/more_page/widgets/faq_page.dart';
-import 'package:biblio/screens/more_page/widgets/terms_and_conditions_page.dart';
 import 'package:biblio/screens/onboard/onboard_screen.dart';
+import 'package:biblio/services/launch_url.dart';
 import 'package:biblio/utils/components/border_radius.dart';
 import 'package:biblio/utils/components/custom_button.dart';
 import 'package:biblio/utils/components/height.dart';
@@ -58,16 +58,9 @@ class MoreWithoutLogin extends StatelessWidget {
           CategoryForMore(
             text: 'TermsAndConditions'.tr(),
             icon: Icons.text_snippet_outlined,
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const TermsAndConditionsPage();
-                  },
-                ),
-              );
-            },
+            onTap: () => launchURL(
+              'https://booklink-app.blogspot.com/2025/02/blog-post.html',
+            ),
           ),
         ],
       ),

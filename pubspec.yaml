@@ -1,6 +1,6 @@
 name: biblio
 description: "Platform for exchanging and selling books."
-version: 1.0.12+13
+version: 1.0.14+15
 
 environment:
   sdk: ^3.6.0
@@ -80,7 +80,7 @@ flutter:
         - asset: assets/fonts/Cairo-Regular.ttf
 
 icons_launcher:
-  image_path: "assets/icons/icon app.png"
+  image_path: "assets/icons/icon_app.png"
   platforms:
     android:
       enable: true

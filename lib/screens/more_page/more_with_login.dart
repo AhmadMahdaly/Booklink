@@ -4,7 +4,7 @@ import 'package:biblio/screens/more_page/widgets/category_for_more.dart';
 import 'package:biblio/screens/more_page/widgets/faq_page.dart';
 import 'package:biblio/screens/more_page/widgets/personal_card.dart';
 import 'package:biblio/screens/more_page/widgets/sign_out_button.dart';
-import 'package:biblio/screens/more_page/widgets/terms_and_conditions_page.dart';
+import 'package:biblio/services/launch_url.dart';
 import 'package:biblio/utils/components/height.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -55,16 +55,17 @@ class MoreWithLogin extends StatelessWidget {
           CategoryForMore(
             text: 'TermsAndConditions'.tr(),
             icon: Icons.text_snippet_outlined,
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const TermsAndConditionsPage();
-                  },
-                ),
-              );
-            },
+            onTap: () => launchURL(
+              'https://booklink-app.blogspot.com/2025/02/blog-post.html',
+            ),
+          ),
+          const H(h: 12),
+          CategoryForMore(
+            text: 'policyPrivacy'.tr(),
+            icon: Icons.privacy_tip_outlined,
+            onTap: () => launchURL(
+              'https://booklink-app.blogspot.com/2025/07/blog-post.html',
+            ),
           ),
           const H(h: 12),
           CategoryForMore(

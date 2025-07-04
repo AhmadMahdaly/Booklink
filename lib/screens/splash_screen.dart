@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kMainColor,
+      backgroundColor: kScaffoldBackgroundColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -48,16 +48,16 @@ class _SplashScreenState extends State<SplashScreen>
                 child: Image.asset(
                   'assets/icons/icon.png',
                   width: 140.sp,
+                  color: kMainColor,
                 ),
               ),
             ),
             const H(h: 10),
             Text(
-              'BookLink',
+              'رفوف',
               style: TextStyle(
-                color: kLightBlue,
+                color: kMainColor,
                 fontSize: 32.sp,
-                fontFamily: 'Nunito',
                 fontWeight: FontWeight.w100,
               ),
             ),
