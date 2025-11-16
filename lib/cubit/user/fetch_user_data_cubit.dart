@@ -1,4 +1,4 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
 import 'package:bloc/bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

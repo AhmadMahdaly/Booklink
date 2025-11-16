@@ -1,8 +1,9 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/show_snackbar.dart';
 import 'package:biblio/cubit/user/delete_user_cubit.dart';
 import 'package:biblio/screens/onboard/onboard_screen.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
+import 'package:biblio/services/setup_fcm.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,6 +55,7 @@ class DeleteUser extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () async {
                           await cubit.deleteAccount();
+                          await deleteTokenToSupabase();
                         },
                         child: Text('DeleteAccount'.tr()),
                       ),

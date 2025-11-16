@@ -1,6 +1,5 @@
-import 'package:biblio/utils/components/border_radius.dart';
-import 'package:biblio/utils/components/width.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_widgets/border_radius.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -42,7 +41,7 @@ class CategoryForMore extends StatelessWidget {
         child: Row(
           spacing: 6.sp,
           children: [
-            const W(w: 8),
+            8.horizontalSpace,
             Icon(
               icon,
               color: kTextColor,

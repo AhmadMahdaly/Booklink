@@ -1,17 +1,16 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
+import 'package:biblio/core/shared_widgets/app_regex.dart';
+import 'package:biblio/core/shared_widgets/custom_button.dart';
+import 'package:biblio/core/shared_widgets/custom_textformfield.dart';
+import 'package:biblio/core/shared_widgets/show_snackbar.dart';
 import 'package:biblio/cubit/auth_cubit/auth_cubit.dart';
 import 'package:biblio/screens/login/login_screen.dart';
 import 'package:biblio/screens/select_your_location_screen.dart';
 import 'package:biblio/services/error_message.dart';
 import 'package:biblio/services/launch_url.dart';
 import 'package:biblio/services/send_email.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/app_regex.dart';
-import 'package:biblio/utils/components/custom_button.dart';
-import 'package:biblio/utils/components/custom_textformfield.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -67,7 +66,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       builder: (context, state) {
         return Scaffold(
           body: state is AppLoadingState
-              ? const AppIndicator()
+              ? const LoadingWidget()
               : SingleChildScrollView(
                   child: Center(
                     child: Padding(
@@ -80,7 +79,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           spacing: 12.sp,
                           children: [
                             /// Header
-                            const H(h: 50),
+                            50.verticalSpace,
                             SvgPicture.asset(
                               'assets/svg/logo.svg',
                               colorFilter: const ColorFilter.mode(
@@ -97,7 +96,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 fontWeight: FontWeight.w800,
                               ),
                             ),
-                            const H(h: 2),
+                            2.verticalSpace,
 
                             /// Name
                             Row(
@@ -257,7 +256,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         }
                                       : () {},
                                 ),
-                                const H(h: 0),
                                 Row(
                                   spacing: 16.sp,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -324,7 +322,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     ),
                                   ),
                                 ),
-                                const H(h: 16),
+                                16.verticalSpace,
                               ],
                             ),
                           ],

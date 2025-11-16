@@ -1,6 +1,6 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/show_snackbar.dart';
 import 'package:biblio/screens/login/widgets/verification_code_screen.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';

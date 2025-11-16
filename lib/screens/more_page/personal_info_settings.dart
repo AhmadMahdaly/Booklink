@@ -1,6 +1,12 @@
 import 'dart:io';
 
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
+import 'package:biblio/core/shared_widgets/custom_button.dart';
+import 'package:biblio/core/shared_widgets/custom_textformfield.dart';
+import 'package:biblio/core/shared_widgets/leading_icon.dart';
+import 'package:biblio/core/shared_widgets/show_snackbar.dart';
 import 'package:biblio/cubit/user/fetch_user_data_cubit.dart';
 import 'package:biblio/cubit/user/update_user_image_cubit.dart';
 import 'package:biblio/screens/book/add_book_page/widgets/title_form_add_book.dart';
@@ -8,12 +14,6 @@ import 'package:biblio/screens/more_page/widgets/delete_user.dart';
 import 'package:biblio/screens/more_page/widgets/get_user_image.dart';
 import 'package:biblio/screens/navigation_bar/navigation_bar.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/custom_button.dart';
-import 'package:biblio/utils/components/custom_textformfield.dart';
-import 'package:biblio/utils/components/leading_icon.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -106,7 +106,7 @@ class _PersonalInfoSettingState extends State<PersonalInfoSetting> {
                 leading: const LeadingIcon(),
               ),
               body: state is AppLoadingState
-                  ? const AppIndicator()
+                  ? const LoadingWidget()
                   : Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: 16.sp,

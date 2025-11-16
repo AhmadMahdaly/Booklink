@@ -1,5 +1,5 @@
+import 'package:biblio/core/constants/colors_constants.dart';
 import 'package:biblio/screens/category_page/widgets/see_all.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

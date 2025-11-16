@@ -1,9 +1,9 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
 import 'package:biblio/cubit/books/fetch_category_cubit.dart';
 import 'package:biblio/screens/book/book_item/book_item.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -69,7 +69,7 @@ class _CategoryPageState extends State<CategoryPage> {
             ),
           ),
           body: isLoading
-              ? const AppIndicator()
+              ? const LoadingWidget()
               : books.isEmpty
                   ? Container(
                       alignment: Alignment.center,

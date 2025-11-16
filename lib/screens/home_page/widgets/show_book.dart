@@ -1,6 +1,5 @@
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/width.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -51,7 +50,7 @@ class ShowBook extends StatelessWidget {
                 height: 24.sp,
                 child: Row(
                   children: [
-                    const W(w: 3),
+                    3.horizontalSpace,
 
                     /// User image
                     if (book['user_image'] == null ||
@@ -71,7 +70,7 @@ class ShowBook extends StatelessWidget {
                         ),
                         child: CachedNetworkImage(
                           progressIndicatorBuilder: (context, url, progress) =>
-                              AppIndicator(
+                              LoadingWidget(
                             size: 10.sp,
                           ),
                           imageUrl: book['user_image'].toString(),
@@ -80,7 +79,7 @@ class ShowBook extends StatelessWidget {
                               const Icon(Icons.error),
                         ),
                       ),
-                    const W(w: 3),
+                    3.horizontalSpace,
 
                     /// User Name
                     SizedBox(

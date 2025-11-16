@@ -1,7 +1,7 @@
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
 import 'package:biblio/screens/category_page/category_page.dart';
 import 'package:biblio/screens/category_page/widgets/category_item.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -78,7 +78,7 @@ class _CategorySeeAllState extends State<CategorySeeAll> {
         ),
       ),
       body: isLoading
-          ? const AppIndicator()
+          ? const LoadingWidget()
           : GridView.builder(
               padding: EdgeInsets.symmetric(
                 horizontal: 16.sp,

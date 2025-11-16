@@ -1,6 +1,6 @@
+import 'package:biblio/core/constants/colors_constants.dart';
 import 'package:biblio/cubit/messages/fetch_messages_cubit.dart';
 import 'package:biblio/services/get_time.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

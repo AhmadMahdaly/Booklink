@@ -2,10 +2,10 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:biblio/booklink.dart';
-import 'package:biblio/services/setup_fcm.dart';
 // import 'package:biblio/services/my_observer.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:biblio/utils/controller/connectivity_controller.dart';
+import 'package:biblio/core/shared_controllers/connectivity_controller.dart';
+import 'package:biblio/services/setup_fcm.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';

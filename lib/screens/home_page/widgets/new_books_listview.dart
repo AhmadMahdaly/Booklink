@@ -1,10 +1,10 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
 import 'package:biblio/cubit/books/fetch_located_books_cubit.dart';
 import 'package:biblio/screens/home_page/widgets/new_books_listview_body.dart';
 import 'package:biblio/screens/home_page/widgets/no_located_books.dart';
 import 'package:biblio/screens/home_page/widgets/sign_to_see_new_books_widget.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -42,7 +42,7 @@ class _NewBooksListviewState extends State<NewBooksListview> {
             builder: (context, state) {
               final cubit = context.read<FetchLocatedBooksCubit>();
               return state is AppLoadingState
-                  ? const AppIndicator()
+                  ? const LoadingWidget()
                   : cubit.books.isNotEmpty
                       ? NewBooksListviewBody(cubit: cubit)
                       : const NoLocatedBooks();

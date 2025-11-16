@@ -1,10 +1,10 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
 import 'package:biblio/cubit/messages/fetch_user_conversations_cubit.dart';
 import 'package:biblio/screens/chat/chat_card/conversation_card.dart';
 import 'package:biblio/screens/chat/no_new_messages.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,7 +28,7 @@ class IncomingRequests extends StatelessWidget {
       builder: (context, state) {
         final fetchUserConCubit = context.read<FetchUserConversationsCubit>();
         return state is AppLoadingState
-            ? const AppIndicator()
+            ? const LoadingWidget()
             : fetchUserConCubit.receiverConversations.isEmpty
                 ? RefreshIndicator(
                     strokeWidth: 0.9,
@@ -37,7 +37,7 @@ class IncomingRequests extends StatelessWidget {
                     child: const NoNewMessages(),
                   )
                 : state is AppLoadingState
-                    ? const AppIndicator()
+                    ? const LoadingWidget()
                     : RefreshIndicator(
                         strokeWidth: 0.9,
                         color: kMainColor,

@@ -1,5 +1,5 @@
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/border_radius.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
+import 'package:biblio/core/shared_widgets/border_radius.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +44,7 @@ class BookPageImage extends StatelessWidget {
             imageUrl: images[index],
             fit: BoxFit.cover,
             placeholder: (context, url) {
-              return const AppIndicator();
+              return const LoadingWidget();
             },
             errorWidget: (context, url, error) {
               return const Icon(

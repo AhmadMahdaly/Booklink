@@ -1,10 +1,8 @@
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_widgets/custom_button.dart';
 import 'package:biblio/screens/login/login_screen.dart';
 import 'package:biblio/screens/login/register_page.dart';
 import 'package:biblio/screens/onboard/widgets/sign_as_visitor.dart';
-import 'package:biblio/utils/components/custom_button.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/components/width.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +28,7 @@ class OnboardScreen extends StatelessWidget {
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const H(h: 16),
+          16.verticalSpace,
 
           /// Title Text
           Row(
@@ -44,14 +42,14 @@ class OnboardScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const W(w: 8),
+              8.horizontalSpace,
               SvgPicture.asset(
                 'assets/svg/logo.svg',
                 height: 20.sp,
               ),
             ],
           ),
-          const H(h: 8),
+          8.verticalSpace,
 
           /// Desc text
           Padding(
@@ -66,7 +64,7 @@ class OnboardScreen extends StatelessWidget {
               ),
             ),
           ),
-          const H(h: 16),
+          16.verticalSpace,
 
           /// Login
           CustomButton(
@@ -76,7 +74,7 @@ class OnboardScreen extends StatelessWidget {
               Navigator.pushReplacementNamed(context, LoginScreen.id);
             },
           ),
-          const H(h: 10),
+          10.verticalSpace,
 
           /// Sign up
           CustomBorderBotton(
@@ -86,11 +84,11 @@ class OnboardScreen extends StatelessWidget {
               Navigator.pushReplacementNamed(context, RegisterScreen.id);
             },
           ),
-          const H(h: 10),
+          10.verticalSpace,
 
           /// To HomePage as visitor
           const SignAsVisitor(),
-          const H(h: 34),
+          34.verticalSpace,
         ],
       ),
     );

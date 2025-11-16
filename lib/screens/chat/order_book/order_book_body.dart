@@ -1,6 +1,5 @@
-import 'package:biblio/utils/components/custom_textformfield.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_widgets/custom_textformfield.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +27,7 @@ class OrderBookBody extends StatelessWidget {
               height: 1.50.sp,
             ),
           ),
-          const H(h: 20),
+          20.horizontalSpace,
           CustomTextformfield(
             validator: (value) {
               if (value == null || value.isEmpty) {

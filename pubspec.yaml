@@ -1,6 +1,6 @@
 name: biblio
 description: "Platform for exchanging and selling books."
-version: 1.0.14+15
+version: 1.0.19+19
 
 environment:
   sdk: ^3.6.0
@@ -43,6 +43,8 @@ dependencies:
 
   
 
+  bloc: any
+  url_launcher: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

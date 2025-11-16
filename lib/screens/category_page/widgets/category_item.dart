@@ -1,6 +1,5 @@
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +31,7 @@ class CategoryItem extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           spacing: 5.sp,
           children: [
-            const H(h: 5),
+            5.verticalSpace,
             SizedBox(
               child: CachedNetworkImage(
                 imageUrl: icon,
@@ -41,7 +40,7 @@ class CategoryItem extends StatelessWidget {
                 color: kMainColor,
                 errorWidget: (context, url, error) => const Icon(Icons.error),
                 progressIndicatorBuilder: (context, url, progress) =>
-                    AppIndicator(
+                    LoadingWidget(
                   size: 10.sp,
                 ),
               ),
@@ -62,7 +61,7 @@ class CategoryItem extends StatelessWidget {
                 ),
               ),
             ),
-            const H(h: 3),
+            3.verticalSpace,
           ],
         ),
       ),

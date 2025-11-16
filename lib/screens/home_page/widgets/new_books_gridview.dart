@@ -1,11 +1,11 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
 import 'package:biblio/cubit/books/fetch_located_books_cubit.dart';
 import 'package:biblio/screens/home_page/widgets/new_books_gridview_body.dart';
 import 'package:biblio/screens/home_page/widgets/no_located_books.dart';
 import 'package:biblio/screens/home_page/widgets/sign_to_see_new_books_widget.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -87,7 +87,7 @@ class _NewBooksGridViewState extends State<NewBooksGridView> {
             ),
           ),
           body: state is AppLoadingState
-              ? const AppIndicator()
+              ? const LoadingWidget()
               : user == null
                   ? const SignToSeeNewBooks()
                   : cubit.books.isNotEmpty

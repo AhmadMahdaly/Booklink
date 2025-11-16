@@ -1,4 +1,4 @@
-import 'package:biblio/utils/components/app_indicator.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +61,7 @@ class GetBookImage extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
-                child: AppIndicator(
+                child: LoadingWidget(
                   size: 10.sp,
                 ),
               );
@@ -73,7 +73,7 @@ class GetBookImage extends StatelessWidget {
 
             return CachedNetworkImage(
               progressIndicatorBuilder: (context, url, progress) =>
-                  AppIndicator(
+                  LoadingWidget(
                 size: 10.sp,
               ),
               errorWidget: (context, url, error) => const Icon(Icons.error),
@@ -141,7 +141,7 @@ class GetBookImageI extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
-                child: AppIndicator(
+                child: LoadingWidget(
                   size: 10.sp,
                 ),
               );
@@ -153,7 +153,7 @@ class GetBookImageI extends StatelessWidget {
 
             return CachedNetworkImage(
               progressIndicatorBuilder: (context, url, progress) =>
-                  AppIndicator(
+                  LoadingWidget(
                 size: 10.sp,
               ),
               errorWidget: (context, url, error) => const Icon(Icons.error),

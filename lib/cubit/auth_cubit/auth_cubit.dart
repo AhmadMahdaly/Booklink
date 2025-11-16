@@ -1,4 +1,4 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
 import 'package:biblio/screens/navigation_bar/navigation_bar.dart';
 import 'package:biblio/screens/select_your_location_screen.dart';
 import 'package:bloc/bloc.dart';

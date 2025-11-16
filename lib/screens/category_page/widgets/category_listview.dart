@@ -1,6 +1,6 @@
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
 import 'package:biblio/screens/category_page/category_page.dart';
 import 'package:biblio/screens/category_page/widgets/category_item.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -52,7 +52,7 @@ class _CategoryListviewState extends State<CategoryListview> {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? const AppIndicator()
+        ? const LoadingWidget()
         : ListView.builder(
             padding: EdgeInsets.symmetric(horizontal: 11.sp),
             scrollDirection: Axis.horizontal,

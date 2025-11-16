@@ -1,14 +1,13 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
+import 'package:biblio/core/shared_widgets/custom_button.dart';
+import 'package:biblio/core/shared_widgets/custom_textformfield.dart';
+import 'package:biblio/core/shared_widgets/show_snackbar.dart';
 import 'package:biblio/cubit/messages/create_conversation_cubit.dart';
 import 'package:biblio/cubit/messages/send_messages_cubit.dart';
 import 'package:biblio/screens/chat/help_chat/widgets/help_chat.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/custom_button.dart';
-import 'package:biblio/utils/components/custom_textformfield.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -110,7 +109,7 @@ class _HelpChatScreenState extends State<HelpChatScreen> {
                 ),
               ),
               body: state is AppLoadingState
-                  ? const AppIndicator()
+                  ? const LoadingWidget()
                   : Padding(
                       padding: EdgeInsets.all(16.sp),
                       child: ListView(
@@ -126,7 +125,7 @@ class _HelpChatScreenState extends State<HelpChatScreen> {
                             controller: _messageController,
                             text: 'WriteSuggestions'.tr(),
                           ),
-                          const H(h: 24),
+                          24.verticalSpace,
                           CustomButton(
                             text: 'Start a question'.tr(),
                             onTap: () async {

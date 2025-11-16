@@ -1,7 +1,13 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
+import 'package:biblio/core/shared_widgets/custom_button.dart';
+import 'package:biblio/core/shared_widgets/custom_textformfield.dart';
+import 'package:biblio/core/shared_widgets/leading_icon.dart';
+import 'package:biblio/core/shared_widgets/show_snackbar.dart';
 import 'package:biblio/cubit/books/fetch_category_cubit.dart';
 import 'package:biblio/cubit/books/fetch_order_type_book_cubit.dart';
 import 'package:biblio/cubit/books/upload_book_cubit.dart';
@@ -10,13 +16,6 @@ import 'package:biblio/screens/book/add_book_page/widgets/title_form_add_book.da
 import 'package:biblio/screens/navigation_bar/navigation_bar.dart';
 import 'package:biblio/screens/onboard/onboard_screen.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/custom_button.dart';
-import 'package:biblio/utils/components/custom_textformfield.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/components/leading_icon.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -157,7 +156,7 @@ class _AddBookState extends State<AddBook> {
               ),
             ),
             body: state is AppLoadingState
-                ? const AppIndicator()
+                ? const LoadingWidget()
                 : Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.sp),
                     child: Form(
@@ -172,7 +171,7 @@ class _AddBookState extends State<AddBook> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          const H(h: 10),
+                          10.verticalSpace,
                           Row(
                             spacing: 12.sp,
                             children: [
@@ -238,7 +237,7 @@ class _AddBookState extends State<AddBook> {
                                 ),
                                 elevation: 5,
                                 dropdownColor: kLightBlue,
-                                value: cubit.selectedCategory,
+                                initialValue: cubit.selectedCategory,
                                 items: cubit.categories
                                     .map(
                                       (category) => DropdownMenuItem(
@@ -344,7 +343,7 @@ class _AddBookState extends State<AddBook> {
                                 ),
                                 elevation: 5,
                                 dropdownColor: kLightBlue,
-                                value: cubit.selectedOffer,
+                                initialValue: cubit.selectedOffer,
                                 items: cubit.offerTypes
                                     .map(
                                       (category) => DropdownMenuItem(
@@ -406,7 +405,7 @@ class _AddBookState extends State<AddBook> {
                             )
                           else
                             const SizedBox(),
-                          const H(h: 16),
+                          16.verticalSpace,
                         ],
                       ),
                     ),

@@ -1,4 +1,7 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
+import 'package:biblio/core/shared_widgets/leading_icon.dart';
 import 'package:biblio/cubit/books/fetch_book_page_cubit.dart';
 import 'package:biblio/cubit/messages/create_conversation_cubit.dart';
 import 'package:biblio/cubit/messages/send_messages_cubit.dart';
@@ -6,9 +9,6 @@ import 'package:biblio/screens/chat/chat_room/conversation_room.dart';
 import 'package:biblio/screens/chat/order_book/order_book_body.dart';
 import 'package:biblio/screens/chat/order_book/order_button.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/leading_icon.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -106,7 +106,7 @@ class _OrderTheBookPageState extends State<OrderTheBookPage> {
                     leading: const LeadingIcon(),
                   ),
                   body: state is AppLoadingState
-                      ? const AppIndicator()
+                      ? const LoadingWidget()
                       : OrderBookBody(messageController: _messageController),
                   bottomNavigationBar: state is AppLoadingState
                       ? const SizedBox()

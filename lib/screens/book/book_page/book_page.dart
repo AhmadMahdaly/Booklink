@@ -1,4 +1,7 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
+import 'package:biblio/core/shared_widgets/custom_button.dart';
+import 'package:biblio/core/shared_widgets/leading_icon.dart';
 import 'package:biblio/cubit/books/delete_book_cubit.dart';
 import 'package:biblio/screens/book/book_page/widgets/book_author.dart';
 import 'package:biblio/screens/book/book_page/widgets/book_category.dart';
@@ -14,10 +17,6 @@ import 'package:biblio/screens/book/book_page/widgets/post_date_and_time.dart';
 import 'package:biblio/screens/chat/order_book/order_book_page.dart';
 import 'package:biblio/screens/my_lib_page/widgets/favorate_button.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/custom_button.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/components/leading_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -63,11 +62,11 @@ class ShowBookItem extends StatelessWidget {
           leading: const LeadingIcon(),
         ),
         body: State is AppLoadingState
-            ? const AppIndicator()
+            ? const LoadingWidget()
             : ListView(
                 children: [
                   BookPageImage(book: book),
-                  const H(h: 16),
+                  16.verticalSpace,
                   Row(
                     children: [
                       BookPageTitle(book: book),
@@ -84,11 +83,11 @@ class ShowBookItem extends StatelessWidget {
                   ),
                   BookPageDescription(book: book),
                   BookPageCategory(book: book),
-                  const H(h: 16),
+                  16.verticalSpace,
                   BookUserLabel(book: book),
                   BookPageLocation(book: book),
                   PostBookDateAndTime(book: book),
-                  const H(h: 36),
+                  36.verticalSpace,
                 ],
               ),
         bottomNavigationBar: user == null || book['user_id'] == user

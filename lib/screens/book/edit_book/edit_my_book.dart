@@ -1,14 +1,13 @@
 import 'dart:io';
 
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
+import 'package:biblio/core/shared_widgets/custom_button.dart';
+import 'package:biblio/core/shared_widgets/custom_textformfield.dart';
 import 'package:biblio/cubit/books/update_book_cubit.dart';
 import 'package:biblio/screens/book/add_book_page/widgets/get_book_image.dart';
 import 'package:biblio/screens/book/add_book_page/widgets/title_form_add_book.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/custom_button.dart';
-import 'package:biblio/utils/components/custom_textformfield.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -170,7 +169,7 @@ class _EditBookState extends State<EditBook> {
             ),
           ),
           body: state is AppLoadingState
-              ? const AppIndicator()
+              ? const LoadingWidget()
               : Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.sp),
                   child: Form(
@@ -187,7 +186,7 @@ class _EditBookState extends State<EditBook> {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        const H(h: 10),
+                        10.verticalSpace,
                         Row(
                           spacing: 12.sp,
                           children: [
@@ -198,8 +197,8 @@ class _EditBookState extends State<EditBook> {
                               )
                             else
                               Container(
-                                width: 144,
-                                height: 144,
+                                width: 144.w,
+                                height: 144.h,
                                 clipBehavior: Clip.antiAlias,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
@@ -225,8 +224,8 @@ class _EditBookState extends State<EditBook> {
                               )
                             else
                               Container(
-                                width: 144,
-                                height: 144,
+                                width: 144.w,
+                                height: 144.h,
                                 clipBehavior: Clip.antiAlias,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
@@ -302,7 +301,7 @@ class _EditBookState extends State<EditBook> {
                           ),
                           elevation: 5,
                           dropdownColor: kLightBlue,
-                          value: selectedCategory,
+                          initialValue: selectedCategory,
                           items: cubit.categories
                               .map(
                                 (category) => DropdownMenuItem(
@@ -402,7 +401,7 @@ class _EditBookState extends State<EditBook> {
                           ),
                           elevation: 5,
                           dropdownColor: kLightBlue,
-                          value: selectedOffer,
+                          initialValue: selectedOffer,
                           items: cubit.offerTypes
                               .map(
                                 (category) => DropdownMenuItem(
@@ -453,7 +452,7 @@ class _EditBookState extends State<EditBook> {
                           )
                         else
                           const SizedBox(),
-                        const H(h: 16),
+                        16.verticalSpace,
                       ],
                     ),
                   ),

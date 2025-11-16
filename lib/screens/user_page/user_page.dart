@@ -1,10 +1,9 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
+import 'package:biblio/core/shared_widgets/leading_icon.dart';
 import 'package:biblio/cubit/user/get_user_qty_books_cubit.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/components/leading_icon.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -75,7 +74,7 @@ class _UserPageState extends State<UserPage> {
             leading: const LeadingIcon(),
           ),
           body: state is AppLoadingState
-              ? const AppIndicator()
+              ? const LoadingWidget()
               : Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.sp),
                   child: Column(
@@ -104,7 +103,7 @@ class _UserPageState extends State<UserPage> {
                               child: CachedNetworkImage(
                                 fit: BoxFit.fitWidth,
                                 progressIndicatorBuilder:
-                                    (context, url, progress) => AppIndicator(
+                                    (context, url, progress) => LoadingWidget(
                                   size: 10.sp,
                                 ),
                                 errorWidget: (context, url, error) =>
@@ -131,7 +130,7 @@ class _UserPageState extends State<UserPage> {
                           const Spacer(),
                         ],
                       ),
-                      const H(h: 28),
+                      28.verticalSpace,
                       SizedBox(
                         child: Text(
                           widget.book['user_name'].toString(),
@@ -201,7 +200,7 @@ class _UserPageState extends State<UserPage> {
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
-                                  const H(h: 6),
+                                  6.verticalSpace,
                                   SizedBox(
                                     width: 330.sp,
                                     child: Text(
@@ -226,7 +225,7 @@ class _UserPageState extends State<UserPage> {
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
-                                    const H(h: 6),
+                                    6.verticalSpace,
                                     InkWell(
                                       onTap: _launchUrl,
                                       child: SizedBox(

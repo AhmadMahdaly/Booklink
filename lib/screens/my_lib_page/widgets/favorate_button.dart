@@ -1,9 +1,9 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
+import 'package:biblio/core/shared_widgets/border_radius.dart';
 import 'package:biblio/cubit/favorite_function/favorite_button_cubit.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/border_radius.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,7 +42,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
         return state is AppLoadingState
             ? Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.sp),
-                child: const AppIndicator(
+                child: const LoadingWidget(
                   size: 10,
                 ),
               )

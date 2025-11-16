@@ -1,7 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
 import 'package:biblio/screens/book/add_book_page/add_book.dart';
-import 'package:biblio/utils/components/width.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,7 +47,7 @@ class HomeBanner extends StatelessWidget {
                       fontWeight: FontWeight.w900,
                     ),
                   ),
-                  const W(w: 5),
+                  5.horizontalSpace,
                   SvgPicture.asset(
                     'assets/svg/logo.svg',
                     height: 24.sp,

@@ -1,10 +1,10 @@
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_widgets/leading_icon.dart';
 import 'package:biblio/cubit/user/fetch_user_data_cubit.dart';
 import 'package:biblio/screens/more_page/personal_info_settings.dart';
 import 'package:biblio/screens/more_page/widgets/category_for_more.dart';
 import 'package:biblio/screens/more_page/widgets/favorite_location_to_meet.dart';
 import 'package:biblio/screens/select_your_location_screen.dart';
-import 'package:biblio/utils/components/leading_icon.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

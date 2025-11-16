@@ -1,11 +1,10 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
+import 'package:biblio/core/shared_widgets/custom_button.dart';
+import 'package:biblio/core/shared_widgets/custom_textformfield.dart';
 import 'package:biblio/cubit/user/request_otp_cubit.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/custom_button.dart';
-import 'package:biblio/utils/components/custom_textformfield.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +35,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
         final cubit = context.read<RequestOtpCubit>();
         return Scaffold(
           body: state is AppLoadingState
-              ? const AppIndicator()
+              ? const LoadingWidget()
               : SingleChildScrollView(
                   child: Center(
                     child: Padding(
@@ -45,7 +44,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                         spacing: 16.sp,
                         children: [
                           /// Header
-                          const H(h: 90),
+                          90.verticalSpace,
                           SvgPicture.asset(
                             'assets/svg/logo.svg',
                             colorFilter: const ColorFilter.mode(
@@ -70,7 +69,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          const H(h: 16),
+                          16.verticalSpace,
 
                           /// Email
                           Row(
@@ -91,7 +90,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                             controller: _emailController,
                             text: 'Email'.tr(),
                           ),
-                          const H(h: 10),
+                          10.verticalSpace,
 
                           /// Button
                           CustomButton(

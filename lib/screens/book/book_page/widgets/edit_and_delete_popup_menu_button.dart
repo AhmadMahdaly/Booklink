@@ -1,8 +1,8 @@
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_widgets/show_dialog.dart';
 import 'package:biblio/cubit/books/delete_book_cubit.dart';
 import 'package:biblio/screens/book/edit_book/edit_my_book.dart';
 import 'package:biblio/screens/navigation_bar/navigation_bar.dart';
-import 'package:biblio/utils/components/show_dialog.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

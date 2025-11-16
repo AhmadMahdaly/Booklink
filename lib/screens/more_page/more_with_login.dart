@@ -5,9 +5,9 @@ import 'package:biblio/screens/more_page/widgets/faq_page.dart';
 import 'package:biblio/screens/more_page/widgets/personal_card.dart';
 import 'package:biblio/screens/more_page/widgets/sign_out_button.dart';
 import 'package:biblio/services/launch_url.dart';
-import 'package:biblio/utils/components/height.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MoreWithLogin extends StatelessWidget {
   const MoreWithLogin({super.key});
@@ -21,7 +21,7 @@ class MoreWithLogin extends StatelessWidget {
       body: ListView(
         children: [
           const PersonalCard(),
-          const H(h: 12),
+          12.verticalSpace,
           CategoryForMore(
             text: 'Account Management'.tr(),
             icon: Icons.mode_edit_outline_outlined,
@@ -36,7 +36,7 @@ class MoreWithLogin extends StatelessWidget {
               );
             },
           ),
-          const H(h: 12),
+          12.verticalSpace,
           CategoryForMore(
             text: 'FAQ'.tr(),
             icon: Icons.help_outline_sharp,
@@ -51,7 +51,7 @@ class MoreWithLogin extends StatelessWidget {
               );
             },
           ),
-          const H(h: 12),
+          12.verticalSpace,
           CategoryForMore(
             text: 'TermsAndConditions'.tr(),
             icon: Icons.text_snippet_outlined,
@@ -59,7 +59,7 @@ class MoreWithLogin extends StatelessWidget {
               'https://booklink-app.blogspot.com/2025/02/blog-post.html',
             ),
           ),
-          const H(h: 12),
+          12.verticalSpace,
           CategoryForMore(
             text: 'policyPrivacy'.tr(),
             icon: Icons.privacy_tip_outlined,
@@ -67,7 +67,7 @@ class MoreWithLogin extends StatelessWidget {
               'https://booklink-app.blogspot.com/2025/07/blog-post.html',
             ),
           ),
-          const H(h: 12),
+          12.verticalSpace,
           CategoryForMore(
             text: 'Technical support'.tr(),
             icon: Icons.headset_mic_outlined,
@@ -82,7 +82,7 @@ class MoreWithLogin extends StatelessWidget {
               );
             },
           ),
-          const H(h: 12),
+          12.verticalSpace,
           const SignOutButton(),
         ],
       ),

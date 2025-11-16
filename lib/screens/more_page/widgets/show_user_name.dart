@@ -1,7 +1,7 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
 import 'package:biblio/cubit/user/fetch_user_data_cubit.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +22,7 @@ class ShowUserName extends StatelessWidget {
             future: cubit.fetchUserName(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const AppIndicator(
+                return const LoadingWidget(
                   size: 10,
                 );
               } else if (snapshot.hasError) {

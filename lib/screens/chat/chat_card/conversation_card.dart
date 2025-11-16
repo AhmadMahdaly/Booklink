@@ -1,3 +1,4 @@
+import 'package:biblio/core/constants/colors_constants.dart';
 import 'package:biblio/cubit/messages/create_conversation_cubit.dart';
 import 'package:biblio/cubit/messages/fetch_messages_cubit.dart';
 import 'package:biblio/cubit/messages/fetch_unread_message_cubit.dart';
@@ -6,7 +7,6 @@ import 'package:biblio/screens/chat/chat_card/book_image.dart';
 import 'package:biblio/screens/chat/chat_card/support_image.dart';
 import 'package:biblio/screens/chat/chat_room/conversation_room.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,3 +1,4 @@
+import 'package:biblio/core/constants/colors_constants.dart';
 import 'package:biblio/cubit/books/fetch_located_books_cubit.dart';
 import 'package:biblio/cubit/messages/create_conversation_cubit.dart';
 import 'package:biblio/cubit/messages/fetch_unread_message_cubit.dart';
@@ -8,25 +9,35 @@ import 'package:biblio/screens/home_page/widgets/new_books_gridview.dart';
 import 'package:biblio/screens/home_page/widgets/new_books_listview.dart';
 import 'package:biblio/screens/home_page/widgets/title_header_home.dart';
 import 'package:biblio/screens/search/home_search_textfield.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/components/width.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:biblio/services/setup_fcm.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
   static String id = 'HomePage';
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   Future<void> fetchDate(BuildContext context) async {
+    await initNotifications();
     await context.read<FetchLocatedBooksCubit>().fetchLocatedBooks();
     await context.read<FetchUnreadMessageCubit>().fetchUnreadMessages(
           otherId:
               context.read<CreateConversationCubit>().otherUserId.toString(),
         );
+  }
+
+  @override
+  void initState() {
+    initNotifications();
+    super.initState();
   }
 
   @override
@@ -42,11 +53,11 @@ class HomePage extends StatelessWidget {
             SliverAppBar(
               toolbarHeight: 80.sp,
               automaticallyImplyLeading: false,
-              title: const Column(
+              title: Column(
                 children: [
-                  H(h: 12),
-                  HomeSearchTextfield(),
-                  H(h: 6),
+                  12.verticalSpace,
+                  const HomeSearchTextfield(),
+                  12.verticalSpace,
                 ],
               ),
             ),
@@ -88,7 +99,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const W(w: 16),
+                    16.horizontalSpace,
                   ],
                 ),
               ),
@@ -163,8 +174,8 @@ class HomePage extends StatelessWidget {
                 child: const NewBooksListview(),
               ),
             ),
-            const SliverToBoxAdapter(
-              child: H(h: 16),
+            SliverToBoxAdapter(
+              child: 16.horizontalSpace,
             ),
           ],
         ),

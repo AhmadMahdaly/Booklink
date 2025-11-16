@@ -1,3 +1,4 @@
+import 'package:biblio/core/constants/colors_constants.dart';
 import 'package:biblio/screens/book/add_book_page/add_book.dart';
 import 'package:biblio/screens/book/edit_book/edit_my_book.dart';
 import 'package:biblio/screens/chat/order_book/order_book_page.dart';
@@ -7,7 +8,6 @@ import 'package:biblio/screens/navigation_bar/navigation_bar.dart';
 import 'package:biblio/screens/onboard/onboard_screen.dart';
 import 'package:biblio/screens/splash_screen.dart';
 import 'package:biblio/services/providers/main_app_providers.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +43,7 @@ class Booklink extends StatelessWidget {
           /// MaterialApp
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'رفوف',
+            title: 'تبادل الكتب',
             navigatorObservers: [
               FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
             ],
@@ -56,7 +56,7 @@ class Booklink extends StatelessWidget {
             /// Theme
             theme: ThemeData(
               appBarTheme: const AppBarTheme(
-                color: kScaffoldBackgroundColor,
+                backgroundColor: kScaffoldBackgroundColor,
                 iconTheme: IconThemeData(
                   color: kMainColor,
                 ),

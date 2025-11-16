@@ -1,4 +1,4 @@
-import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 
 void showSnackBar(BuildContext context, String text, {int duration = 4}) {

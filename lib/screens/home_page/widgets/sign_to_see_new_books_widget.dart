@@ -1,7 +1,6 @@
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_widgets/login_user_not_found.dart';
 import 'package:biblio/screens/home_page/widgets/no_located_books.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/components/login_user_not_found.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,7 +15,7 @@ class SignToSeeNewBooks extends StatelessWidget {
     return Column(
       spacing: 12.sp,
       children: [
-        const H(h: 16),
+        16.verticalSpace,
         Text(
           '${'Log in to see'.tr()}:',
           style: TextStyle(

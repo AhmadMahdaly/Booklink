@@ -1,5 +1,5 @@
+import 'package:biblio/core/shared_widgets/show_snackbar.dart';
 import 'package:biblio/screens/no_network_screen.dart';
-import 'package:biblio/utils/components/show_snackbar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 

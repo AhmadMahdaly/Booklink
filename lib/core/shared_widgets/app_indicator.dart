@@ -1,10 +1,10 @@
-import 'package:biblio/utils/constants/colors_constants.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class AppIndicator extends StatelessWidget {
-  const AppIndicator({
+class LoadingWidget extends StatelessWidget {
+  const LoadingWidget({
     super.key,
     this.size = 50,
   });

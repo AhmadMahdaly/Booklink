@@ -1,7 +1,7 @@
+import 'package:biblio/core/constants/colors_constants.dart';
 import 'package:biblio/cubit/messages/fetch_user_conversations_cubit.dart';
 import 'package:biblio/screens/chat/incoming_requests.dart';
 import 'package:biblio/screens/chat/submitted_requests.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

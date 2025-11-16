@@ -1,7 +1,6 @@
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_widgets/custom_button.dart';
 import 'package:biblio/screens/book/add_book_page/add_book.dart';
-import 'package:biblio/utils/components/custom_button.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,7 +28,7 @@ class EmptyLibrary extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          const H(h: 24),
+          24.verticalSpace,
           CustomBorderBotton(
             padding: 56,
             text: 'AddBook'.tr(),

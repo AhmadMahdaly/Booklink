@@ -1,10 +1,9 @@
+import 'package:biblio/core/shared_widgets/border_radius.dart';
+import 'package:biblio/core/shared_widgets/custom_button.dart';
 import 'package:biblio/screens/more_page/widgets/category_for_more.dart';
 import 'package:biblio/screens/more_page/widgets/faq_page.dart';
 import 'package:biblio/screens/onboard/onboard_screen.dart';
 import 'package:biblio/services/launch_url.dart';
-import 'package:biblio/utils/components/border_radius.dart';
-import 'package:biblio/utils/components/custom_button.dart';
-import 'package:biblio/utils/components/height.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -53,7 +52,7 @@ class MoreWithoutLogin extends StatelessWidget {
             },
           ),
 
-          const H(h: 12),
+          12.verticalSpace,
 
           CategoryForMore(
             text: 'TermsAndConditions'.tr(),

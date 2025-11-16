@@ -1,7 +1,7 @@
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
 import 'package:biblio/screens/my_lib_page/added_library.dart';
 import 'package:biblio/screens/my_lib_page/empty_library.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -84,7 +84,7 @@ class _MyLibraryPageState extends State<MyLibraryPage> {
         ),
       ),
       body: isLoading
-          ? const AppIndicator()
+          ? const LoadingWidget()
           : books.isEmpty
               ? const EmptyLibrary()
               : AddedLibrary(books: books),

@@ -1,9 +1,8 @@
 import 'dart:async';
 
+import 'package:biblio/core/constants/colors_constants.dart';
 import 'package:biblio/cubit/user/request_otp_cubit.dart';
 import 'package:biblio/screens/login/widgets/custom_verification_code.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -66,7 +65,7 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
               spacing: 16.sp,
               children: [
                 /// Header
-                const H(h: 90),
+                90.verticalSpace,
                 SvgPicture.asset(
                   'assets/svg/logo.svg',
                   colorFilter: const ColorFilter.mode(
@@ -91,11 +90,11 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const H(h: 16),
+                16.verticalSpace,
                 CustomVerificationCode(
                   email: widget.email,
                 ),
-                const H(h: 10),
+                10.verticalSpace,
 
                 /// Button
                 Row(

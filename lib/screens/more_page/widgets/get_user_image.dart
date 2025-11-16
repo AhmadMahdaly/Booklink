@@ -1,7 +1,7 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
 import 'package:biblio/cubit/user/fetch_user_data_cubit.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,7 +31,7 @@ class GetUserImage extends StatelessWidget {
                 future: cubit.getUserPhoto(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return AppIndicator(
+                    return LoadingWidget(
                       size: indicatorSize.sp,
                     );
                   }
@@ -50,7 +50,7 @@ class GetUserImage extends StatelessWidget {
                     errorWidget: (context, url, error) =>
                         const Icon(Icons.error),
                     progressIndicatorBuilder: (context, url, progress) =>
-                        AppIndicator(
+                        LoadingWidget(
                       size: indicatorSize.sp,
                     ),
                     imageUrl: photoUrl,

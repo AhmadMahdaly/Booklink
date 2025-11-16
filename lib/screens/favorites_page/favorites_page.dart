@@ -1,11 +1,11 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
+import 'package:biblio/core/shared_widgets/login_user_not_found.dart';
 import 'package:biblio/cubit/favorite_function/my_list_cubit.dart';
 import 'package:biblio/screens/favorites_page/widgets/empty_favorite_books.dart';
 import 'package:biblio/screens/favorites_page/widgets/favorite_grid_books.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/login_user_not_found.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,7 +59,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
               ),
             ),
             body: state is AppLoadingState
-                ? const AppIndicator()
+                ? const LoadingWidget()
                 : context.read<MyListCubit>().supabase.auth.currentUser == null
                     ? const LoginUserNotFound()
                     : cubit.books.isEmpty

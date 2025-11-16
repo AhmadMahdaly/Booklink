@@ -1,15 +1,14 @@
-import 'package:biblio/cubit/app_states.dart';
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
+import 'package:biblio/core/shared_widgets/app_regex.dart';
+import 'package:biblio/core/shared_widgets/custom_button.dart';
+import 'package:biblio/core/shared_widgets/custom_textformfield.dart';
 import 'package:biblio/cubit/auth_cubit/auth_cubit.dart';
 import 'package:biblio/screens/login/register_page.dart';
 import 'package:biblio/screens/login/widgets/forget_password_screen.dart';
 import 'package:biblio/screens/navigation_bar/navigation_bar.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/app_regex.dart';
-import 'package:biblio/utils/components/custom_button.dart';
-import 'package:biblio/utils/components/custom_textformfield.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
         final cubit = context.read<AuthCubit>();
         return Scaffold(
           body: state is AppLoadingState
-              ? const AppIndicator()
+              ? const LoadingWidget()
               : SingleChildScrollView(
                   child: Center(
                     child: Padding(
@@ -60,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             spacing: 16.sp,
                             children: [
                               /// Header
-                              const H(h: 70),
+                              70.verticalSpace,
                               SvgPicture.asset(
                                 'assets/svg/logo.svg',
                                 colorFilter: const ColorFilter.mode(
@@ -77,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   fontWeight: FontWeight.w800,
                                 ),
                               ),
-                              const H(h: 4),
+                              4.verticalSpace,
 
                               /// Email
                               Row(
@@ -183,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ],
                               ),
-                              const H(h: 10),
+                              10.verticalSpace,
 
                               /// Login Button
                               CustomButton(

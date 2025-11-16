@@ -1,9 +1,8 @@
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_widgets/custom_button.dart';
+import 'package:biblio/core/shared_widgets/custom_textformfield.dart';
 import 'package:biblio/screens/login/login_screen.dart';
 import 'package:biblio/services/error_message.dart';
-import 'package:biblio/utils/components/custom_button.dart';
-import 'package:biblio/utils/components/custom_textformfield.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,7 +40,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                 spacing: 10.sp,
                 children: [
                   /// Header
-                  const H(h: 100),
+                  10.verticalSpace,
                   SvgPicture.asset(
                     'assets/svg/logo.svg',
                     colorFilter: const ColorFilter.mode(
@@ -66,7 +65,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const H(h: 16),
+                  16.verticalSpace,
 
                   /// Password
                   Row(
@@ -152,7 +151,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     ),
                   ),
 
-                  const H(h: 16),
+                  16.verticalSpace,
 
                   /// Login Button
                   CustomButton(

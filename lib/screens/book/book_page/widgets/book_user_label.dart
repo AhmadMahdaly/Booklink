@@ -1,6 +1,6 @@
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
 import 'package:biblio/screens/user_page/user_page.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,7 +45,7 @@ class BookUserLabel extends StatelessWidget {
                 ),
                 child: CachedNetworkImage(
                   progressIndicatorBuilder: (context, url, progress) =>
-                      AppIndicator(
+                      LoadingWidget(
                     size: 10.sp,
                   ),
                   imageUrl: book['user_image'].toString(),

@@ -1,7 +1,7 @@
+import 'package:biblio/core/shared_controllers/connectivity_controller.dart';
 import 'package:biblio/screens/navigation_bar/navigation_bar.dart';
 import 'package:biblio/screens/no_network_screen.dart';
 import 'package:biblio/screens/onboard/onboard_screen.dart';
-import 'package:biblio/utils/controller/connectivity_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

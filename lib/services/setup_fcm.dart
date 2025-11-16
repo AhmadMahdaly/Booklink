@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
@@ -9,17 +10,18 @@ Future<void> handleBackgroundMessage(RemoteMessage message) async {
   await showNotification(message);
 }
 
+final supabase = Supabase.instance.client;
+final _firebaseMessaging = FirebaseMessaging.instance;
+
 /// تهيئة الإشعارات عند بدء تشغيل التطبيق
 Future<void> setupFCM() async {
-  const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+  const androidSettings = AndroidInitializationSettings('ic_launcher');
   const initSettings = InitializationSettings(android: androidSettings);
   FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
-  final messaging = FirebaseMessaging.instance;
-  await messaging.requestPermission();
 
   /// طلب الإذن للإشعارات
   await flutterLocalNotificationsPlugin.initialize(initSettings);
-  await FirebaseMessaging.instance.setAutoInitEnabled(true);
+  await _firebaseMessaging.setAutoInitEnabled(true);
 
   /// استقبال الإشعارات أثناء تشغيل التطبيق
   FirebaseMessaging.onMessage.listen(showNotification);
@@ -49,4 +51,44 @@ Future<void> showNotification(RemoteMessage message) async {
     message.notification?.body ?? '',
     notificationDetails,
   );
+}
+
+Future<void> saveTokenToSupabase(String token) async {
+  try {
+    final userId = supabase.auth.currentUser?.id;
+    if (userId != null) {
+      await supabase.from('fcm_tokens').upsert(
+        {
+          'user_id': userId,
+          'token': token,
+          'platform': 'android',
+        },
+        onConflict: 'user_id, token',
+      );
+    }
+  } catch (e) {
+    print('Error saving FCM token: $e');
+  }
+}
+
+Future<void> deleteTokenToSupabase() async {
+  try {
+    final userId = supabase.auth.currentUser?.id;
+    if (userId != null) {
+      await supabase.from('fcm_tokens').delete().eq('user_id', userId);
+    }
+  } catch (e) {
+    print('Error delete FCM token: $e');
+  }
+}
+
+Future<void> initNotifications() async {
+  await _firebaseMessaging.requestPermission();
+  final fcmToken = await _firebaseMessaging.getToken();
+
+  if (fcmToken != null) {
+    // print('FCM Token: $fcmToken');
+    await saveTokenToSupabase(fcmToken);
+  }
+  _firebaseMessaging.onTokenRefresh.listen(saveTokenToSupabase);
 }

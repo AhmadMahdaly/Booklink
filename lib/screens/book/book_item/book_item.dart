@@ -1,9 +1,8 @@
+import 'package:biblio/core/constants/colors_constants.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
+import 'package:biblio/core/shared_widgets/border_radius.dart';
 import 'package:biblio/cubit/favorite_function/my_list_cubit.dart';
 import 'package:biblio/screens/book/book_page/book_page.dart';
-import 'package:biblio/utils/components/app_indicator.dart';
-import 'package:biblio/utils/components/border_radius.dart';
-import 'package:biblio/utils/components/height.dart';
-import 'package:biblio/utils/constants/colors_constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,7 +53,7 @@ class BookItem extends StatelessWidget {
                 child: CachedNetworkImage(
                   fit: BoxFit.cover,
                   progressIndicatorBuilder: (context, url, progress) =>
-                      AppIndicator(
+                      LoadingWidget(
                     size: 10.sp,
                   ),
                   imageUrl: book['cover_image_url'].toString(),
@@ -62,7 +61,7 @@ class BookItem extends StatelessWidget {
                 ),
               ),
             ),
-            const H(h: 6),
+            6.verticalSpace,
 
             /// book name
             SizedBox(
