@@ -1,5 +1,5 @@
 import 'package:biblio/core/shared_widgets/custom_button.dart';
-import 'package:biblio/screens/onboard/onboard_screen.dart';
+import 'package:biblio/features/intro/onboard/onboard_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 

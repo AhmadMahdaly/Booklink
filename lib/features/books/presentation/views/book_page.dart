@@ -1,0 +1,117 @@
+import 'package:biblio/core/services/error_message.dart';
+import 'package:biblio/core/shared_controllers/app_states.dart';
+import 'package:biblio/core/shared_widgets/app_indicator.dart';
+import 'package:biblio/core/shared_widgets/custom_button.dart';
+import 'package:biblio/core/shared_widgets/leading_icon.dart';
+import 'package:biblio/features/books/presentation/controllers/delete_book_cubit.dart';
+import 'package:biblio/features/books/presentation/views/widgets/book_author.dart';
+import 'package:biblio/features/books/presentation/views/widgets/book_category.dart';
+import 'package:biblio/features/books/presentation/views/widgets/book_desc.dart';
+import 'package:biblio/features/books/presentation/views/widgets/book_image.dart';
+import 'package:biblio/features/books/presentation/views/widgets/book_location.dart';
+import 'package:biblio/features/books/presentation/views/widgets/book_price.dart';
+import 'package:biblio/features/books/presentation/views/widgets/book_title.dart';
+import 'package:biblio/features/books/presentation/views/widgets/book_user_label.dart';
+import 'package:biblio/features/books/presentation/views/widgets/edit_and_delete_popup_menu_button.dart';
+import 'package:biblio/features/books/presentation/views/widgets/offer_types_widget.dart';
+import 'package:biblio/features/books/presentation/views/widgets/post_date_and_time.dart';
+import 'package:biblio/features/chat/presentation/views/order_book/order_book_page.dart';
+import 'package:biblio/features/my_library/widgets/favorate_button.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+class ShowBookItem extends StatelessWidget {
+  const ShowBookItem({required this.book, super.key});
+  final Map<String, dynamic> book;
+
+  @override
+  Widget build(BuildContext context) {
+    String? user;
+    if (Supabase.instance.client.auth.currentUser?.id == null) {
+      user = null;
+    } else {
+      user = Supabase.instance.client.auth.currentUser!.id;
+    }
+    return BlocListener<DeleteBookCubit, AppStates>(
+      listener: (context, state) {
+        if (state is AppErrorState) {
+          errorMessage(state.message, context);
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          actions: [
+            /// Edit button
+            if (user == null)
+              const SizedBox()
+            else if (book['user_id'] == user)
+              editAndDeletePopupMenuButton(context, book)
+
+            /// Favorite button
+            else if (book['user_id'] != user)
+              FavoriteButton(
+                bookId: book['id'].toString(),
+              )
+            else
+              const SizedBox(),
+          ],
+
+          /// Leading
+          leading: const LeadingIcon(),
+        ),
+        body: State is AppLoadingState
+            ? const LoadingWidget()
+            : ListView(
+                children: [
+                  BookPageImage(book: book),
+                  16.verticalSpace,
+                  Row(
+                    children: [
+                      BookPageTitle(book: book),
+                      const Spacer(),
+                      OfferTypesWidget(book: book),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      BookPageAuthor(book: book),
+                      const Spacer(),
+                      BookPrice(book: book),
+                    ],
+                  ),
+                  BookPageDescription(book: book),
+                  BookPageCategory(book: book),
+                  16.verticalSpace,
+                  BookUserLabel(book: book),
+                  BookPageLocation(book: book),
+                  PostBookDateAndTime(book: book),
+                  36.verticalSpace,
+                ],
+              ),
+        bottomNavigationBar: user == null || book['user_id'] == user
+            ? const SizedBox()
+            : book['user_id'] != user
+                ? Padding(
+                    padding: EdgeInsets.only(
+                      bottom: 16.sp,
+                      top: 8.sp,
+                    ),
+                    child: CustomButton(
+                      padding: 16,
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          OrderTheBookPage.id,
+                          arguments: {'book_id': book['id']},
+                        );
+                      },
+                      text: 'طلب الكتاب',
+                    ),
+                  )
+                : const SizedBox(),
+      ),
+    );
+  }
+}

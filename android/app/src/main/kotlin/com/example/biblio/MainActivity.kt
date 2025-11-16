@@ -1,4 +1,4 @@
-package com.example.biblio
+package com.mahdaly.booklink
 
 import io.flutter.embedding.android.FlutterActivity
 

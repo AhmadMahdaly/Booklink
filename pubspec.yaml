@@ -1,6 +1,6 @@
 name: biblio
 description: "Platform for exchanging and selling books."
-version: 1.0.19+19
+version: 1.0.20+21
 
 environment:
   sdk: ^3.6.0
