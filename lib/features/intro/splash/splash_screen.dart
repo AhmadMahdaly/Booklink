@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
             Text(
-              'تبادل الكتب',
+              'ReBook',
               style: TextStyle(
                 color: kScaffoldBackgroundColor,
                 fontSize: 24.sp,

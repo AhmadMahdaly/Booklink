@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:biblio/core/shared_controllers/app_states.dart';
 import 'package:biblio/features/main_layout/main_layout.dart';
 import 'package:biblio/features/select_your_location/select_your_location_screen.dart';
@@ -100,8 +102,12 @@ class AuthCubit extends Cubit<AppStates> {
         ),
       );
       emit(AppSuccessState());
+      log(response.toString());
+
       return response;
     } catch (e) {
+      log(e.toString());
+
       emit(AppErrorState(e.toString()));
       return AuthResponse();
     }

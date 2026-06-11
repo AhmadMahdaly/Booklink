@@ -43,7 +43,7 @@ class Booklink extends StatelessWidget {
           /// MaterialApp
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'تبادل الكتب',
+            title: 'ReBook',
             navigatorObservers: [
               FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
             ],
